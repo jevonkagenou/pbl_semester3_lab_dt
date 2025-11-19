@@ -28,6 +28,87 @@
   <!-- Main CSS File -->
   <link href="../landing-page-template/assets/css/main.css" rel="stylesheet">
 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fa;
+    }
+    header {
+      background: #ffffff;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #d0d7dd;
+    }
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav a{
+      margin: 0 15px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 14px;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 60px;
+    }
+    .hero-text h1{
+      font-size: 36px;
+      margin: 0 0 15px;
+      color: #1f3b45;
+    }
+    .hero-text p {
+      max-width: 450px;
+      line-height: 1.6;
+      color: #334b52;
+    }
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 22px;
+      background: #1f545a;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .icon {
+      width: 180px;
+    }
+  </style>
+<body>
+  <header>
+    <div class="logo">
+      <img src="sebentar" alt="Logo" width="40" />
+      <strong>LAB TDA</strong>
+</div>
+<nav>
+    <a href="#">Beranda</a>
+    <a href="#">Tentang Kami</a>
+    <a href="#">Akademik</a>
+    <a href="#">Kemahasiswaan</a>
+    <a href="#">Penelitian</a>
+    <a href="#">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Laboratorium Teknologi Data<br>Politeknik Negeri Malang</h1>
+      <p>Mendorong inovasi, riset, dan pembelajaran berbasis data untuk memperkuat kolaborasi, mengembangkan teknologi cerdas, serta menciptakan solusi nyata bagi masyarakat dan industri.</p>
+      <a href="#" class="btn">Lihat Riset Kami</a>
+    </div>
+
+  <img class="icon" src="sebentarpoull" alt="Cloud Icon" />  
+  </section>
+
+
   <!-- =======================================================
   * Template Name: FlexStart
   * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
@@ -35,7 +116,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head>
+</header>
 
 <body class="index-page">
 
