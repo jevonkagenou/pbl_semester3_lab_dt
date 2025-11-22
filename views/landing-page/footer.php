@@ -1,15 +1,14 @@
-
-
-
 <!-- Import Google Font Inter -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <footer style="background:#27505B; color:white; padding:60px 40px; font-family: 'Inter', sans-serif;">
-  <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; max-width:1200px; margin:auto; font-family: 'Inter', sans-serif;">
+  <div
+    style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; max-width:1200px; margin:auto; font-family: 'Inter', sans-serif;">
 
     <!-- Logo Section -->
     <div style="flex:1 1 250px;">
-      <img src="../landing-page-template/assets/img/lab-dt-white.png" alt="LAB TDA" style="width:180px; margin-bottom:20px;">
+      <img src="../landing-page-template/assets/img/lab-dt-white.png" alt="LAB TDA"
+        style="width:180px; margin-bottom:20px;">
     </div>
 
     <!-- Tentang Lab -->
@@ -28,7 +27,8 @@
     <!-- Kunjungi -->
     <div style="flex:1 1 200px;">
       <h3 style="margin-bottom:15px; font-size:22px; font-weight:600;">Kunjungi</h3>
-      <a href="https://polinema.ac.id" style="color:white; font-size:18px; text-decoration:underline;">polinema.ac.id</a>
+      <a href="https://polinema.ac.id"
+        style="color:white; font-size:18px; text-decoration:underline;">polinema.ac.id</a>
     </div>
 
     <!-- Social Media -->
@@ -52,13 +52,17 @@
 
 <style>
   @media (max-width:900px) {
-    footer div { text-align:center !important; }
-    footer ul { padding:0; }
+    footer div {
+      text-align: center !important;
+    }
+
+    footer ul {
+      padding: 0;
+    }
+
     footer img {
-      margin:auto;
-      display:block;
+      margin: auto;
+      display: block;
     }
   }
 </style>
-
- 

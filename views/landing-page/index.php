@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="../landing-page-template/assets/img/favicon.png" rel="icon">
-  <link href="../landing-page-template/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../../landing-page-template/assets/img/favicon.png" rel="icon">
+  <link href="../../landing-page-template/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,13 +20,13 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../landing-page-template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../landing-page-template/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../landing-page-template/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../landing-page-template/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../landing-page-template/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <!-- Main CSS File -->
-  <link href="../landing-page-template/assets/css/main.css" rel="stylesheet">
+  <link href="../../landing-page-template/assets/css/main.css" rel="stylesheet">
 
 
 
@@ -38,24 +38,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</header>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="../landing-page-template/assets/img/lab-dt.png" alt="">
-      </a>
-
-    
-
-      <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Login</a>
-
-    </div>
-  </header>
+  <?php include 'navbar.php'; ?>
 
   <main class="main">
 
@@ -74,7 +61,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-lg-4 hero-img d-flex justify-content-end" data-aos="zoom-out">
-            <img src="../landing-page-template/assets/img/logo-lab-dt.png" class="img-fluid animated ms-auto" alt="">
+            <img src="../../landing-page-template/assets/img/logo-lab-dt.png" class="img-fluid animated ms-auto" alt="">
           </div>
         </div>
       </div>
@@ -107,7 +94,7 @@
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="../landing-page-template/assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="../../landing-page-template/assets/img/about.jpg" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -130,7 +117,7 @@
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="card">
-              <img src="../landing-page-template/assets/img/values-1.png" class="img-fluid" alt="">
+              <img src="../../landing-page-template/assets/img/values-1.png" class="img-fluid" alt="">
               <h3>Ad cupiditate sed est odio</h3>
               <p>Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit. Et veritatis id.</p>
             </div>
@@ -138,7 +125,7 @@
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="card">
-              <img src="../landing-page-template/assets/img/values-2.png" class="img-fluid" alt="">
+              <img src="../../landing-page-template/assets/img/values-2.png" class="img-fluid" alt="">
               <h3>Voluptatem voluptatum alias</h3>
               <p>Repudiandae amet nihil natus in distinctio suscipit id. Doloremque ducimus ea sit non.</p>
             </div>
@@ -146,7 +133,7 @@
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card">
-              <img src="../landing-page-template/assets/img/values-3.png" class="img-fluid" alt="">
+              <img src="../../landing-page-template/assets/img/values-3.png" class="img-fluid" alt="">
               <h3>Fugit cupiditate alias nobis.</h3>
               <p>Quam rem vitae est autem molestias explicabo debitis sint. Vero aliquid quidem commodi.</p>
             </div>
@@ -229,7 +216,7 @@
         <div class="row gy-5">
 
           <div class="col-xl-6" data-aos="zoom-out" data-aos-delay="100">
-            <img src="../landing-page-template/assets/img/features.png" class="img-fluid" alt="">
+            <img src="../../landing-page-template/assets/img/features.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-xl-6 d-flex">
@@ -350,7 +337,7 @@
           </div>
 
           <div class="col-xl-5 d-flex align-items-center order-1 order-xl-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="../landing-page-template/assets/img/alt-features.png" class="img-fluid" alt="">
+            <img src="../../landing-page-template/assets/img/alt-features.png" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -649,11 +636,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/app-1.jpg" title="App 1"
+                  <a href="../../landing-page-template/assets/img/portfolio/app-1.jpg" title="App 1"
                     data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -664,11 +651,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Product 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/product-1.jpg" title="Product 1"
+                  <a href="../../landing-page-template/assets/img/portfolio/product-1.jpg" title="Product 1"
                     data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -679,11 +666,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Branding 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/branding-1.jpg" title="Branding 1"
+                  <a href="../../landing-page-template/assets/img/portfolio/branding-1.jpg" title="Branding 1"
                     data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -694,11 +681,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Books 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/books-1.jpg" title="Branding 1"
+                  <a href="../../landing-page-template/assets/img/portfolio/books-1.jpg" title="Branding 1"
                     data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -709,11 +696,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/app-2.jpg" title="App 2"
+                  <a href="../../landing-page-template/assets/img/portfolio/app-2.jpg" title="App 2"
                     data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -724,11 +711,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Product 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/product-2.jpg" title="Product 2"
+                  <a href="../../landing-page-template/assets/img/portfolio/product-2.jpg" title="Product 2"
                     data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -739,11 +726,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Branding 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/branding-2.jpg" title="Branding 2"
+                  <a href="../../landing-page-template/assets/img/portfolio/branding-2.jpg" title="Branding 2"
                     data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -754,11 +741,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Books 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/books-2.jpg" title="Branding 2"
+                  <a href="../../landing-page-template/assets/img/portfolio/books-2.jpg" title="Branding 2"
                     data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -769,11 +756,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/app-3.jpg" title="App 3"
+                  <a href="../../landing-page-template/assets/img/portfolio/app-3.jpg" title="App 3"
                     data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -784,11 +771,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Product 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/product-3.jpg" title="Product 3"
+                  <a href="../../landing-page-template/assets/img/portfolio/product-3.jpg" title="Product 3"
                     data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -799,11 +786,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Branding 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/branding-3.jpg" title="Branding 2"
+                  <a href="../../landing-page-template/assets/img/portfolio/branding-3.jpg" title="Branding 2"
                     data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -814,11 +801,11 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
-                <img src="../landing-page-template/assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Books 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="../landing-page-template/assets/img/portfolio/books-3.jpg" title="Branding 3"
+                  <a href="../../landing-page-template/assets/img/portfolio/books-3.jpg" title="Branding 3"
                     data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="portfolio-details.html" title="More Details" class="details-link"><i
@@ -885,8 +872,8 @@
                   quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="../landing-page-template/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                    alt="">
+                  <img src="../../landing-page-template/assets/img/testimonials/testimonials-1.jpg"
+                    class="testimonial-img" alt="">
                   <h3>Saul Goodman</h3>
                   <h4>Ceo &amp; Founder</h4>
                 </div>
@@ -904,8 +891,8 @@
                   quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="../landing-page-template/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                    alt="">
+                  <img src="../../landing-page-template/assets/img/testimonials/testimonials-2.jpg"
+                    class="testimonial-img" alt="">
                   <h3>Sara Wilsson</h3>
                   <h4>Designer</h4>
                 </div>
@@ -923,8 +910,8 @@
                   tempor labore quem eram duis noster aute amet eram fore quis sint minim.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="../landing-page-template/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                    alt="">
+                  <img src="../../landing-page-template/assets/img/testimonials/testimonials-3.jpg"
+                    class="testimonial-img" alt="">
                   <h3>Jena Karlis</h3>
                   <h4>Store Owner</h4>
                 </div>
@@ -942,8 +929,8 @@
                   minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="../landing-page-template/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                    alt="">
+                  <img src="../../landing-page-template/assets/img/testimonials/testimonials-4.jpg"
+                    class="testimonial-img" alt="">
                   <h3>Matt Brandon</h3>
                   <h4>Freelancer</h4>
                 </div>
@@ -961,8 +948,8 @@
                   labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="../landing-page-template/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
-                    alt="">
+                  <img src="../../landing-page-template/assets/img/testimonials/testimonials-5.jpg"
+                    class="testimonial-img" alt="">
                   <h3>John Larson</h3>
                   <h4>Entrepreneur</h4>
                 </div>
@@ -993,7 +980,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="team-member">
               <div class="member-img">
-                <img src="../landing-page-template/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/team/team-1.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1013,7 +1000,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
               <div class="member-img">
-                <img src="../landing-page-template/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/team/team-2.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1033,7 +1020,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
               <div class="member-img">
-                <img src="../landing-page-template/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/team/team-3.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1053,7 +1040,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
               <div class="member-img">
-                <img src="../landing-page-template/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/team/team-4.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1122,21 +1109,21 @@
             }
           </script>
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-1.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-1.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-2.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-2.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-3.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-3.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-4.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-4.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-5.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-5.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-6.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-6.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-7.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-7.png"
                 class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="../landing-page-template/assets/img/clients/client-8.png"
+            <div class="swiper-slide"><img src="../../landing-page-template/assets/img/clients/client-8.png"
                 class="img-fluid" alt=""></div>
           </div>
           <div class="swiper-pagination"></div>
@@ -1163,7 +1150,7 @@
             <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="../landing-page-template/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
                 <span class="post-date">December 12</span>
               </div>
 
@@ -1195,7 +1182,7 @@
             <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="../landing-page-template/assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
                 <span class="post-date">July 17</span>
               </div>
 
@@ -1227,7 +1214,7 @@
             <div class="post-item position-relative h-100">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="../landing-page-template/assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
+                <img src="../../landing-page-template/assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
                 <span class="post-date">September 05</span>
               </div>
 
@@ -1357,24 +1344,25 @@
     </section><!-- /Contact Section -->
 
   </main>
- 
+
+  <?php include 'footer.php'; ?>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="../landing-page-template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../landing-page-template/assets/vendor/php-email-form/validate.js"></script>
-  <script src="../landing-page-template/assets/vendor/aos/aos.js"></script>
-  <script src="../landing-page-template/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../landing-page-template/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="../landing-page-template/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="../landing-page-template/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../landing-page-template/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../../landing-page-template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../landing-page-template/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../../landing-page-template/assets/vendor/aos/aos.js"></script>
+  <script src="../../landing-page-template/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../../landing-page-template/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../../landing-page-template/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../../landing-page-template/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../../landing-page-template/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="../landing-page-template/assets/js/main.js"></script>
+  <script src="../../landing-page-template/assets/js/main.js"></script>
 
 </body>
 
