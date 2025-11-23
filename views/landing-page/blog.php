@@ -13,11 +13,9 @@
   <link href="../../landing-page-template/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../landing-page-template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,356 +38,262 @@
 
 <body class="blog-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="../../landing-page-template/assets/img/logo.png" alt="">
-        <h1 class="sitename">FlexStart</h1>
-      </a>
-
-      <?php include 'navbar.php'; ?>
-
-      <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Get Started</a>
-
-    </div>
-  </header>
+  <?php include 'navbar.php'; ?>
 
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Blog</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas
-                consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit
-                quaerat ipsum dolorem.</p>
+    <style>
+      .card-hover {
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .card-hover img {
+        transition: transform 0.5s ease;
+      }
+
+      .card-hover:hover img {
+        transform: scale(1.05);
+      }
+
+      .stretched-link::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+      }
+
+      .card-hover a {
+        position: relative;
+        z-index: 2;
+      }
+    </style>
+
+    <section class="section py-5" style="background-color: #edf2f4; min-height: 100vh;">
+      <div class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-12">
+            <div id="heroCarousel" class="carousel slide border-0 rounded-4 overflow-hidden shadow-sm"
+              data-bs-ride="carousel">
+
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              </div>
+
+              <div class="carousel-inner" style="height: 450px;">
+                <div class="carousel-item active h-100">
+                  <img src="../../landing-page-template/assets/img/lomba1.png" class="d-block w-100 h-100"
+                    alt="Berita Utama 1" style="object-fit: cover; object-position: center 20%;">
+
+                  <div class="position-absolute bottom-0 start-0 w-100 p-4 p-lg-5"
+                    style="background: linear-gradient(to top, rgba(39, 80, 91, 0.95), transparent); z-index: 2;">
+                    <div class="col-lg-10">
+                      <h2 class="fw-bold mb-3" style="font-size: 2rem; line-height: 1.3;">
+                        <a href="detail-blog.php" style="color: #fff; text-decoration: none;">
+                          Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival
+                          2025
+                        </a>
+                      </h2>
+                      <div class="d-flex align-items-center small text-white-50">
+                        <span class="text-uppercase fw-bold me-3" style="color: #fff;">BY Tim Redaksi</span>
+                        <span style="color: #fff;"><i class="bi bi-clock me-1" style="color: #fff;"></i> Senin, 24
+                          November 2025</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-item h-100">
+                  <img src="../../landing-page-template/assets/img/gedung-ti-polinema.png" class="d-block w-100 h-100"
+                    alt="Berita Utama 2" style="object-fit: cover; object-position: center center;">
+                  <div class="position-absolute bottom-0 start-0 w-100 p-4 p-lg-5"
+                    style="background: linear-gradient(to top, rgba(39, 80, 91, 0.95), transparent); z-index: 2;">
+                    <div class="col-lg-10">
+                      <h2 class="fw-bold mb-3" style="font-size: 2rem; line-height: 1.3;">
+                        <a href="detail-blog.php" style="color: #fff; text-decoration: none;">
+                          Tim JosJisBolo Polinema menjuarai lomba UI/UX Tingkat Nasional Dalam ajang Tecno Competition
+                          Se-Indonesia
+                        </a>
+                      </h2>
+                      <div class="d-flex align-items-center small text-white-50">
+                        <span class="text-uppercase fw-bold me-3" style="color: #fff;">BY Tim Redaksi</span>
+                        <span style="color: #fff;"><i class="bi bi-clock me-1" style="color: #fff;"></i> Senin, 24
+                          November 2025</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+
             </div>
           </div>
         </div>
-      </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
 
-    <div class="container">
-      <div class="row">
+        <div class="row g-4 mb-5">
 
-        <div class="col-lg-8">
-
-          <!-- Blog Posts Section -->
-          <section id="blog-posts" class="blog-posts section">
-
-            <div class="container">
-
-              <div class="row gy-4">
-
-                <div class="col-12">
-                  <article>
-
-                    <div class="post-img">
-                      <img src="../../landing-page-template/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam
-                        quia</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                            href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                            href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                            href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium.
-                        Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                        Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et
-                        quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                      </p>
-
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="../../landing-page-template/assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                            href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                            href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                            href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et.
-                        Quo libero rerum voluptatem pariatur nam.
-                        Ad impedit qui officiis est in non aliquid veniam laborum. Id ipsum qui aut. Sit aliquam et quia
-                        molestias laboriosam. Tempora nam odit omnis eum corrupti qui aliquid excepturi molestiae.
-                        Facilis et sint quos sed voluptas. Maxime sed tempore enim omnis non alias odio quos distinctio.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="../../landing-page-template/assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit
-                        sint.</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                            href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                            href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                            href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore
-                        omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis.
-                        Doloremque est saepe laborum aut. Ipsa cupiditate ex harum at recusandae nesciunt. Ut dolores
-                        velit.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="../../landing-page-template/assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo
-                        eius exercitationem.</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                            href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                            href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                            href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae. Rem veritatis
-                        rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a qui.
-                        Quia sed sunt. Ea asperiores expedita et et delectus voluptates rerum. Id saepe ut itaque quod
-                        qui voluptas nobis porro rerum. Quam quia nesciunt qui aut est non omnis. Inventore occaecati et
-                        quaerat magni itaque nam voluptas. Voluptatem ducimus sint id earum ut nesciunt sed corrupti
-                        nemo.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-              </div><!-- End blog posts list -->
-
-            </div>
-
-          </section><!-- /Blog Posts Section -->
-
-          <!-- Blog Pagination Section -->
-          <section id="blog-pagination" class="blog-pagination section">
-
-            <div class="container">
-              <div class="d-flex justify-content-center">
-                <ul>
-                  <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#" class="active">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li>...</li>
-                  <li><a href="#">10</a></li>
-                  <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-                </ul>
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden"> <img
+                  src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 1">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
+                    Politeknik Negeri Malang.
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
+                </div>
               </div>
             </div>
+          </div>
 
-          </section><!-- /Blog Pagination Section -->
-
-        </div>
-
-        <div class="col-lg-4 sidebar">
-
-          <div class="widgets-container">
-
-            <!-- Search Widget -->
-            <div class="search-widget widget-item">
-
-              <h3 class="widget-title">Search</h3>
-              <form action="">
-                <input type="text">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-              </form>
-
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden">
+                <img src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 2">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Jurusan Teknologi Informasi Politeknik Negeri Malang melaksanakan kegiatan dengan tema "AI Ready
+                    ASEAN
+                    untuk Siswa"
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
+                </div>
+              </div>
             </div>
-            <!--/Search Widget -->
+          </div>
 
-            <!-- Categories Widget -->
-            <div class="categories-widget widget-item">
-
-              <h3 class="widget-title">Categories</h3>
-              <ul class="mt-3">
-                <li><a href="#">General <span>(25)</span></a></li>
-                <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                <li><a href="#">Travel <span>(5)</span></a></li>
-                <li><a href="#">Design <span>(22)</span></a></li>
-                <li><a href="#">Creative <span>(8)</span></a></li>
-                <li><a href="#">Educaion <span>(14)</span></a></li>
-              </ul>
-
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden">
+                <img src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 3">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
+                    Politeknik Negeri Malang.
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
+                </div>
+              </div>
             </div>
-            <!--/Categories Widget -->
+          </div>
 
-            <!-- Recent Posts Widget -->
-            <div class="recent-posts-widget widget-item">
-
-              <h3 class="widget-title">Recent Posts</h3>
-
-              <div class="post-item">
-                <img src="../../landing-page-template/assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden">
+                <img src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 4">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Jurusan Teknologi Informasi Politeknik Negeri Malang melaksanakan kegiatan dengan tema "AI Ready
+                    ASEAN
+                    untuk Siswa"
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
                 </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="../../landing-page-template/assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="../../landing-page-template/assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="../../landing-page-template/assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="../../landing-page-template/assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
+              </div>
             </div>
-            <!--/Recent Posts Widget -->
+          </div>
 
-            <!-- Tags Widget -->
-            <div class="tags-widget widget-item">
-
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
-
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden">
+                <img src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 5">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
+                    Politeknik Negeri Malang.
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
+                </div>
+              </div>
             </div>
-            <!--/Tags Widget -->
+          </div>
 
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
+              <div class="ratio ratio-16x9 overflow-hidden">
+                <img src="../../landing-page-template/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  alt="Berita 6">
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
+                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                    Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
+                    Politeknik Negeri Malang.
+                  </a>
+                </h5>
+                <div class="mt-auto d-flex align-items-center small text-muted">
+                  <span class="fw-bold me-3" style="color: #555;">BY Tim Redaksi</span>
+                  <span><i class="bi bi-clock me-1"></i> Senin, 24 Nov 2025</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
 
+        <div class="row">
+          <div class="col-12 text-center">
+            <a href="#" class="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow-sm"
+              style="background-color: #27505B; border-color: #27505B; font-size: 1rem; transition: all 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              Lihat Selengkapnya...
+            </a>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
   </main>
 
