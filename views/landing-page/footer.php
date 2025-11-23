@@ -7,7 +7,7 @@
 
     <!-- Logo Section -->
     <div style="flex:1 1 250px;">
-      <img src="../landing-page-template/assets/img/lab-dt-white.png" alt="LAB TDA"
+      <img src="../landing-page-template/assets/img/lab-dt-white.png"  alt="LAB TDA"
         style="width:180px; margin-bottom:20px;">
     </div>
 
