@@ -3,7 +3,7 @@
 
     <a href="index.html" class="logo d-flex align-items-center me-auto">
       <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="../../landing-page-template/assets/img/lab-dt.png" alt="">
+      <img src="<?= BASE_URL ?>public/assets/img/lab-dt.png" alt="">
     </a>
     <nav id="navmenu" class="navmenu">
       <ul>

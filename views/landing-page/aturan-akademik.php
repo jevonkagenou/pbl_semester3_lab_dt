@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="../../landing-page-template/assets/img/favicon.png" rel="icon">
-    <link href="../../landing-page-template/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= BASE_URL ?>public/assets/img/favicon.png" rel="icon">
+    <link href="<?= BASE_URL ?>public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,14 +18,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="../../landing-page-template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../landing-page-template/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../../landing-page-template/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../../landing-page-template/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../../landing-page-template/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="../../landing-page-template/assets/css/main.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/assets/css/main.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: FlexStart
@@ -329,23 +329,23 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="../../landing-page-template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
     </script>
-    <script src="../../landing-page-template/assets/vendor/php-email-form/validate.js"></script>
-    <script src="../../landing-page-template/assets/vendor/aos/aos.js"></script>
-    <script src="../../landing-page-template/assets/vendor/glightbox/js/glightbox.min.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/php-email-form/validate.js"></script>
+    <script src="<?= BASE_URL ?>public/assets/vendor/aos/aos.js"></script>
+    <script src="<?= BASE_URL ?>public/assets/vendor/glightbox/js/glightbox.min.js">
     </script>
-    <script src="../../landing-page-template/assets/vendor/purecounter/purecounter_vanilla.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/purecounter/purecounter_vanilla.js">
     </script>
-    <script src="../../landing-page-template/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js">
     </script>
-    <script src="../../landing-page-template/assets/vendor/isotope-layout/isotope.pkgd.min.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/isotope-layout/isotope.pkgd.min.js">
     </script>
-    <script src="../../landing-page-template/assets/vendor/swiper/swiper-bundle.min.js">
+    <script src="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.js">
     </script>
 
     <!-- Main JS File -->
-    <script src="../../landing-page-template/assets/js/main.js"></script>
+    <script src="<?= BASE_URL ?>public/assets/js/main.js"></script>
 
 </body>
 
