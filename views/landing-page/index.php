@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<?= BASE_URL ?>public/assets/img/favicon.png" rel="icon">
-  <link href="<?= BASE_URL ?>public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+  <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,13 +18,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <!-- Main CSS File -->
-  <link href="<?= BASE_URL ?>public/assets/css/main.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/css/main.css" rel="stylesheet">
 
 
 
@@ -39,8 +39,8 @@
 
 <body class="index-page">
 
-
   <?php include 'navbar.php'; ?>
+
 
   <main class="main">
 
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-lg-4 hero-img d-flex justify-content-end" data-aos="zoom-out">
-            <img src="<?= BASE_URL ?>public/assets/img/logo-lab-dt.png" class="img-fluid animated ms-auto" alt="">
+            <img src="<?= BASE_URL ?>/public/assets/img/logo-lab-dt.png" class="img-fluid animated ms-auto" alt="">
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
 
           <!-- Image -->
           <div class="col-lg-6 d-flex justify-content-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="../landing-page-template/assets/img/gedung-ti-polinema.png" class="img-fluid"
+            <img src="<?= BASE_URL ?>/public/assets/img/gedung-ti-polinema.png" class="img-fluid"
               alt="Gedung TI Polinema" style="border-radius:25px; width:100%; object-fit:cover;">
           </div>
         </div>
@@ -107,7 +107,10 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Fokus Riset</h2>
+        <h2 style="color:#27505B; font-size:48px; font-weight:700; margin-bottom:40px  ">
+
+          Fokus Riset</h2>
+
       </div>
 
       <div class="container">
@@ -116,54 +119,42 @@
           <!-- Analisis Data -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/VectorDataBase.png" class="img-fluid fokus-icon"
-                alt="">
-              <p>Analisis Data</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/AnalisisData.png" <p></p>Analisis Data</p>
             </div>
           </div>
 
           <!-- Big Data -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/UploadServicesDataBase.png"
-                class="img-fluid fokus-icon" alt="">
-              <p>Big Data</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/BigData.png" <p>Big Data</p>
             </div>
           </div>
 
           <!-- Machine Learning -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/MachineLearning.png" class="img-fluid fokus-icon"
-                alt="">
-              <p>Machine Learning</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/MachineLearning.png" <p>Machine Learning</p>
             </div>
           </div>
 
           <!-- Visualisasi Data -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="250">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/VisualData.png" class="img-fluid fokus-icon"
-                alt="">
-              <p>Visualisasi Data</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/VisualisasiData.png" <p>Visualisasi Data</p>
             </div>
           </div>
 
           <!-- Data Mining -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/DataMining.png" class="img-fluid fokus-icon"
-                alt="">
-              <p>Data Mining</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/DataMining.png" <p>Data Mining</p>
             </div>
           </div>
 
           <!-- Database & SQL -->
           <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="350">
             <div class="card research-card text-center">
-              <img src="<?= BASE_URL ?>public/assets/img/fokus/DatabaseSql.png" class="img-fluid fokus-icon"
-                alt="">
-              <p>Database & SQL</p>
+              <img src="<?= BASE_URL ?>/public/assets/img/RisetElements/DatabaseSql.png" <p>Database & SQL</p>
             </div>
           </div>
 
@@ -213,706 +204,1018 @@
 
 
       <!-- Stats Section -->
-      <section id="stats" class="stats section">
+      <style>
+        /* Reset & Base Styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f5f5f5;
+          color: #333;
+          line-height: 1.6;
+        }
 
-          <div class="row gy-4">
+        /* Header Styles */
+        header {
+          background-color: white;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
 
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item d-flex align-items-center w-100 h-100">
-                <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                    class="purecounter"></span>
-                  <p>Happy Clients</p>
-                </div>
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 0;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo img {
+          height: 40px;
+          margin-right: 10px;
+        }
+
+        .logo-text {
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .nav-menu {
+          display: flex;
+          list-style: none;
+        }
+
+        .nav-menu li {
+          position: relative;
+          margin-left: 20px;
+        }
+
+        .nav-menu a {
+          text-decoration: none;
+          color: #333;
+          padding: 8px 12px;
+          transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+          color: #007bff;
+        }
+
+        .nav-menu li:hover>ul {
+          display: block;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          min-width: 150px;
+          display: none;
+          z-index: 10;
+        }
+
+        .dropdown-menu li {
+          margin: 0;
+        }
+
+        .dropdown-menu a {
+          display: block;
+          padding: 10px 20px;
+        }
+
+        .dropdown-menu a:hover {
+          background-color: #f8f9fa;
+          color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+          background-color: #f0f4f8;
+          padding: 60px 0;
+          display: flex;
+          align-items: center;
+          gap: 40px;
+        }
+
+        .hero-content {
+          flex: 1;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #2c3e50;
+          margin-bottom: 20px;
+          line-height: 1.2;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+          color: #555;
+          margin-bottom: 30px;
+        }
+
+        .btn {
+          display: inline-block;
+          background-color: #2c3e50;
+          color: white;
+          padding: 12px 24px;
+          border-radius: 4px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+          background-color: #1a252f;
+        }
+
+        .hero-image {
+          flex: 0 0 300px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .hero-image img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        /* Sorotan Publikasi Section */
+        .publikasi-section {
+          padding: 60px 0;
+          background-color: white;
+        }
+
+        .section-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 40px;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+          font-weight: 700;
+          color: #2c3e50;
+        }
+
+        .view-all-btn {
+          padding: 10px 20px;
+          border: 2px solid #2c3e50;
+          border-radius: 8px;
+          color: #2c3e50;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .view-all-btn:hover {
+          background-color: #2c3e50;
+          color: white;
+        }
+
+        .publikasi-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+
+        .publikasi-card {
+          background-color: #e8eef2;
+          border-radius: 12px;
+          padding: 25px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .publikasi-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .publikasi-title {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2c3e50;
+          margin-bottom: 15px;
+          line-height: 1.4;
+        }
+
+        .publikasi-year {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 20px;
+        }
+
+        .read-btn {
+          width: 100%;
+          padding: 12px;
+          border: 2px solid #2c3e50;
+          border-radius: 8px;
+          background: transparent;
+          color: #2c3e50;
+          font-weight: 600;
+          text-align: center;
+          text-decoration: none;
+          transition: all 0.3s;
+          display: block;
+        }
+
+        .read-btn:hover {
+          background-color: #2c3e50;
+          color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .header-content {
+            flex-direction: column;
+            text-align: center;
+          }
+
+          .nav-menu {
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .nav-menu li {
+            margin: 5px 10px;
+          }
+
+          .hero {
+            flex-direction: column;
+            padding: 40px 20px;
+          }
+
+          .hero-title {
+            font-size: 2rem;
+          }
+
+          .hero-image {
+            flex: 0 0 auto;
+            margin-top: 30px;
+          }
+
+          .section-header {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+          }
+
+          .publikasi-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .section-title {
+            font-size: 1.8rem;
+          }
+        }
+      </style>
+      </head>
+
+      <body>
+
+
+        <!-- Sorotan Publikasi Section -->
+        <class="publikasi-section">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="section-title">Sorotan Publikasi</h2>
+              <a href="#" class="view-all-btn">Lihat Selengkapnya →</a>
+            </div>
+            <div class="publikasi-grid">
+              <!-- Publikasi 1 -->
+              <div class="publikasi-card">
+                <h3 class="publikasi-title">Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo (Studi
+                  Kasus: Supermama Frozen Food)</h3>
+                <div class="publikasi-year">2022</div>
+                <a href="#" class="read-btn">Baca</a>
               </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item d-flex align-items-center w-100 h-100">
-                <i class="bi bi-journal-richtext color-orange flex-shrink-0" style="color: #ee6c20;"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                    class="purecounter"></span>
-                  <p>Projects</p>
-                </div>
+              <!-- Publikasi 2 -->
+              <div class="publikasi-card">
+                <h3 class="publikasi-title">Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo (Studi
+                  Kasus: Supermama Frozen Food)</h3>
+                <div class="publikasi-year">2022</div>
+                <a href="#" class="read-btn">Baca</a>
               </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item d-flex align-items-center w-100 h-100">
-                <i class="bi bi-headset color-green flex-shrink-0" style="color: #15be56;"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
-                    class="purecounter"></span>
-                  <p>Hours Of Support</p>
-                </div>
+              <!-- Publikasi 3 -->
+              <div class="publikasi-card">
+                <h3 class="publikasi-title">Sistem Prediksi Penjualan Frozen Food dengan Metode Monte Carlo (Studi
+                  Kasus: Supermama Frozen Food)</h3>
+                <div class="publikasi-year">2022</div>
+                <a href="#" class="read-btn">Baca</a>
               </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item d-flex align-items-center w-100 h-100">
-                <i class="bi bi-people color-pink flex-shrink-0" style="color: #bb0852;"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-                    class="purecounter"></span>
-                  <p>Hard Workers</p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
+            </div>
           </div>
 
-        </div>
+          </section><!-- /Stats Section -->
 
-      </section><!-- /Stats Section -->
+          <!-- Features Section -->
+          <section id="features" class="features section">
 
-      <!-- Features Section -->
-      <section id="features" class="features section">
+            <div class="container">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Features</h2>
-          <p>Our Advacedd Features<br></p>
-        </div><!-- End Section Title -->
+              <!-- Team Section -->
+              <section id="team" class="team section">
+                <div class="container">
 
-        <div class="container">
+                  <!-- Section Title -->
+                  <div class="section-title" data-aos="fade-up">
+                    <h2>Team</h2>
+                  </div>
 
-          <div class="row gy-5">
+                  <!-- Team Carousel Container -->
+                  <div class="team-carousel"
+                    style="overflow-x: auto; padding: 20px 0; scrollbar-width: thin; scrollbar-color: #ccc #f5f5f5; -ms-overflow-style: none;">
 
-            <div class="col-xl-6" data-aos="zoom-out" data-aos-delay="100">
-              <img src="<?= BASE_URL ?>public/assets/img/features.png" class="img-fluid" alt="">
+                    <!-- Hide scrollbar for Webkit browsers -->
+                    <style>
+                      .team-carousel::-webkit-scrollbar {
+                        height: 8px;
+                      }
+
+                      .team-carousel::-webkit-scrollbar-track {
+                        background: #f5f5f5;
+                        border-radius: 10px;
+                      }
+
+                      .team-carousel::-webkit-scrollbar-thumb {
+                        background: #ccc;
+                        border-radius: 10px;
+                      }
+
+                      .team-carousel::-webkit-scrollbar-thumb:hover {
+                        background: #999;
+                      }
+                    </style>
+
+                    <!-- Team Members -->
+                    <div class="team-wrapper" style="display: flex; gap: 20px; min-width: max-content;">
+
+                      <!-- Member 1 -->
+                      <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/kepala-lab.png"
+                          alt="Yoppy Yunhasnawa, S.ST, M.Sc" style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Yoppy Yunhasnawa, S.ST, M.Sc
+                          </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Kepala
+                            Lab</span>
+                        </div>
+                      </div>
+
+                      <!-- Member 2 -->
+                      <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-1.png"
+                          alt="M. Hasyim Ratsanjani S.Kom., M.Kom" style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">M. Hasyim Ratsanjani S.Kom.,
+                            M.Kom
+                          </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
+
+                      <!-- Member 3 -->
+                      <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-2.png"
+                          alt="Gunawan Budi Prasetyo, ST., MT.,Ph.D" style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Gunawan Budi Prasetyo, ST.,
+                            MT.,Ph.D
+                          </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
+
+                      <!-- Member 4 -->
+                      <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-3.png"
+                          alt="Luqman Affandi, S.Kom., MMSI" alt="Dika Rizky Yuniarto"
+                          style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Dika Rizky Yuniarto, S.Kom.,
+                            M.Kom.</h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
+
+                      <!-- Tambahkan lebih banyak member jika perlu -->
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </section>
+              <div class="col-xl-7 d-flex order-2 order-xl-1" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="row align-self-center gy-5">
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-award"></i>
+                    <div>
+                      <h4>Corporis voluptates sit</h4>
+                      <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-card-checklist"></i>
+                    <div>
+                      <h4>Ullamco laboris nisi</h4>
+                      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-dribbble"></i>
+                    <div>
+                      <h4>Labore consequatur</h4>
+                      <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-filter-circle"></i>
+                    <div>
+                      <h4>Beatae veritatis</h4>
+                      <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-lightning-charge"></i>
+                    <div>
+                      <h4>Molestiae dolor</h4>
+                      <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                  <div class="col-md-6 icon-box">
+                    <i class="bi bi-patch-check"></i>
+                    <div>
+                      <h4>Explicabo consectetur</h4>
+                      <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                    </div>
+                  </div><!-- End Feature Item -->
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-5 d-flex align-items-center order-1 order-xl-2" data-aos="fade-up"
+                data-aos-delay="100">
+                <img src="<?= BASE_URL ?>/public/assets/img/alt-features.png" class="img-fluid" alt="">
+              </div>
+
             </div>
 
-            <div class="col-xl-6 d-flex">
-              <div class="row align-self-center gy-4">
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Eos aspernatur rem</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Facilis neque ipsa</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Volup amet volupt</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Rerum omnis sint</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Alias possimus</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="700">
-                  <div class="feature-box d-flex align-items-center">
-                    <i class="bi bi-check"></i>
-                    <h3>Repellendus molli</h3>
-                  </div>
-                </div><!-- End Feature Item -->
-
-              </div>
             </div>
 
-          </div>
+          </section><!-- /Alt Features Section -->
 
-        </div>
+          <!-- Services Section -->
+          <section id="services" class="services section">
 
-      </section><!-- /Features Section -->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Services</h2>
+              <p>Check Our Services<br></p>
+            </div><!-- End Section Title -->
 
-      <!-- Alt Features Section -->
-      <section id="alt-features" class="alt-features section">
+            <div class="container">
 
-        <div class="container">
+              <div class="row gy-4">
 
-          <div class="row gy-5">
-
-            <div class="col-xl-7 d-flex order-2 order-xl-1" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="row align-self-center gy-5">
-
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-award"></i>
-                  <div>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-item item-cyan position-relative">
+                    <i class="bi bi-activity icon"></i>
+                    <h3>Nesciunt Mete</h3>
+                    <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure
+                      perferendis
+                      tempore et consequatur.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-card-checklist"></i>
-                  <div>
-                    <h4>Ullamco laboris nisi</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-item item-orange position-relative">
+                    <i class="bi bi-broadcast icon"></i>
+                    <h3>Eosle Commodi</h3>
+                    <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non
+                      ut
+                      nesciunt dolorem.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-dribbble"></i>
-                  <div>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-item item-teal position-relative">
+                    <i class="bi bi-easel icon"></i>
+                    <h3>Ledo Markt</h3>
+                    <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas
+                      adipisci
+                      eos earum corrupti.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-filter-circle"></i>
-                  <div>
-                    <h4>Beatae veritatis</h4>
-                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                  <div class="service-item item-red position-relative">
+                    <i class="bi bi-bounding-box-circles icon"></i>
+                    <h3>Asperiores Commodi</h3>
+                    <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit
+                      provident
+                      adipisci neque.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-lightning-charge"></i>
-                  <div>
-                    <h4>Molestiae dolor</h4>
-                    <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                  <div class="service-item item-indigo position-relative">
+                    <i class="bi bi-calendar4-week icon"></i>
+                    <h3>Velit Doloremque.</h3>
+                    <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at
+                      autem
+                      alias eius labore.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
-                <div class="col-md-6 icon-box">
-                  <i class="bi bi-patch-check"></i>
-                  <div>
-                    <h4>Explicabo consectetur</h4>
-                    <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                  <div class="service-item item-pink position-relative">
+                    <i class="bi bi-chat-square-text icon"></i>
+                    <h3>Dolori Architecto</h3>
+                    <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti
+                      recusandae ducimus enim.</p>
+                    <a href="#" class="read-more stretched-link"><span>Read More</span> <i
+                        class="bi bi-arrow-right"></i></a>
                   </div>
-                </div><!-- End Feature Item -->
+                </div><!-- End Service Item -->
 
               </div>
 
             </div>
 
-            <div class="col-xl-5 d-flex align-items-center order-1 order-xl-2" data-aos="fade-up" data-aos-delay="100">
-              <img src="<?= BASE_URL ?>public/assets/img/alt-features.png" class="img-fluid" alt="">
+          </section><!-- /Services Section -->
+
+          <!-- Pricing Section -->
+          <section id="pricing" class="pricing section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Pricing</h2>
+              <p>Check Our Affordable Pricing<br></p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+              <div class="row gy-4">
+
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pricing-tem">
+                    <h3 style="color: #20c997;">Free Plan</h3>
+                    <div class="price"><sup>$</sup>0<span> / mo</span></div>
+                    <div class="icon">
+                      <i class="bi bi-box" style="color: #20c997;"></i>
+                    </div>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li class="na">Pharetra massa</li>
+                      <li class="na">Massa ultricies mi</li>
+                    </ul>
+                    <a href="#" class="btn-buy">Buy Now</a>
+                  </div>
+                </div><!-- End Pricing Item -->
+
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="pricing-tem">
+                    <span class="featured">Featured</span>
+                    <h3 style="color: #0dcaf0;">Starter Plan</h3>
+                    <div class="price"><sup>$</sup>19<span> / mo</span></div>
+                    <div class="icon">
+                      <i class="bi bi-send" style="color: #0dcaf0;"></i>
+                    </div>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li class="na">Massa ultricies mi</li>
+                    </ul>
+                    <a href="#" class="btn-buy">Buy Now</a>
+                  </div>
+                </div><!-- End Pricing Item -->
+
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                  <div class="pricing-tem">
+                    <h3 style="color: #fd7e14;">Business Plan</h3>
+                    <div class="price"><sup>$</sup>29<span> / mo</span></div>
+                    <div class="icon">
+                      <i class="bi bi-airplane" style="color: #fd7e14;"></i>
+                    </div>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li>Massa ultricies mi</li>
+                    </ul>
+                    <a href="#" class="btn-buy">Buy Now</a>
+                  </div>
+                </div><!-- End Pricing Item -->
+
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="pricing-tem">
+                    <h3 style="color: #0d6efd;">Ultimate Plan</h3>
+                    <div class="price"><sup>$</sup>49<span> / mo</span></div>
+                    <div class="icon">
+                      <i class="bi bi-rocket" style="color: #0d6efd;"></i>
+                    </div>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li>Massa ultricies mi</li>
+                    </ul>
+                    <a href="#" class="btn-buy">Buy Now</a>
+                  </div>
+                </div><!-- End Pricing Item -->
+
+              </div><!-- End pricing row -->
+
             </div>
 
-          </div>
+          </section><!-- /Pricing Section -->
 
-        </div>
+          <!-- Faq Section -->
+          <section id="faq" class="faq section">
 
-      </section><!-- /Alt Features Section -->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>F.A.Q</h2>
+              <p>Frequently Asked Questions</p>
+            </div><!-- End Section Title -->
 
-      <!-- Services Section -->
-      <section id="services" class="services section">
+            <div class="container">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Services</h2>
-          <p>Check Our Services<br></p>
-        </div><!-- End Section Title -->
+              <div class="row">
 
-        <div class="container">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="row gy-4">
+                  <div class="faq-container">
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="service-item item-cyan position-relative">
-                <i class="bi bi-activity icon"></i>
-                <h3>Nesciunt Mete</h3>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure
-                  perferendis
-                  tempore et consequatur.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
+                    <div class="faq-item faq-active">
+                      <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                      <div class="faq-content">
+                        <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non
+                          curabitur
+                          gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="service-item item-orange position-relative">
-                <i class="bi bi-broadcast icon"></i>
-                <h3>Eosle Commodi</h3>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut
-                  nesciunt dolorem.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
+                    <div class="faq-item">
+                      <h3>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
+                      <div class="faq-content">
+                        <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit
+                          laoreet
+                          id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est
+                          pellentesque
+                          elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="service-item item-teal position-relative">
-                <i class="bi bi-easel icon"></i>
-                <h3>Ledo Markt</h3>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci
-                  eos earum corrupti.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
+                    <div class="faq-item">
+                      <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                      <div class="faq-content">
+                        <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
+                          elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus
+                          pellentesque
+                          eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu
+                          facilisis
+                          sed odio morbi quis</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-item item-red position-relative">
-                <i class="bi bi-bounding-box-circles icon"></i>
-                <h3>Asperiores Commodi</h3>
-                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident
-                  adipisci neque.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-              <div class="service-item item-indigo position-relative">
-                <i class="bi bi-calendar4-week icon"></i>
-                <h3>Velit Doloremque.</h3>
-                <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at
-                  autem
-                  alias eius labore.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-              <div class="service-item item-pink position-relative">
-                <i class="bi bi-chat-square-text icon"></i>
-                <h3>Dolori Architecto</h3>
-                <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti
-                  recusandae ducimus enim.</p>
-                <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                    class="bi bi-arrow-right"></i></a>
-              </div>
-            </div><!-- End Service Item -->
-
-          </div>
-
-        </div>
-
-      </section><!-- /Services Section -->
-
-      <!-- Pricing Section -->
-      <section id="pricing" class="pricing section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Pricing</h2>
-          <p>Check Our Affordable Pricing<br></p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-          <div class="row gy-4">
-
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pricing-tem">
-                <h3 style="color: #20c997;">Free Plan</h3>
-                <div class="price"><sup>$</sup>0<span> / mo</span></div>
-                <div class="icon">
-                  <i class="bi bi-box" style="color: #20c997;"></i>
-                </div>
-                <ul>
-                  <li>Aida dere</li>
-                  <li>Nec feugiat nisl</li>
-                  <li>Nulla at volutpat dola</li>
-                  <li class="na">Pharetra massa</li>
-                  <li class="na">Massa ultricies mi</li>
-                </ul>
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div><!-- End Pricing Item -->
-
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pricing-tem">
-                <span class="featured">Featured</span>
-                <h3 style="color: #0dcaf0;">Starter Plan</h3>
-                <div class="price"><sup>$</sup>19<span> / mo</span></div>
-                <div class="icon">
-                  <i class="bi bi-send" style="color: #0dcaf0;"></i>
-                </div>
-                <ul>
-                  <li>Aida dere</li>
-                  <li>Nec feugiat nisl</li>
-                  <li>Nulla at volutpat dola</li>
-                  <li>Pharetra massa</li>
-                  <li class="na">Massa ultricies mi</li>
-                </ul>
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div><!-- End Pricing Item -->
-
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pricing-tem">
-                <h3 style="color: #fd7e14;">Business Plan</h3>
-                <div class="price"><sup>$</sup>29<span> / mo</span></div>
-                <div class="icon">
-                  <i class="bi bi-airplane" style="color: #fd7e14;"></i>
-                </div>
-                <ul>
-                  <li>Aida dere</li>
-                  <li>Nec feugiat nisl</li>
-                  <li>Nulla at volutpat dola</li>
-                  <li>Pharetra massa</li>
-                  <li>Massa ultricies mi</li>
-                </ul>
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div><!-- End Pricing Item -->
-
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pricing-tem">
-                <h3 style="color: #0d6efd;">Ultimate Plan</h3>
-                <div class="price"><sup>$</sup>49<span> / mo</span></div>
-                <div class="icon">
-                  <i class="bi bi-rocket" style="color: #0d6efd;"></i>
-                </div>
-                <ul>
-                  <li>Aida dere</li>
-                  <li>Nec feugiat nisl</li>
-                  <li>Nulla at volutpat dola</li>
-                  <li>Pharetra massa</li>
-                  <li>Massa ultricies mi</li>
-                </ul>
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div><!-- End Pricing Item -->
-
-          </div><!-- End pricing row -->
-
-        </div>
-
-      </section><!-- /Pricing Section -->
-
-      <!-- Faq Section -->
-      <section id="faq" class="faq section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>F.A.Q</h2>
-          <p>Frequently Asked Questions</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-              <div class="faq-container">
-
-                <div class="faq-item faq-active">
-                  <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                  <div class="faq-content">
-                    <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-                      gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
                   </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
 
-                <div class="faq-item">
-                  <h3>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
-                  <div class="faq-content">
-                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet
-                      id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est
-                      pellentesque
-                      elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
+                </div><!-- End Faq Column-->
 
-                <div class="faq-item">
-                  <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                  <div class="faq-content">
-                    <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
-                      elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque
-                      eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis
-                      sed odio morbi quis</p>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+
+                  <div class="faq-container">
+
+                    <div class="faq-item">
+                      <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                      <div class="faq-content">
+                        <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit
+                          laoreet
+                          id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est
+                          pellentesque
+                          elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
+
+                    <div class="faq-item">
+                      <h3>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h3>
+                      <div class="faq-content">
+                        <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante
+                          in.
+                          Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum
+                          est.
+                          Purus gravida quis blandit turpis cursus in</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
+
+                    <div class="faq-item">
+                      <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
+                      <div class="faq-content">
+                        <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit
+                          sequi.
+                          Distinctio ipsam dolore et.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div><!-- End Faq item-->
+
                   </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
+
+                </div><!-- End Faq Column-->
 
               </div>
 
-            </div><!-- End Faq Column-->
+            </div>
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          </section><!-- /Faq Section -->
 
-              <div class="faq-container">
+          <!-- Portfolio Section -->
+          <section id="portfolio" class="portfolio section">
 
-                <div class="faq-item">
-                  <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
-                  <div class="faq-content">
-                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet
-                      id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est
-                      pellentesque
-                      elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Portfolio</h2>
+              <p>Check our latest work</p>
+            </div><!-- End Section Title -->
 
-                <div class="faq-item">
-                  <h3>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h3>
-                  <div class="faq-content">
-                    <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in.
-                      Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est.
-                      Purus gravida quis blandit turpis cursus in</p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
+            <div class="container">
 
-                <div class="faq-item">
-                  <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                  <div class="faq-content">
-                    <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit
-                      sequi.
-                      Distinctio ipsam dolore et.</p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div><!-- End Faq item-->
+              <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                  <li data-filter="*" class="filter-active">All</li>
+                  <li data-filter=".filter-app">App</li>
+                  <li data-filter=".filter-product">Product</li>
+                  <li data-filter=".filter-branding">Branding</li>
+                  <li data-filter=".filter-books">Books</li>
+                </ul><!-- End Portfolio Filters -->
+
+                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>App 1</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/app-1.jpg" title="App 1"
+                          data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Product 1</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/product-1.jpg" title="Product 1"
+                          data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Branding 1</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/branding-1.jpg" title="Branding 1"
+                          data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Books 1</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/books-1.jpg" title="Branding 1"
+                          data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>App 2</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/app-2.jpg" title="App 2"
+                          data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Product 2</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/product-2.jpg" title="Product 2"
+                          data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Branding 2</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/branding-2.jpg" title="Branding 2"
+                          data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Books 2</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/books-2.jpg" title="Branding 2"
+                          data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>App 3</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/app-3.jpg" title="App 3"
+                          data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Product 3</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/product-3.jpg" title="Product 3"
+                          data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Branding 3</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/branding-3.jpg" title="Branding 2"
+                          data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+                    <div class="portfolio-content h-100">
+                      <img src="<?= BASE_URL ?>/public/assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4>Books 3</h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        <a href="<?= BASE_URL ?>/public/assets/img/portfolio/books-3.jpg" title="Branding 3"
+                          data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
+                            class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                            class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div><!-- End Portfolio Item -->
+
+                </div><!-- End Portfolio Container -->
 
               </div>
 
-            </div><!-- End Faq Column-->
+            </div>
 
-          </div>
+          </section><!-- /Portfolio Section -->
 
-        </div>
+          <!-- Testimonials Section -->
+          <section id="testimonials" class="testimonials section">
 
-      </section><!-- /Faq Section -->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Testimonials</h2>
+              <p>What they are saying about us<br></p>
+            </div><!-- End Section Title -->
 
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="portfolio section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-          <p>Check our latest work</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-product">Product</li>
-              <li data-filter=".filter-branding">Branding</li>
-              <li data-filter=".filter-books">Books</li>
-            </ul><!-- End Portfolio Filters -->
-
-            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/app-1.jpg" title="App 1"
-                      data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Product 1</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/product-1.jpg" title="Product 1"
-                      data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Branding 1</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/branding-1.jpg" title="Branding 1"
-                      data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Books 1</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/books-1.jpg" title="Branding 1"
-                      data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 2</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/app-2.jpg" title="App 2"
-                      data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Product 2</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/product-2.jpg" title="Product 2"
-                      data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Branding 2</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/branding-2.jpg" title="Branding 2"
-                      data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Books 2</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/books-2.jpg" title="Branding 2"
-                      data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 3</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/app-3.jpg" title="App 3"
-                      data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Product 3</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/product-3.jpg" title="Product 3"
-                      data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Branding 3</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/branding-3.jpg" title="Branding 2"
-                      data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                <div class="portfolio-content h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Books 3</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                    <a href="<?= BASE_URL ?>public/assets/img/portfolio/books-3.jpg" title="Branding 3"
-                      data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                        class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                        class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-            </div><!-- End Portfolio Container -->
-
-          </div>
-
-        </div>
-
-      </section><!-- /Portfolio Section -->
-
-      <!-- Testimonials Section -->
-      <section id="testimonials" class="testimonials section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Testimonials</h2>
-          <p>What they are saying about us<br></p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
+              <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
               {
                 "loop": true,
                 "speed": 600,
@@ -937,226 +1240,231 @@
                 }
               }
             </script>
-            <div class="swiper-wrapper">
+                <div class="swiper-wrapper">
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                    Accusantium
-                    quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="<?= BASE_URL ?>public/assets/img/testimonials/testimonials-1.jpg"
-                      class="testimonial-img" alt="">
-                    <h3>Saul Goodman</h3>
-                    <h4>Ceo &amp; Founder</h4>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
+                        Accusantium
+                        quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                      </p>
+                      <div class="profile mt-auto">
+                        <img src="<?= BASE_URL ?>/public/assets/img/testimonials/testimonials-1.jpg"
+                          class="testimonial-img" alt="">
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                      </div>
+                    </div>
+                  </div><!-- End testimonial item -->
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
-                    quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="<?= BASE_URL ?>public/assets/img/testimonials/testimonials-2.jpg"
-                      class="testimonial-img" alt="">
-                    <h3>Sara Wilsson</h3>
-                    <h4>Designer</h4>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram
+                        malis
+                        quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                      </p>
+                      <div class="profile mt-auto">
+                        <img src="<?= BASE_URL ?>/public/assets/img/testimonials/testimonials-2.jpg"
+                          class="testimonial-img" alt="">
+                        <h3>Sara Wilsson</h3>
+                        <h4>Designer</h4>
+                      </div>
+                    </div>
+                  </div><!-- End testimonial item -->
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim
-                    tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="<?= BASE_URL ?>public/assets/img/testimonials/testimonials-3.jpg"
-                      class="testimonial-img" alt="">
-                    <h3>Jena Karlis</h3>
-                    <h4>Store Owner</h4>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
+                        minim
+                        tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                      </p>
+                      <div class="profile mt-auto">
+                        <img src="<?= BASE_URL ?>/public/assets/img/testimonials/testimonials-3.jpg"
+                          class="testimonial-img" alt="">
+                        <h3>Jena Karlis</h3>
+                        <h4>Store Owner</h4>
+                      </div>
+                    </div>
+                  </div><!-- End testimonial item -->
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit
-                    minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="<?= BASE_URL ?>public/assets/img/testimonials/testimonials-4.jpg"
-                      class="testimonial-img" alt="">
-                    <h3>Matt Brandon</h3>
-                    <h4>Freelancer</h4>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim
+                        velit
+                        minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                      </p>
+                      <div class="profile mt-auto">
+                        <img src="<?= BASE_URL ?>/public/assets/img/testimonials/testimonials-4.jpg"
+                          class="testimonial-img" alt="">
+                        <h3>Matt Brandon</h3>
+                        <h4>Freelancer</h4>
+                      </div>
+                    </div>
+                  </div><!-- End testimonial item -->
 
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
-                    culpa
-                    labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="<?= BASE_URL ?>public/assets/img/testimonials/testimonials-5.jpg"
-                      class="testimonial-img" alt="">
-                    <h3>John Larson</h3>
-                    <h4>Entrepreneur</h4>
-                  </div>
+                  <div class="swiper-slide">
+                    <div class="testimonial-item">
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                        culpa
+                        labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                      </p>
+                      <div class="profile mt-auto">
+                        <img src="<?= BASE_URL ?>/public/assets/img/testimonials/testimonials-5.jpg"
+                          class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                      </div>
+                    </div>
+                  </div><!-- End testimonial item -->
+
                 </div>
-              </div><!-- End testimonial item -->
+                <div class="swiper-pagination"></div>
+              </div>
 
             </div>
-            <div class="swiper-pagination"></div>
-          </div>
 
-        </div>
+          </section><!-- /Testimonials Section -->
 
-      </section><!-- /Testimonials Section -->
+          <!-- Team Section -->
+          <section id="team" class="team section">
 
-      <!-- Team Section -->
-      <section id="team" class="team section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Team</h2>
+              <p>Our hard working team</p>
+            </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Team</h2>
-          <p>Our hard working team</p>
-        </div><!-- End Section Title -->
+            <div class="container">
 
-        <div class="container">
+              <div class="row gy-4">
 
-          <div class="row gy-4">
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-              <div class="team-member">
-                <div class="member-img">
-                  <img src="<?= BASE_URL ?>public/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                  <div class="team-member">
+                    <div class="member-img">
+                      <img src="<?= BASE_URL ?>/public/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                      <div class="social">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                    <div class="member-info">
+                      <h4>Walter White</h4>
+                      <span>Chief Executive Officer</span>
+                      <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
+                        exercitationem iure minima enim corporis et voluptate.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="member-info">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                  <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
-                    exercitationem iure minima enim corporis et voluptate.</p>
-                </div>
-              </div>
-            </div><!-- End Team Member -->
+                </div><!-- End Team Member -->
 
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-              <div class="team-member">
-                <div class="member-img">
-                  <img src="<?= BASE_URL ?>public/assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                  <div class="team-member">
+                    <div class="member-img">
+                      <img src="<?= BASE_URL ?>/public/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                      <div class="social">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                    <div class="member-info">
+                      <h4>Sarah Jhonson</h4>
+                      <span>Product Manager</span>
+                      <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit
+                        corporis.
+                        Voluptate sed quas reiciendis animi neque sapiente.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="member-info">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                  <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis.
-                    Voluptate sed quas reiciendis animi neque sapiente.</p>
-                </div>
-              </div>
-            </div><!-- End Team Member -->
+                </div><!-- End Team Member -->
 
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-              <div class="team-member">
-                <div class="member-img">
-                  <img src="<?= BASE_URL ?>public/assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                  <div class="team-member">
+                    <div class="member-img">
+                      <img src="<?= BASE_URL ?>/public/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                      <div class="social">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                    <div class="member-info">
+                      <h4>William Anderson</h4>
+                      <span>CTO</span>
+                      <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim
+                        aut
+                        architecto porro aspernatur molestiae modi.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="member-info">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                  <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut
-                    architecto porro aspernatur molestiae modi.</p>
-                </div>
-              </div>
-            </div><!-- End Team Member -->
+                </div><!-- End Team Member -->
 
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-              <div class="team-member">
-                <div class="member-img">
-                  <img src="<?= BASE_URL ?>public/assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                  <div class="team-member">
+                    <div class="member-img">
+                      <img src="<?= BASE_URL ?>/public/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                      <div class="social">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                    <div class="member-info">
+                      <h4>Amanda Jepson</h4>
+                      <span>Accountant</span>
+                      <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid
+                        doloremque
+                        ut possimus ipsum officia.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="member-info">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                  <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid
-                    doloremque
-                    ut possimus ipsum officia.</p>
-                </div>
+                </div><!-- End Team Member -->
+
               </div>
-            </div><!-- End Team Member -->
 
-          </div>
+            </div>
 
-        </div>
+          </section><!-- /Team Section -->
 
-      </section><!-- /Team Section -->
+          <!-- Clients Section -->
+          <section id="clients" class="clients section">
 
-      <!-- Clients Section -->
-      <section id="clients" class="clients section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Clients</h2>
+              <p>We work with best clients<br></p>
+            </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Clients</h2>
-          <p>We work with best clients<br></p>
-        </div><!-- End Section Title -->
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
+              <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
               {
                 "loop": true,
                 "speed": 600,
@@ -1189,240 +1497,241 @@
                 }
               }
             </script>
-            <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-1.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-2.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-3.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-4.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-5.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-6.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-7.png"
-                  class="img-fluid" alt=""></div>
-              <div class="swiper-slide"><img src="<?= BASE_URL ?>public/assets/img/clients/client-8.png"
-                  class="img-fluid" alt=""></div>
+                <div class="swiper-wrapper align-items-center">
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-1.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-2.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-3.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-4.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-5.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-6.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-7.png"
+                      class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= BASE_URL ?>/public/assets/img/clients/client-8.png"
+                      class="img-fluid" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+
             </div>
-            <div class="swiper-pagination"></div>
-          </div>
 
-        </div>
+          </section><!-- /Clients Section -->
 
-      </section><!-- /Clients Section -->
+          <!-- Recent Posts Section -->
+          <section id="recent-posts" class="recent-posts section">
 
-      <!-- Recent Posts Section -->
-      <section id="recent-posts" class="recent-posts section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Recent Posts</h2>
+              <p>Recent posts form our Blog</p>
+            </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Recent Posts</h2>
-          <p>Recent posts form our Blog</p>
-        </div><!-- End Section Title -->
+            <div class="container">
 
-        <div class="container">
+              <div class="row gy-5">
 
-          <div class="row gy-5">
+                <div class="col-xl-4 col-md-6">
+                  <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="col-xl-4 col-md-6">
-              <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="<?= BASE_URL ?>public/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
-                  <span class="post-date">December 12</span>
-                </div>
-
-                <div class="post-content d-flex flex-column">
-
-                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-                  <div class="meta d-flex align-items-center">
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                    <div class="post-img position-relative overflow-hidden">
+                      <img src="<?= BASE_URL ?>/public/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
+                      <span class="post-date">December 12</span>
                     </div>
-                    <span class="px-3 text-black-50">/</span>
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+
+                    <div class="post-content d-flex flex-column">
+
+                      <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+
+                      <div class="meta d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                        </div>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                        </div>
+                      </div>
+
+                      <hr>
+
+                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                          class="bi bi-arrow-right"></i></a>
+
                     </div>
+
                   </div>
+                </div><!-- End post item -->
 
-                  <hr>
+                <div class="col-xl-4 col-md-6">
+                  <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
 
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                      class="bi bi-arrow-right"></i></a>
+                    <div class="post-img position-relative overflow-hidden">
+                      <img src="<?= BASE_URL ?>/public/assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
+                      <span class="post-date">July 17</span>
+                    </div>
 
-                </div>
+                    <div class="post-content d-flex flex-column">
+
+                      <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
+
+                      <div class="meta d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
+                        </div>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
+                        </div>
+                      </div>
+
+                      <hr>
+
+                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                          class="bi bi-arrow-right"></i></a>
+
+                    </div>
+
+                  </div>
+                </div><!-- End post item -->
+
+                <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="post-item position-relative h-100">
+
+                    <div class="post-img position-relative overflow-hidden">
+                      <img src="<?= BASE_URL ?>/public/assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
+                      <span class="post-date">September 05</span>
+                    </div>
+
+                    <div class="post-content d-flex flex-column">
+
+                      <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
+
+                      <div class="meta d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
+                        </div>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
+                        </div>
+                      </div>
+
+                      <hr>
+
+                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                          class="bi bi-arrow-right"></i></a>
+
+                    </div>
+
+                  </div>
+                </div><!-- End post item -->
 
               </div>
-            </div><!-- End post item -->
 
-            <div class="col-xl-4 col-md-6">
-              <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
+            </div>
 
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="<?= BASE_URL ?>public/assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
-                  <span class="post-date">July 17</span>
-                </div>
+          </section><!-- /Recent Posts Section -->
 
-                <div class="post-content d-flex flex-column">
+          <!-- Contact Section -->
+          <section id="contact" class="contact section">
 
-                  <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Contact</h2>
+              <p>Contact Us</p>
+            </div><!-- End Section Title -->
 
-                  <div class="meta d-flex align-items-center">
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
-                    </div>
-                    <span class="px-3 text-black-50">/</span>
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                    </div>
-                  </div>
-
-                  <hr>
-
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                      class="bi bi-arrow-right"></i></a>
-
-                </div>
-
-              </div>
-            </div><!-- End post item -->
-
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="post-item position-relative h-100">
-
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="<?= BASE_URL ?>public/assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
-                  <span class="post-date">September 05</span>
-                </div>
-
-                <div class="post-content d-flex flex-column">
-
-                  <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
-
-                  <div class="meta d-flex align-items-center">
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
-                    </div>
-                    <span class="px-3 text-black-50">/</span>
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                    </div>
-                  </div>
-
-                  <hr>
-
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                      class="bi bi-arrow-right"></i></a>
-
-                </div>
-
-              </div>
-            </div><!-- End post item -->
-
-          </div>
-
-        </div>
-
-      </section><!-- /Recent Posts Section -->
-
-      <!-- Contact Section -->
-      <section id="contact" class="contact section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p>Contact Us</p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="row gy-4">
-
-            <div class="col-lg-6">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
 
               <div class="row gy-4">
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="200">
-                    <i class="bi bi-geo-alt"></i>
-                    <h3>Address</h3>
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
-                  </div>
-                </div><!-- End Info Item -->
 
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="300">
-                    <i class="bi bi-telephone"></i>
-                    <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
-                    <p>+1 6678 254445 41</p>
-                  </div>
-                </div><!-- End Info Item -->
+                <div class="col-lg-6">
 
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="400">
-                    <i class="bi bi-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>info@example.com</p>
-                    <p>contact@example.com</p>
-                  </div>
-                </div><!-- End Info Item -->
+                  <div class="row gy-4">
+                    <div class="col-md-6">
+                      <div class="info-item" data-aos="fade" data-aos-delay="200">
+                        <i class="bi bi-geo-alt"></i>
+                        <h3>Address</h3>
+                        <p>A108 Adam Street</p>
+                        <p>New York, NY 535022</p>
+                      </div>
+                    </div><!-- End Info Item -->
 
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="500">
-                    <i class="bi bi-clock"></i>
-                    <h3>Open Hours</h3>
-                    <p>Monday - Friday</p>
-                    <p>9:00AM - 05:00PM</p>
+                    <div class="col-md-6">
+                      <div class="info-item" data-aos="fade" data-aos-delay="300">
+                        <i class="bi bi-telephone"></i>
+                        <h3>Call Us</h3>
+                        <p>+1 5589 55488 55</p>
+                        <p>+1 6678 254445 41</p>
+                      </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="col-md-6">
+                      <div class="info-item" data-aos="fade" data-aos-delay="400">
+                        <i class="bi bi-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@example.com</p>
+                        <p>contact@example.com</p>
+                      </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="col-md-6">
+                      <div class="info-item" data-aos="fade" data-aos-delay="500">
+                        <i class="bi bi-clock"></i>
+                        <h3>Open Hours</h3>
+                        <p>Monday - Friday</p>
+                        <p>9:00AM - 05:00PM</p>
+                      </div>
+                    </div><!-- End Info Item -->
+
                   </div>
-                </div><!-- End Info Item -->
+
+                </div>
+
+                <div class="col-lg-6">
+                  <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="row gy-4">
+
+                      <div class="col-md-6">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                      </div>
+
+                      <div class="col-md-6 ">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                      </div>
+
+                      <div class="col-12">
+                        <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                      </div>
+
+                      <div class="col-12">
+                        <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                          required=""></textarea>
+                      </div>
+
+                      <div class="col-12 text-center">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                        <button type="submit">Send Message</button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div><!-- End Contact Form -->
 
               </div>
 
             </div>
 
-            <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                data-aos-delay="200">
-                <div class="row gy-4">
-
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                  </div>
-
-                  <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                  </div>
-
-                  <div class="col-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                  </div>
-
-                  <div class="col-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                    <button type="submit">Send Message</button>
-                  </div>
-
-                </div>
-              </form>
-            </div><!-- End Contact Form -->
-
-          </div>
-
-        </div>
-
-      </section><!-- /Contact Section -->
+          </section><!-- /Contact Section -->
 
   </main>
 
@@ -1433,17 +1742,17 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="<?= BASE_URL ?>public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/php-email-form/validate.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/aos/aos.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/php-email-form/validate.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/aos/aos.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="<?= BASE_URL ?>public/assets/js/main.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/js/main.js"></script>
 
 </body>
 

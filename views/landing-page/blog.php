@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<?= BASE_URL ?>public/assets/img/favicon.png" rel="icon">
-  <link href="<?= BASE_URL ?>public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+  <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,14 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="<?= BASE_URL ?>public/assets/css/main.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/public/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -93,7 +93,7 @@
 
               <div class="carousel-inner" style="height: 450px;">
                 <div class="carousel-item active h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="d-block w-100 h-100"
+                  <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="d-block w-100 h-100"
                     alt="Berita Utama 1" style="object-fit: cover; object-position: center 20%;">
 
                   <div class="position-absolute bottom-0 start-0 w-100 p-4 p-lg-5"
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="carousel-item h-100">
-                  <img src="<?= BASE_URL ?>public/assets/img/gedung-ti-polinema.png" class="d-block w-100 h-100"
+                  <img src="<?= BASE_URL ?>/public/assets/img/gedung-ti-polinema.png" class="d-block w-100 h-100"
                     alt="Berita Utama 2" style="object-fit: cover; object-position: center center;">
                   <div class="position-absolute bottom-0 start-0 w-100 p-4 p-lg-5"
                     style="background: linear-gradient(to top, rgba(39, 80, 91, 0.95), transparent); z-index: 2;">
@@ -155,7 +155,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden"> <img
-                  src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                  src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 1">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -176,7 +176,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden">
-                <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 2">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -198,7 +198,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden">
-                <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 3">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -219,7 +219,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden">
-                <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 4">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -241,7 +241,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden">
-                <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 5">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -262,7 +262,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover h-100 border-0 rounded-4 shadow-sm bg-white overflow-hidden">
               <div class="ratio ratio-16x9 overflow-hidden">
-                <img src="<?= BASE_URL ?>public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
+                <img src="<?= BASE_URL ?>/public/assets/img/lomba1.png" class="card-img-top object-fit-cover"
                   alt="Berita 6">
               </div>
               <div class="card-body p-4 d-flex flex-column">
@@ -304,17 +304,17 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="<?= BASE_URL ?>public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/php-email-form/validate.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/aos/aos.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/php-email-form/validate.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/aos/aos.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="<?= BASE_URL ?>public/assets/js/main.js"></script>
+  <script src="<?= BASE_URL ?>/public/assets/js/main.js"></script>
 
 </body>
 

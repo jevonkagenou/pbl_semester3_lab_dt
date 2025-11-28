@@ -28,4 +28,24 @@ class PageController {
     public function strukturOrganisasi() {
         View::render('struktur-organisasi');
     }
+
+    public function VisidanMisi() {
+        View::render('visi-dan-misi');
+    }
+    public function SaranaPrasarana() {
+        View::render('sarana-prasarana');
+    }
+    public function programDiplomaiv() {
+        View::render('program-diploma-iv');
+    }
+    public function aturanAkademik() {
+        View::render('aturan-akademik');
+    }
+    public function kalender() {
+        View::render('kalender');
+    }
+    public function penelitian() {
+        View::render('penelitian');
+    }
+    
 }

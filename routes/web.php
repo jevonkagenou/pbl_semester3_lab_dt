@@ -6,3 +6,10 @@ $router->add('GET', '/blog', 'PageController@blog');
 $router->add('GET', '/login', 'PageController@login');
 $router->add('GET', '/tata-tertib', 'PageController@tataTertib');
 $router->add('GET', '/struktur-organisasi', 'PageController@strukturOrganisasi');
+$router->add('GET', '/visi-dan-misi', 'PageController@VisidanMisi');
+$router->add('GET', '/sarana-prasarana', 'PageController@saranaPrasarana');
+$router->add('GET', '/program-diploma-iv', 'PageController@programDiplomaIV');
+$router->add('GET', '/aturan-akademik', 'PageController@aturanAkademik');
+$router->add('GET', '/kalender', 'PageController@kalender');
+$router->add('GET', '/penelitian', 'PageController@penelitian');
+

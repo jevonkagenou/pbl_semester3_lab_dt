@@ -7,13 +7,14 @@
 
     <!-- Logo Section -->
     <div style="flex:1 1 250px;">
-      <img src="<?= BASE_URL ?>public/assets/img/lab-dt-white.png"  alt="LAB TDA"
+      <img src="<?= BASE_URL ?>public/assets/img/logoLab/lab-dt-white.png" alt="LAB TDA"
         style="width:180px; margin-bottom:20px;">
     </div>
 
     <!-- Tentang Lab -->
     <div style="flex:1 1 200px;">
-      <h3 style="margin-bottom:15px; font-size:22px; font-weight:600;">Tentang Lab</h3>
+      <h3 class="text-white font-weight-bold" style="margin-bottom:15px; font-size:22px; font-weight:600;">Tentang Lab
+      </h3>
       <ul style="list-style:none; padding:0; line-height:32px; font-size:16px;">
         <li><a href="#" style="color:white; text-decoration:none;">Sejarah</a></li>
         <li><a href="#" style="color:white; text-decoration:none;">Visi dan Misi</a></li>
@@ -26,18 +27,19 @@
 
     <!-- Kunjungi -->
     <div style="flex:1 1 200px;">
-      <h3 style="margin-bottom:15px; font-size:22px; font-weight:600;">Kunjungi</h3>
+      <h3 class="text-white font-weight-bold" style="margin-bottom:15px; font-size:22px; font-weight:600;">Kunjungi</h3>
       <a href="https://polinema.ac.id"
         style="color:white; font-size:18px; text-decoration:underline;">polinema.ac.id</a>
     </div>
 
     <!-- Social Media -->
     <div style="flex:1 1 250px;">
-      <h3 style="margin-bottom:15px; font-size:22px; font-weight:600;">Ikuti Kami di:</h3>
+      <h3 class="text-white font-weight-boldx`" style="margin-bottom:15px; font-size:22px; font-weight:600;">Ikuti Kami
+        di:</h3>
       <div style="display:flex; gap:18px; font-size:30px;">
         <a href="#" style="color:white;"><i class="bi bi-whatsapp"></i></a>
-        <a href="#" style="color:white;"><i class="bi bi-instagram"></i></a>
-        <a href="#" style="color:white;"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.instagram.com/jtipolinema/" style="color:white;"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.youtube.com/@jtipolinema367" style="color:white;"><i class="bi bi-youtube"></i></a>
         <a href="#" style="color:white;"><i class="bi bi-linkedin"></i></a>
       </div>
     </div>

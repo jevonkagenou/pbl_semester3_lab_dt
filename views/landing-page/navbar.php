@@ -11,42 +11,34 @@
         <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
               class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
+
+            <li><a href="<?= BASE_URL ?>/sejarah">Sejarah</a></li>
+            <li><a href="<?= BASE_URL ?>/visi-dan-misi">Visi dan Misi</a></li>
+            <li><a href="<?= BASE_URL ?>/struktur-organisasi">Struktur Organisasi</a></li>
+            <li><a href="<?= BASE_URL ?>/sarana-prasarana">Sarana dan Prasarana</a></li>
           </ul>
         </li>
         <li class="dropdown"><a href="#"><span>Akademik</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
+            <li><a href="<?= BASE_URL ?>/program-diploma-iv">Program Diploma IV </a></li>
+            <li><a href="<?= BASE_URL ?>/aturan-akademik">Aturan Akademik</a></li>
+            <li><a href="<?= BASE_URL ?>/kalender">Kalender</a></li>
           </ul>
         </li>
-        <li class="dropdown"><a href="#"><span>Kemahasiswaan</span> <i
+        <li class="dropdown"><a href="<"><span>Kemahasiswaan</span> <i
               class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
+            <li><a href="<?= BASE_URL ?>/tata-tertib">Tata Tertib</a></li>
           </ul>
         </li>
-        <li class="dropdown"><a href="#"><span>Penelitian</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-          </ul>
+        <a href="<?= BASE_URL ?>/penelitian"><span>Penelitian</span> </i></a>
+
         </li>
-        <li><a href="blog.php">Blog</a></li>
+        <li><a href="<?= BASE_URL ?>/blog">Blog</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <a class="btn-getstarted flex-md-shrink-0" href="login.php">Login</a>
+    <a class="btn-getstarted flex-md-shrink-0" href="<?= BASE_URL ?>/login">Login</a>
 
   </div>
 </header>

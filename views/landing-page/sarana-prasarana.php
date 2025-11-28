@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="<?= BASE_URL ?>public/assets/img/favicon.png" rel="icon">
-    <link href="<?= BASE_URL ?>public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+    <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,14 +18,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="<?= BASE_URL ?>public/assets/css/main.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/assets/css/main.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: FlexStart
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="col-lg-7">
-                        <img src="<?= BASE_URL ?>public/assets/img/gedung-ti-polinema.png"
+                        <img src="<?= BASE_URL ?>/public/assets/img/gedung-ti-polinema.png"
                             alt="Gedung Jurusan Teknologi Informasi" class="img-fluid rounded-4 shadow-sm w-100"
                             data-aos="fade-left">
                     </div>
@@ -77,7 +77,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png" alt="Komputer Standar"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Komputer Standar"
                                     class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -99,7 +99,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png" alt="Meja Kerja"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Meja Kerja"
                                     class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -120,7 +120,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png" alt="Kursi Praktikum"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Kursi Praktikum"
                                     class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -141,7 +141,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png"
                                     alt="Perlengkapan Dasar" class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -163,7 +163,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png"
                                     alt="Ruang Laboratorium" class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -184,7 +184,7 @@
                     <div class="col-xl-4 col-md-6">
                         <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>public/assets/img/ruang-lab1.png" alt="Server Dasar"
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Server Dasar"
                                     class="img-fluid rounded-4 mb-3"
                                     style="width: 100%; height: 200px; object-fit: cover;">
                             </div>
@@ -215,17 +215,17 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="<?= BASE_URL ?>public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/php-email-form/validate.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/aos/aos.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="<?= BASE_URL ?>public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/php-email-form/validate.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/aos/aos.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="<?= BASE_URL ?>public/assets/js/main.js"></script>
+    <script src="<?= BASE_URL ?>/public/assets/js/main.js"></script>
 
 </body>
 
