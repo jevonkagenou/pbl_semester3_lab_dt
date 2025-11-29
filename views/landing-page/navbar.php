@@ -7,7 +7,7 @@
     </a>
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero" class="active">Beranda<br></a></li>
+        <li><a href="<?= BASE_URL ?>/" class="active">Beranda<br></a></li>
         <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
               class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>

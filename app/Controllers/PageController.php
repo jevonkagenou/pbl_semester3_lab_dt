@@ -36,7 +36,7 @@ class PageController {
         View::render('sarana-prasarana');
     }
     public function programDiplomaiv() {
-        View::render('program-diploma-iv');
+        View::render('teknik-informatika');
     }
     public function aturanAkademik() {
         View::render('aturan-akademik');
