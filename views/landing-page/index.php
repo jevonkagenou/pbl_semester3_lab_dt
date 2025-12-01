@@ -539,17 +539,25 @@
             <div class="container">
 
               <!-- Team Section -->
-              <section id="team" class="team section">
+              <sect id="team" class="team section"
+              style="background-color: #27505B; padding: 50px 0; border-radius: 12px;">
                 <div class="container">
+                      <h2 class="text-white mb-5">Team</h2>
+
 
                   <!-- Section Title -->
                   <div class="section-title" data-aos="fade-up">
-                    <h2>Team</h2>
+                    <h2 style="color: white; font-size: 2.5rem; font-weight: 700;">Team</h2>
                   </div>
 
                   <!-- Team Carousel Container -->
-                  <div class="team-carousel"
-                    style="overflow-x: auto; padding: 20px 0; scrollbar-width: thin; scrollbar-color: #ccc #f5f5f5; -ms-overflow-style: none;">
+                   <div class="team-carousel"
+                    style="
+                      overflow-x: auto; 
+                      padding: 20px 0; 
+                      scrollbar-width: thin; 
+                      scrollbar-color: #ccc #f5f5f5; 
+                      -ms-overflow-style: none;">
 
                     <!-- Hide scrollbar for Webkit browsers -->
                     <style>
@@ -570,10 +578,53 @@
                       .team-carousel::-webkit-scrollbar-thumb:hover {
                         background: #999;
                       }
+
+                       /* CARD */
+                       #team {
+                          background-color: #27505B; 
+                      }
+
+                      .team-card:hover {
+                        transform: translateY(-5px);
+                      }
+
+                      .team-card {
+                        width: 260px !important;
+                        background: white;
+                        border-radius: 16px;
+                        box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+                        overflow: hidden;
+                        flex-shrink: 0;
+                        border: 2px solid #e8e8e8;
+                      }
+
+                      .team-card img {
+                        width: 100%;
+                        height: 280px;
+                        object-fit: cover;
+                        background: #0047ab; /* warna pas foto */
+                      }
+
+                      .team-card h3 {
+                        font-size: 1.1rem !important;
+                        margin: 0 0 10px 0 !important;
+                        color: #1f2d3a !important;
+                        font-weight: 700;
+                      }
+
+                      .team-card span {
+                        font-size: 0.85rem;
+                        padding: 5px 10px;
+                        border-radius: 6px;
+                        background: #e8f0f5;
+                        color: #2c3e50;
+                      }
                     </style>
 
                     <!-- Team Members -->
                     <div class="team-wrapper" style="display: flex; gap: 20px; min-width: max-content;">
+                      
+                    
 
                       <!-- Member 1 -->
                       <div class="team-card"
@@ -631,14 +682,54 @@
                         </div>
                       </div>
 
-                      <!-- Tambahkan lebih banyak member jika perlu -->
+                      <!-- Member 5 -->
+                       <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-4.png"
+                          alt="Vit Zuraida, S.Kom., M.Kom." alt="Vit Zuraida, S.Kom., M.Kom."
+                          style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Vit Zuraida, S.Kom.,
+                             M.Kom. </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
+
+                      <!-- Member 6 -->
+                       <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-5.png" alt="Habibie Ed Dien, S.Kom., M.T."
+                          alt="Habibie Ed Dien, S.Kom., M.T." style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Habibie Ed Dien, S.Kom., M.T.
+                          </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
+
+                      <!-- Member 7 -->
+                       <div class="team-card"
+                        style="width: 250px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; flex-shrink: 0;">
+                        <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-6.png" alt="Dika Rizky Yuniarto, S.Kom., M.Kom."
+                          alt="Dika Rizky Yuniarto, S.Kom., M.Kom." style="width: 100%; height: auto; display: block;">
+                        <div style="padding: 20px;">
+                          <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 5px;">Dika Rizky Yuniarto, S.Kom., M.Kom.
+                          </h3>
+                          <span
+                            style="font-size: 0.85rem; color: #2c3e50; background: #e8f0f5; padding: 4px 8px; border-radius: 4px;">Peneliti</span>
+                        </div>
+                      </div>
 
                     </div>
-
+                   </div>
                   </div>
+                  </section><!-- End Team Section -->
 
                 </div>
               </section>
+
               <div class="col-xl-7 d-flex order-2 order-xl-1" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="row align-self-center gy-5">
