@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Mazer Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/css/app.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/css/pages/error.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/pages/error.css">
 
     <style>
         /* --- FUTURISTIC THEME STYLES --- */
@@ -22,7 +22,6 @@
         }
 
         body {
-            /* Latar belakang gradien gelap seperti luar angkasa */
             background: linear-gradient(135deg, var(--dark-bg-1), var(--dark-bg-2), var(--dark-bg-3));
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -31,7 +30,6 @@
             overflow: hidden;
         }
 
-        /* Class Penting: Glassmorphism */
         .glass-container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -44,16 +42,13 @@
 
         .img-error {
             max-height: 280px;
-            /* Sedikit diperkecil agar proporsional */
             width: auto;
             filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.4));
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Class Penting: Judul Neon */
         .glitch-title {
             font-size: 6rem;
-            /* Ukuran disesuaikan agar tidak terlalu raksasa */
             font-weight: 900;
             letter-spacing: 5px;
             background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
@@ -65,7 +60,6 @@
             line-height: 1.2;
         }
 
-        /* Class Penting: Tombol Neon */
         .btn-futuristic {
             position: relative;
             padding: 12px 35px;
@@ -138,7 +132,7 @@
         <div class="glass-container text-center col-lg-6 col-md-8 col-12">
 
             <div class="mb-4">
-                <img class="img-fluid img-error" src="<?= BASE_URL ?>public/assets-admin/images/samples/error-404.png"
+                <img class="img-fluid img-error" src="<?= BASE_URL ?>/public/assets-admin/images/samples/error-404.png"
                     alt="Not Found">
             </div>
 

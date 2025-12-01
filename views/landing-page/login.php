@@ -144,15 +144,15 @@
                 <h4 class="text-center">Akses Akun Anda</h4>
                 <p class="text-center subtitle">Silakan masukkan detail Anda untuk melanjutkan.</p>
 
-                <form>
+                <form action="login-process" method="POST">
                     <div class="mb-3">
                         <label for="emailMinimal" class="form-label visually-hidden">Email</label>
                         <div class="input-group">
                             <span class="input-group-text bg-white border-end-0"
                                 style="color: var(--primary-color); border-radius: 8px 0 0 8px;"><i
-                                    class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control form-control-minimal border-start-0"
-                                id="emailMinimal" placeholder="Alamat Email" required>
+                                    class="fas fa-user"></i></span>
+                            <input type="text" class="form-control form-control-minimal border-start-0"
+                                id="usernameMinimal" name="username" placeholder="Username" required>
                         </div>
                     </div>
 
@@ -163,7 +163,7 @@
                                 style="color: var(--primary-color); border-radius: 8px 0 0 8px;"><i
                                     class="fas fa-key"></i></span>
                             <input type="password" class="form-control form-control-minimal border-start-0"
-                                id="passwordMinimal" placeholder="Kata Sandi" required>
+                                id="passwordMinimal" name="password" placeholder="Kata Sandi" required>
                         </div>
                     </div>
 
@@ -183,11 +183,6 @@
                         Masuk
                     </button>
                 </form>
-
-                <p class="text-center mt-4">
-                    <span style="color: var(--secondary-text-color);">Tidak punya akun?</span> <a href="#"
-                        class="link-dark-blue">Daftar di sini</a>
-                </p>
             </div>
 
             <div class="back-to-home">

@@ -3,7 +3,7 @@
 class Database {
     private $host = "localhost";
     private $port = "5432";
-    private $db_name = "company_db";
+    private $db_name = "db_lab_dt";
     private $username = "postgres";
     private $password = "12345678";
     public $conn;

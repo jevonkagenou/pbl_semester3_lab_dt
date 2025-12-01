@@ -1,51 +1,50 @@
 <?php
-// app/Controllers/PageController.php
 
 require_once 'core/View.php';
 
 class PageController {
     
     public function index() {
-        View::render('index');
+        View::render('landing-page/index');
     }
 
     public function sejarah() {
-        View::render('sejarah');
+        View::render('landing-page/sejarah');
     }
 
     public function blog() {
-        View::render('blog');
+        View::render('landing-page/blog');
     }
 
     public function login() {
-        View::render('login');
+        View::render('landing-page/login');
     }
 
     public function tataTertib() {
-        View::render('tata-tertib');
+        View::render('landing-page/tata-tertib');
     }
     
     public function strukturOrganisasi() {
-        View::render('struktur-organisasi');
+        View::render('landing-page/struktur-organisasi');
     }
 
     public function VisidanMisi() {
-        View::render('visi-dan-misi');
+        View::render('landing-page/visi-dan-misi');
     }
     public function SaranaPrasarana() {
-        View::render('sarana-prasarana');
+        View::render('landing-page/sarana-prasarana');
     }
     public function programDiplomaiv() {
-        View::render('teknik-informatika');
+        View::render('landing-page/teknik-informatika');
     }
     public function aturanAkademik() {
-        View::render('aturan-akademik');
+        View::render('landing-page/aturan-akademik');
     }
     public function kalender() {
-        View::render('kalender');
+        View::render('landing-page/kalender');
     }
     public function penelitian() {
-        View::render('penelitian');
+        View::render('landing-page/penelitian');
     }
     
 }

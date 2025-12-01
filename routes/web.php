@@ -13,3 +13,7 @@ $router->add('GET', '/aturan-akademik', 'PageController@aturanAkademik');
 $router->add('GET', '/kalender', 'PageController@kalender');
 $router->add('GET', '/penelitian', 'PageController@penelitian');
 
+$router->add('POST', '/login-process', 'AuthController@loginProcess');
+$router->add('GET', '/logout', 'AuthController@logout');
+$router->add('GET', '/admin', 'AdminController@index');
+$router->add('GET', '/editor', 'EditorController@index');

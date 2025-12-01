@@ -1,3 +1,25 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$href = BASE_URL . '/login';
+$text = 'Login';
+
+if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) {
+    
+    $text = 'Dashboard';
+    
+    $role = $_SESSION['user_role'] ?? '';
+    
+    if ($role === 'admin') {
+        $href = BASE_URL . 'admin';
+    } elseif ($role === 'editor') {
+        $href = BASE_URL . 'editor';
+    }
+}
+?>
+
 <header id="header" class="header d-flex align-items-center sticky-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
@@ -38,7 +60,9 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <a class="btn-getstarted flex-md-shrink-0" href="<?= BASE_URL ?>/login">Login</a>
+    <a class="btn-getstarted flex-md-shrink-0" href="<?= $href ?>">
+      <?= $text ?>
+    </a>
 
   </div>
 </header>

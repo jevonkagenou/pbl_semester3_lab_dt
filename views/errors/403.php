@@ -1,3 +1,15 @@
+<?php
+$linkTujuan = BASE_URL;
+
+if (isset($_SESSION['user_role'])) {
+    if ($_SESSION['user_role'] === 'admin') {
+        $linkTujuan = BASE_URL . 'admin';
+    } elseif ($_SESSION['user_role'] === 'editor') {
+        $linkTujuan = BASE_URL . 'editor';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>403 - Forbidden Access</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
 
     <style>
         :root {
@@ -128,7 +140,7 @@
         <div class="glass-container text-center col-lg-6 col-md-8 col-12">
 
             <div class="mb-4">
-                <img class="img-fluid img-error" src="<?= BASE_URL ?>public/assets-admin/images/samples/error-403.png"
+                <img class="img-fluid img-error" src="<?= BASE_URL ?>/public/assets-admin/images/samples/error-403.png"
                     alt="Forbidden">
             </div>
 
@@ -149,8 +161,9 @@
                     <i class="bi bi-shield-lock-fill"></i> Kembali
                 </a>
 
-                <a href="<?= BASE_URL ?>" class="btn-futuristic btn-futuristic-secondary">
-                    <i class="bi bi-house-door-fill"></i> Ke Beranda
+                <a href="<?= $linkTujuan ?>" class="btn-futuristic btn-futuristic-secondary">
+                    <i class="bi bi-house-door-fill"></i>
+                    <?= isset($_SESSION['user_logged_in']) ? 'Kembali ke Dashboard' : 'Ke Beranda' ?>
                 </a>
 
             </div>

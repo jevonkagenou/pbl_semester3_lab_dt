@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>500 - System Error</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
 
     <style>
         :root {
@@ -133,7 +133,7 @@
         <div class="glass-container text-center col-lg-6 col-md-8 col-12">
 
             <div class="mb-4">
-                <img class="img-fluid img-error" src="<?= BASE_URL ?>public/assets-admin/images/samples/error-500.png"
+                <img class="img-fluid img-error" src="<?= BASE_URL ?>/public/assets-admin/images/samples/error-500.png"
                     alt="System Error">
             </div>
 
