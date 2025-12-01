@@ -34,8 +34,11 @@ class PageController {
     public function SaranaPrasarana() {
         View::render('landing-page/sarana-prasarana');
     }
-    public function programDiplomaiv() {
+    public function programDiplomaIVTI() {
         View::render('landing-page/teknik-informatika');
+    }
+    public function programDiplomaIVSIB() {
+        View::render('landing-page/sistem-informasi-bisnis');
     }
     public function aturanAkademik() {
         View::render('landing-page/aturan-akademik');
