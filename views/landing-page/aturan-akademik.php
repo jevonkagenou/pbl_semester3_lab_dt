@@ -43,14 +43,6 @@
     <main class="main">
 
         <style>
-            /* --- PALET WARNA ---
-           Primary Dark: #27505B (Warna permintaan Anda)
-           Accent Bright: #2a9d8f (Aksen cerah untuk state aktif)
-           Active BG Pale: #f2f9f8 (Latar belakang pucat saat aktif)
-           Neutral BG: #f4f7f6 (Latar belakang section umum)
-           Icon Wrapper BG: #eef5f4 (Latar belakang ikon tidak aktif)
-        -------------------- */
-
             .academic-accordion .accordion-item {
                 border: none;
                 border-radius: 12px;

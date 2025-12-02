@@ -16,12 +16,12 @@
       <h3 class="text-white font-weight-bold" style="margin-bottom:15px; font-size:22px; font-weight:600;">Tentang Lab
       </h3>
       <ul style="list-style:none; padding:0; line-height:32px; font-size:16px;">
-        <li><a href="#" style="color:white; text-decoration:none;">Sejarah</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Visi dan Misi</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Struktur Organisasi</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Sarana dan Prasarana</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Aturan Akademik</a></li>
-        <li><a href="#" style="color:white; text-decoration:none;">Kalender</a></li>
+        <li><a href="<?=  BASE_URL?>/sejarah" style="color:white; text-decoration:none;">Sejarah</a></li>
+        <li><a href="<?=  BASE_URL?>/visi-dan-misi" style="color:white; text-decoration:none;">Visi dan Misi</a></li>
+        <li><a href="<?=  BASE_URL?>/struktur-organisasi" style="color:white; text-decoration:none;">Struktur Organisasi</a></li>
+        <li><a href="<?=  BASE_URL?>/sarana-prasarana" style="color:white; text-decoration:none;">Sarana dan Prasarana</a></li>
+        <li><a href="<?=  BASE_URL?>/aturan-akademik" style="color:white; text-decoration:none;">Aturan Akademik</a></li>
+        <li><a href="<?=  BASE_URL?>/kalender" style="color:white; text-decoration:none;">Kalender</a></li>
       </ul>
     </div>
 

@@ -23,21 +23,21 @@ if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) 
 <header id="header" class="header d-flex align-items-center sticky-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <a href="<?= BASE_URL ?>" class="logo d-flex align-items-center me-auto">
-      <img src="<?= BASE_URL ?>/public/assets/img/logoLab/lab-dt.png" alt="LAB TDA">
+    <a href="<?= BASE_URL ?>/" class="logo d-flex align-items-center me-auto">
+      <img src="<?= BASE_URL ?>//public/assets/img/logoLab/lab-dt.png" alt="LAB TDA">
     </a>
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="<?= BASE_URL ?>" class="active">Beranda</a></li>
+        <li><a href="<?= BASE_URL ?>/" class="active">Beranda</a></li>
 
         <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
               class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="<?= BASE_URL ?>sejarah">Sejarah</a></li>
-            <li><a href="<?= BASE_URL ?>visi-dan-misi">Visi dan Misi</a></li>
-            <li><a href="<?= BASE_URL ?>struktur-organisasi">Struktur Organisasi</a></li>
-            <li><a href="<?= BASE_URL ?>sarana-prasarana">Sarana dan Prasarana</a></li>
+            <li><a href="<?= BASE_URL ?>/sejarah">Sejarah</a></li>
+            <li><a href="<?= BASE_URL ?>/visi-dan-misi">Visi dan Misi</a></li>
+            <li><a href="<?= BASE_URL ?>/struktur-organisasi">Struktur Organisasi</a></li>
+            <li><a href="<?= BASE_URL ?>/sarana-prasarana">Sarana dan Prasarana</a></li>
           </ul>
         </li>
 
@@ -49,26 +49,22 @@ if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) 
                 <i class="bi bi-chevron-right toggle-dropdown"></i>
               </a>
               <ul class="submenu-right">
-                <li><a href="<?= BASE_URL ?>program-diploma-iv/ti">DIV-Teknik Informatika</a></li>
-                <li><a href="<?= BASE_URL ?>program-diploma-iv/sib">DIV-Sistem Informasi Bisnis</a></li>
+                <li><a href="<?= BASE_URL ?>/program-diploma-iv/ti">DIV-Teknik Informatika</a></li>
+                <li><a href="<?= BASE_URL ?>/program-diploma-iv/sib">DIV-Sistem Informasi Bisnis</a></li>
               </ul>
             </li>
-            <li><a href="<?= BASE_URL ?>aturan-akademik">Aturan Akademik</a></li>
-            <li><a href="<?= BASE_URL ?>kalender">Kalender</a></li>
+            <li><a href="<?= BASE_URL ?>/aturan-akademik">Aturan Akademik</a></li>
+            <li><a href="<?= BASE_URL ?>/kalender">Kalender</a></li>
           </ul>
         </li>
 
-        <li class="dropdown"><a href="#"><span>Kemahasiswaan</span> <i
-              class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="<?= BASE_URL ?>tata-tertib">Tata Tertib</a></li>
-          </ul>
+        <li class="dropdown"><a href="<?= BASE_URL ?>/tata-tertib"><span>Tata Tertib</span></a>
         </li>
 
-        <!-- <li><a href="<?= BASE_URL ?>penelitian">Penelitian</a></li> -->
+        <!-- <li><a href="<?= BASE_URL ?>/penelitian">Penelitian</a></li> -->
         <li><a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6681213">Sinta</a></li>
 
-        <li><a href="<?= BASE_URL ?>blog">Blog</a></li>
+        <li><a href="<?= BASE_URL ?>/blog">Blog</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
