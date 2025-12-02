@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
@@ -129,6 +129,21 @@
         .back-to-home a i {
             margin-right: 8px;
         }
+
+        /* --- STYLE BARU UNTUK ALERT (Minimalis) --- */
+        .alert-minimal-error {
+            background-color: #fee2e2;
+            /* Merah soft */
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -144,9 +159,26 @@
                 <h4 class="text-center">Akses Akun Anda</h4>
                 <p class="text-center subtitle">Silakan masukkan detail Anda untuk melanjutkan.</p>
 
-                <form action="login-process" method="POST">
+                <!-- ERROR MESSAGE DIPINDAHKAN KE SINI (DI DALAM KARTU) -->
+                <?php if (isset($_GET['error'])): ?>
+                <div class="alert-minimal-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
+                        <?php 
+                                if ($_GET['error'] == 'invalid') {
+                                    echo "Username atau Password salah!";
+                                } elseif ($_GET['error'] == 'inactive') {
+                                    echo "Akun Anda <strong>dinonaktifkan</strong>. Silahkan hubungi Admin.";
+                                }
+                            ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <!-- BATAS ERROR MESSAGE -->
+
+                <form action="<?= BASE_URL ?>/login-process" method="POST">
                     <div class="mb-3">
-                        <label for="emailMinimal" class="form-label visually-hidden">Email</label>
+                        <label for="usernameMinimal" class="form-label visually-hidden">Email</label>
                         <div class="input-group">
                             <span class="input-group-text bg-white border-end-0"
                                 style="color: var(--primary-color); border-radius: 8px 0 0 8px;"><i
@@ -186,7 +218,7 @@
             </div>
 
             <div class="back-to-home">
-                <a href="index.php">
+                <a href="<?= BASE_URL ?>/">
                     <i class="fas fa-arrow-left"></i> Kembali ke Beranda
                 </a>
             </div>
@@ -194,7 +226,15 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <script>
+        if (window.history.replaceState) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('error');
+            window.history.replaceState(null, '', url.toString());
+        }
     </script>
 </body>
 

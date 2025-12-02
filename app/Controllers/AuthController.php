@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/../Models/User.php'; 
 
-require_once 'app/Models/User.php'; 
+use App\Models\User;
 
 class AuthController {
 
@@ -9,17 +10,20 @@ class AuthController {
             session_start();
         }
 
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? ''; 
-
-        $username = trim($username);
-        $password = trim($password);
+        $username = trim($_POST['username'] ?? '');
+        $password = trim($_POST['password'] ?? '');
 
         $userModel = new User();
         $user = $userModel->getByUsername($username);
 
         if ($user && password_verify($password, $user['password'])) {
             
+            if ($user['status'] !== 'aktif') {
+                $basePath = '/pbl_semester3_lab_dt';
+                header("Location: $basePath/login?error=inactive");
+                exit;
+            }
+
             $_SESSION['user_logged_in'] = true;
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
@@ -46,12 +50,9 @@ class AuthController {
     }
 
     public function logout() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        if (session_status() == PHP_SESSION_NONE) session_start();
         session_unset();
         session_destroy();
-        
         header('Location: /pbl_semester3_lab_dt/');
         exit;
     }

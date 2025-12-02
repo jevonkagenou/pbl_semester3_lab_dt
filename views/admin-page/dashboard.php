@@ -4,18 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Dashboard - Mazer Admin</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
-
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/iconly/bold.css">
-
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="shortcut icon" href="<?= BASE_URL ?>/public/assets-admin/images/favicon.svg" type="image/x-icon">
+    
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
+
+    <style>
+        body { background-color: #f2f7ff; }
+        
+        .card-modern {
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .stats-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .stats-icon.purple { background: linear-gradient(135deg, #9694ff 0%, #7572ff 100%); box-shadow: 0 5px 15px rgba(117, 114, 255, 0.3); }
+        .stats-icon.blue { background: linear-gradient(135deg, #57caeb 0%, #5c8ef3 100%); box-shadow: 0 5px 15px rgba(92, 142, 243, 0.3); }
+        .stats-icon.green { background: linear-gradient(135deg, #5ddb98 0%, #2ac974 100%); box-shadow: 0 5px 15px rgba(42, 201, 116, 0.3); }
+        .stats-icon.red { background: linear-gradient(135deg, #ff8f96 0%, #ff5b5c 100%); box-shadow: 0 5px 15px rgba(255, 91, 92, 0.3); }
+
+        /* Typography */
+        .font-extrabold { font-weight: 800; color: #25396f; }
+        .text-muted { color: #8898aa !important; font-weight: 600; font-size: 0.9rem; }
+
+        .card-header-modern {
+            background: transparent;
+            padding: 20px 25px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .card-header-modern h4 {
+            font-weight: 700;
+            color: #344767;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .user-card {
+            background: linear-gradient(135deg, #435ebe 0%, #25396f 100%);
+            color: white;
+        }
+        .user-card .text-muted { color: rgba(255,255,255,0.7) !important; }
+        .user-card h5 { color: white; }
+    </style>
 </head>
 
 <body>
@@ -28,24 +84,27 @@
                 </a>
             </header>
 
-            <div class="page-heading">
-                <h3>Profile Statistics</h3>
+            <div class="page-heading mb-4">
+                <h3 style="font-weight: 800; color: #25396f;">Dashboard Overview</h3>
+                <p class="text-muted font-normal">Ringkasan statistik aplikasi Anda hari ini.</p>
             </div>
+
             <div class="page-content">
                 <section class="row">
                     <div class="col-12 col-lg-9">
+                        <!-- STATISTIK KARTU -->
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
+                                <div class="card card-modern">
+                                    <div class="card-body px-3 py-4">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon purple">
+                                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                                <div class="stats-icon purple mb-2">
                                                     <i class="iconly-boldShow"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Profile Views</h6>
+                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                <h6 class="text-muted font-semibold">Total Views</h6>
                                                 <h6 class="font-extrabold mb-0">112.000</h6>
                                             </div>
                                         </div>
@@ -53,49 +112,49 @@
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
+                                <div class="card card-modern">
+                                    <div class="card-body px-3 py-4">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon blue">
+                                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                                <div class="stats-icon blue mb-2">
                                                     <i class="iconly-boldProfile"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Followers</h6>
-                                                <h6 class="font-extrabold mb-0">183.000</h6>
+                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                <h6 class="text-muted font-semibold">Member</h6>
+                                                <h6 class="font-extrabold mb-0"><?= isset($chartVisitorsProfile['series'][2]) ? $chartVisitorsProfile['series'][2] : 0 ?></h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
+                                <div class="card card-modern">
+                                    <div class="card-body px-3 py-4">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon green">
+                                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                                <div class="stats-icon green mb-2">
                                                     <i class="iconly-boldAdd-User"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Following</h6>
-                                                <h6 class="font-extrabold mb-0">80.000</h6>
+                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                <h6 class="text-muted font-semibold">Editor</h6>
+                                                <h6 class="font-extrabold mb-0"><?= isset($chartVisitorsProfile['series'][1]) ? $chartVisitorsProfile['series'][1] : 0 ?></h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
+                                <div class="card card-modern">
+                                    <div class="card-body px-3 py-4">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon red">
+                                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                                <div class="stats-icon red mb-2">
                                                     <i class="iconly-boldBookmark"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                                 <h6 class="text-muted font-semibold">Saved Post</h6>
                                                 <h6 class="font-extrabold mb-0">112</h6>
                                             </div>
@@ -104,11 +163,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        
+                        <!-- CHART PROFILE VISIT -->
+                        <div class="row mt-2">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Profile Visit</h4>
+                                <div class="card card-modern">
+                                    <div class="card-header-modern">
+                                        <h4>Tren Kunjungan & Member Baru</h4>
                                     </div>
                                     <div class="card-body">
                                         <div id="chart-profile-visit"></div>
@@ -116,183 +177,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Profile Visit</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">Europe</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">862</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-europe"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">America</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">375</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-america"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">Indonesia</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">1025</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-indonesia"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Latest Comments</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-lg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Comment</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="<?= BASE_URL ?>/public/assets-admin/images/faces/5.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Congratulations on your graduation!</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="<?= BASE_URL ?>/public/assets-admin/images/faces/2.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                                tutorial for
-                                                                this design?</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    
+                    <!-- SIDEBAR KANAN DASHBOARD -->
                     <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-body py-4 px-5">
+                        <!-- Profil User Login -->
+                        <div class="card card-modern user-card">
+                            <div class="card-body py-4 px-4">
                                 <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-xl">
-                                        <img src="<?= BASE_URL ?>/public/assets-admin/images/faces/1.jpg" alt="Face 1">
+                                    <div class="avatar avatar-xl bg-white p-1">
+                                        <img src="<?= BASE_URL ?>/public/assets-admin/images/faces/1.jpg" alt="Face 1" style="border-radius: 50%;">
                                     </div>
                                     <div class="ms-3 name">
-                                        <h5 class="font-bold">
+                                        <h5 class="font-bold mb-0">
                                             <?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Pengguna' ?>
                                         </h5>
-
-                                        <h6 class="text-muted mb-0">
+                                        <small class="text-muted">
                                             <?= isset($_SESSION['user_role']) ? strtoupper($_SESSION['user_role']) : 'GUEST' ?>
-                                        </h6>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Recent Messages</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="<?= BASE_URL ?>/public/assets-admin/images/faces/4.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="<?= BASE_URL ?>/public/assets-admin/images/faces/5.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">@imdean</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="<?= BASE_URL ?>/public/assets-admin/images/faces/1.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                        Conversation</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Visitors Profile</h4>
+
+                        <div class="card card-modern mt-4">
+                            <div class="card-header-modern">
+                                <h4>Komposisi Pengguna</h4>
                             </div>
                             <div class="card-body">
                                 <div id="chart-visitors-profile"></div>
@@ -301,25 +211,99 @@
                     </div>
                 </section>
             </div>
-
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
+            <?php include 'footer.php'; ?>
         </div>
     </div>
+    
     <script src="<?= BASE_URL ?>/public/assets-admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="<?= BASE_URL ?>/public/assets-admin/js/bootstrap.bundle.min.js"></script>
-
     <script src="<?= BASE_URL ?>/public/assets-admin/vendors/apexcharts/apexcharts.js"></script>
-    <script src="<?= BASE_URL ?>/public/assets-admin/js/pages/dashboard.js"></script>
+    
+    <script>
+        var optionsProfileVisit = {
+            annotations: {
+                position: 'back'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            chart: {
+                type: 'bar',
+                height: 300,
+                toolbar: { show: false } 
+            },
+            fill: {
+                opacity: 1
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 5,
+                    columnWidth: '50%',
+                }
+            },
+            series: <?php echo json_encode($chartProfileVisit['series'] ?? []); ?>,
+            colors: '#435ebe',
+            xaxis: {
+                categories: <?php echo json_encode($chartProfileVisit['categories'] ?? []); ?>,
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+            yaxis: {
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+            grid: {
+                borderColor: '#f1f1f1',
+            }
+        };
+        
+        if(document.querySelector("#chart-profile-visit")) {
+            var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+            chartProfileVisit.render();
+        }
+
+        var optionsVisitorsProfile = {
+            series: <?php echo json_encode($chartVisitorsProfile['series'] ?? []); ?>,
+            labels: <?php echo json_encode($chartVisitorsProfile['labels'] ?? []); ?>,
+            colors: ['#435ebe', '#55c6e8', '#f1b44c'], 
+            chart: {
+                type: 'donut',
+                width: '100%',
+                height: '350px'
+            },
+            legend: {
+                position: 'bottom',
+                markers: { radius: 12 }
+            },
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '45%',
+                        labels: {
+                            show: true,
+                            total: {
+                                show: true,
+                                showAlways: true,
+                                label: 'Total',
+                                fontSize: '14px',
+                                fontFamily: 'Nunito, sans-serif',
+                                fontWeight: 600,
+                                color: '#373d3f',
+                            }
+                        }
+                    }
+                }
+            },
+            dataLabels: {
+                enabled: false
+            }
+        };
+
+        if(document.querySelector("#chart-visitors-profile")) {
+            var chartVisitorsProfile = new ApexCharts(document.querySelector("#chart-visitors-profile"), optionsVisitorsProfile);
+            chartVisitorsProfile.render();
+        }
+    </script>
 
     <script src="<?= BASE_URL ?>/public/assets-admin/js/main.js"></script>
 </body>
