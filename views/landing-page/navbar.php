@@ -13,9 +13,9 @@ if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) 
     $role = $_SESSION['user_role'] ?? '';
     
     if ($role === 'admin') {
-        $href = BASE_URL . 'admin';
+        $href = BASE_URL . '/admin';
     } elseif ($role === 'editor') {
-        $href = BASE_URL . 'editor';
+        $href = BASE_URL . '/editor';
     }
 }
 ?>

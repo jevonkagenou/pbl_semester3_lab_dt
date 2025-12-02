@@ -3,9 +3,9 @@ $linkTujuan = BASE_URL;
 
 if (isset($_SESSION['user_role'])) {
     if ($_SESSION['user_role'] === 'admin') {
-        $linkTujuan = BASE_URL . 'admin';
+        $linkTujuan = BASE_URL . '/admin';
     } elseif ($_SESSION['user_role'] === 'editor') {
-        $linkTujuan = BASE_URL . 'editor';
+        $linkTujuan = BASE_URL . '/editor';
     }
 }
 ?>

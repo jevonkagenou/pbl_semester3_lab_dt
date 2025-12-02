@@ -166,7 +166,7 @@
                     </div>
 
                     <div class="col-lg-6 order-1 order-lg-2 hero-img d-flex justify-content-end" data-aos="zoom-out">
-                        <img src="<?= BASE_URL ?>public/assets/img/penelitian.png" class="img-fluid animated"
+                        <img src="<?= BASE_URL ?>/public/assets/img/penelitian.png" class="img-fluid animated"
                             alt="Penelitian Lab Data">
                     </div>
                 </div>

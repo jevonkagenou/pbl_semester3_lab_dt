@@ -55,7 +55,7 @@
               memperkuat kolaborasi, mengembangkan teknologi cerdas, serta menciptakan solusi nyata bagi masyarakat dan
               industri.</p>
             <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-              <a href="<?= BASE_URL ?>penelitian" class="btn-get-started">Lihat Riset Kami <i
+              <a href="<?= BASE_URL ?>/penelitian" class="btn-get-started">Lihat Riset Kami <i
                   class="bi bi-arrow-right"></i></a>
             </div>
           </div>

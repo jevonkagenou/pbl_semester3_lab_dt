@@ -141,11 +141,24 @@
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur.
+                                        <p>Proses pembelajaran di Polinema dilaksanakan dengan ketentuan sebagai
+                                            berikut:</p>
+                                        <ul>
+                                            <li>Pelaksanaan Proses Pembelajaran melalui tahapan Penetapan, Pelaksanaan,
+                                                Evaluasi, Pengendalian, dan Peningkatan mutu pembelajaran (siklus
+                                                PPEPP).</li>
+                                            <li>Pelaksanaan proses pembelajaran mengacu pada kurikulum dan Rencana
+                                                Pembelajaran Semester (RPS) yang disusun oleh dosen, disahkan oleh
+                                                program studi.</li>
+                                            <li>Pelaksanaan proses pembelajaran dititikberatkan pada peningkatan
+                                                pengetahuan, keterampilan dan karakter dalam ekosistem industri.</li>
+                                            <li>Pelaksanaan proses pembelajaran dilakukan dalam bentuk: ceramah,
+                                                seminar, diskusi, praktikum, pengerjaan tugas mandiri dan kelompok,
+                                                studi lapangan atau melakukan magang di industri maupun pelaksanaan
+                                                kegiatan yang sesuai dengan 8 pilar pada MBKM.</li>
+                                            <li>Pelaksanaan proses pembelajaran, masing-masing jurusan/program studi
+                                                dibantu oleh Kelompok Bidang Keahlian.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -161,10 +174,15 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla
-                                        gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros
-                                        bibendum elit, nec luctus magna felis sollicitudin mauris.
+                                        <p>Pelaksanaan perkuliahan diatur dalam SK Direktur dan diturunkan kepada
+                                            masing-masing Jurusan, dengan ketentuan umum sebagai berikut:</p>
+                                        <ul>
+                                            <li>Dilaksanakan mulai hari Senin sampai dengan Jumat mulai pukul 07.00 dan
+                                                berakhir maksimal pukul 20.00 WIB atau berakhir sesuai dengan jadwal
+                                                yang ditetapkan oleh Jurusan/program studi.</li>
+                                            <li>Jadwal kuliah diatur oleh masing-masing jurusan/ program studi
+                                                berdasarkan kalender akademik Polinema yang berlaku.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +199,39 @@
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Integer in volutpat libero. Animi, id est laborum et dolorum fuga. Et harum
-                                        quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta
-                                        nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat
-                                        facere possimus.
+                                        <p><strong>1. Alasan Ketidakhadiran</strong></p>
+                                        <ul>
+                                            <li><strong>SAKIT</strong>
+                                                <p>Bagi mahasiswa yang tidak hadir dalam perkuliahan karena sakit maka
+                                                    harus memenuhi ketentuan berikut:</p>
+                                                <ol type="a">
+                                                    <li>Jika satu hari sakit tanpa surat dokter harus ada surat
+                                                        keterangan tertulis.</li>
+                                                    <li>Tidak hadir lebih dari 1 (satu) hari karena sakit harus
+                                                        menyerahkan surat keterangan dokter yang diberikan
+                                                        selambat-lambatnya 2 (dua) hari kerja sejak tidak hadir karena
+                                                        sakit.</li>
+                                                    <li>Meninggalkan kuliah karena sakit pada saat perkuliahan
+                                                        berlangsung harus minta izin dosen yang bersangkutan dengan
+                                                        mengisi form yang tersedia.</li>
+                                                    <li>Jika alasan sakit tidak memenuhi ketentuan poin a, b, c maka
+                                                        mahasiswa dinyatakan alpha.</li>
+                                                </ol>
+                                            </li>
+                                            <li class="mt-3"><strong>IZIN</strong>
+                                                <p>Bagi mahasiswa yang tidak hadir dalam perkuliahan karena izin maka
+                                                    harus memenuhi ketentuan berikut:</p>
+                                                <ol type="a">
+                                                    <li>Tidak hadir 1 (satu) hari atau lebih karena ada kepentingan
+                                                        harus ada surat keterangan/ijin.</li>
+                                                    <li>Meninggalkan kuliah karena izin pada saat perkuliahan
+                                                        berlangsung harus minta izin dosen yang bersangkutan dengan
+                                                        mengisi form yang tersedia.</li>
+                                                    <li>Jika alasan izin tidak memenuhi ketentuan poin a, dan b, maka
+                                                        mahasiswa dinyatakan alpha.</li>
+                                                </ol>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -201,10 +248,57 @@
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                        dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-                                        exercitationem ullam corporis suscipit laboriosam.
+                                        <ol type="a">
+                                            <li><strong>TUJUAN</strong>
+                                                <ul>
+                                                    <li>Mendapatkan informasi ketercapaian tujuan pembelajaran yang
+                                                        telah dirumuskan dalam RPS.</li>
+                                                    <li>Mengetahui kemajuan belajar mahasiswa yang akan dilaporkan
+                                                        kepada orang tua.</li>
+                                                </ul>
+                                            </li>
+                                            <li>Evaluasi dapat dilaksanakan dalam bentuk observasi, partisipasi, unjuk
+                                                kerja, tes tertulis, tes daring dan tes lisan yang akan diatur dalam
+                                                Rencana Pembelajaran Semester.</li>
+                                            <li>Evaluasi hasil belajar mahasiswa mencakup: Tugas
+                                                Terstruktur/Kuis/Tutorial/Tes Harian, Presentasi, Seminar, Praktikum,
+                                                UTS, UAS yang bentuk evaluasinya disesuaikan dengan mata kuliah dan
+                                                digunakan untuk penilaian penguasaan pengetahuan, keterampilan umum, dan
+                                                keterampilan khusus yang dilakukan dengan memilih satu atau kombinasi
+                                                dari berbagai teknik dan instrumen penilaian.</li>
+                                            <li>Remedial wajib diselenggarakan oleh program studi untuk memberikan
+                                                kesempatan kepada mahasiswa memperbaiki nilai yang belum memenuhi
+                                                persyaratan yaitu nilai C untuk mata kuliah wajib, nilai D untuk mata
+                                                kuliah praktik/praktikum, dan nilai E untuk semua mata kuliah.</li>
+                                            <li>Perhitungan nilai akhir semester berdasarkan perhitungan bobot nilai
+                                                yang ditentukan pada suatu mata kuliah. 5 nilai dikumpulkan saat tengah
+                                                semester dan 5 nilai berikutnya di akhir semester sehingga total dalam 1
+                                                semester dosen mengunggah 10 nilai.</li>
+                                            <li>Dosen pengampu mata kuliah mengunggah hasil penilaian melalui SIAKAD
+                                                selambat-lambatnya 2 minggu setelah pelaksanaan ujian akhir semester.
+                                            </li>
+                                            <li>Ujian diselenggarakan 2 kali tiap semester, yaitu ujian tengah semester
+                                                (UTS) dan ujian akhir semester (UAS).</li>
+                                            <li>Penyelenggaraan UTS tidak terjadwal tetapi diatur dan dikoordinasi oleh
+                                                jurusan/program studi. Penyerahan nilai UTS sesuai dengan kalender
+                                                akademik.</li>
+                                            <li>Penyelenggaraan UAS dilaksanakan secara terjadwal yang diatur dan
+                                                dikoordinasi oleh jurusan/program studi sesuai dengan kalender akademik.
+                                            </li>
+                                        </ol>
+                                        <p><strong>TATA TERTIB UAS</strong><br>
+                                            Tata tertib pelaksanaan ujian semester, meliputi:</p>
+                                        <ul>
+                                            <li>Telah memenuhi kewajiban pembayaran UKT</li>
+                                            <li>Hadir tepat pada waktu yang ditentukan.</li>
+                                            <li>Menunjukkan Kartu Tanda Mahasiswa (KTM) yang masih berlaku pada saat
+                                                UAS.</li>
+                                            <li>Menandatangani daftar hadir pada saat UAS.</li>
+                                            <li>Dilarang melakukan kecurangan selama ujian berlangsung.</li>
+                                            <li>Hal-hal lain diatur oleh jurusan masing-masing.</li>
+                                        </ul>
+                                        <p>Pelanggaran tata tertib di atas dikenakan sanksi yang diatur oleh jurusan.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -221,10 +315,89 @@
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                        excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-                                        officia deserunt mollitia animi.
+                                        <p><strong>A. NILAI AKHIR</strong></p>
+                                        <p>Nilai Akhir adalah nilai angka untuk masing masing mata kuliah hasil dari
+                                            beberapa kali evaluasi mata kuliah yang bersangkutan. Nilai Akhir ditentukan
+                                            dengan rumus sebagai berikut:</p>
+
+                                        <div class="alert alert-secondary text-center">
+                                            NA = &Sigma; (f<sub>i</sub> x x<sub>i</sub>) / &Sigma; f<sub>i</sub>
+                                        </div>
+                                        <p>Dengan:<br>
+                                            NA = nilai akhir<br>
+                                            f<sub>i</sub> = bobot ke - i<br>
+                                            x<sub>i</sub> = nilai ke - i</p>
+
+                                        <p>Nilai akhir akan dikonversikan ke nilai mutu yang berupa nilai huruf dan
+                                            nilai setara dengan ketentuan sebagai berikut:</p>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped text-center">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th rowspan="2" class="align-middle">Nilai Angka</th>
+                                                        <th colspan="3">Nilai Mutu</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Nilai Huruf</th>
+                                                        <th>Nilai Setara</th>
+                                                        <th>Kualifikasi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>80 < N ≤ 100</td> <td>A</td>
+                                                        <td>4</td>
+                                                        <td>Sangat Baik</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>73 < N ≤ 80</td> <td>B+</td>
+                                                        <td>3,5</td>
+                                                        <td>Lebih dari Baik</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>65 < N ≤ 73</td> <td>B</td>
+                                                        <td>3</td>
+                                                        <td>Baik</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>60 < N ≤ 65</td> <td>C+</td>
+                                                        <td>2,5</td>
+                                                        <td>Lebih dari Cukup</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>50 < N ≤ 60</td> <td>C</td>
+                                                        <td>2</td>
+                                                        <td>Cukup</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>39 < N ≤ 50</td> <td>D</td>
+                                                        <td>1</td>
+                                                        <td>Kurang</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>N ≤ 39</td>
+                                                        <td>E</td>
+                                                        <td>0</td>
+                                                        <td>Gagal</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <p><strong>B. INDEK PRESTASI SEMESTER (IPS)</strong><br>
+                                            Indek Prestasi Semester adalah nilai rata-rata akhir semester dari gabungan
+                                            mata kuliah yang ditempuh pada semester yang bersangkutan. Indek Prestasi
+                                            Semester dihitung dengan cara menjumlahkan perkalian antara nilai huruf
+                                            setiap mata kuliah yang ditempuh dan SKS mata kuliah bersangkutan dibagi
+                                            dengan jumlah sks mata kuliah yang diambil dalam satu semester.</p>
+
+                                        <p><strong>C. INDEK PRESTASI KUMULATIF (IPK)</strong><br>
+                                            Indek Prestasi Kumulatif adalah nilai rata-rata akhir studi dari gabungan
+                                            mata kuliah yang ditempuh selama studi yang bersangkutan. Indek Prestasi
+                                            Kumulatif dihitung dengan cara menjumlahkan perkalian antara nilai huruf
+                                            setiap mata kuliah yang ditempuh dan SKS mata kuliah bersangkutan dibagi
+                                            dengan jumlah sks mata kuliah yang diambil yang telah ditempuh.</p>
                                     </div>
                                 </div>
                             </div>
@@ -240,11 +413,22 @@
                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                                        saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                                        Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-                                        voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
-                                        repellat.
+                                        <p>Yudisium merupakan keputusan rapat jurusan/program studi untuk menetapkan
+                                            nilai dan status kelulusan mahasiswa. Sedangkan untuk status putus studi
+                                            mahasiswa ditetapkan oleh Direktur Polinema berdasarkan pertimbangan yang
+                                            diberikan oleh program studi. Untuk keperluan pelaksanaan yudisium maka
+                                            penyerahan nilai tengah semester dan akhir semester di jurusan/program studi
+                                            diserahkan ke bagian akademik sesuai kalender akademik. Yudisium
+                                            dilaksanakan pada:</p>
+                                        <ol>
+                                            <li>Tengah Semester : yudisium tengah semester untuk menentukan status
+                                                kelulusan bagi mahasiswa yang lulus percobaan pada semester sebelumnya.
+                                            </li>
+                                            <li>Akhir Semester : yudisium akhir semester untuk menentukan status
+                                                kelulusan mahasiswa di akhir semester.</li>
+                                            <li>Akhir Studi : yudisium yang dilaksanakan pada akhir masa studi
+                                                mahasiswa.</li>
+                                        </ol>
                                     </div>
                                 </div>
                             </div>
@@ -261,9 +445,12 @@
                                 <div id="collapseSeven" class="accordion-collapse collapse"
                                     aria-labelledby="headingSeven" data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        <p>Evaluasi akhir studi dilakukan setelah mahasiswa mengikuti sidang akhir.
+                                            Evaluasi ini, yang dilakukan pada saat yudisium, bertujuan untuk menetapkan
+                                            nilai tugas akhir mahasiswa dan memastikan bahwa jumlah SKS yang ditempuh
+                                            sesuai dengan persyaratan. Nilai yang diperoleh dalam yudisium merupakan
+                                            akumulasi dari seluruh nilai semester. Evaluasi dilakukan dengan ketentuan
+                                            bahwa mahasiswa dinyatakan lulus jika memiliki IPK minimal 2,00.</p>
                                     </div>
                                 </div>
                             </div>
@@ -280,9 +467,48 @@
                                 <div id="collapseEight" class="accordion-collapse collapse"
                                     aria-labelledby="headingEight" data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
+                                        <p><strong>A. LULUS SEMESTER</strong><br>
+                                            1. Mahasiswa dinyatakan lulus semester (L) bila Indek Prestasi Semester
+                                            (IPS) minimal sama dengan 2,00 dengan syarat:</p>
+                                        <ul>
+                                            <li>Nilai mata kuliah Agama, Pancasila, Kewarganegaraan tidak kurang dari C.
+                                            </li>
+                                            <li>Jumlah nilai D tidak lebih dari 1 untuk mata kuliah praktik/praktikum.
+                                            </li>
+                                            <li>Tidak terdapat nilai E.</li>
+                                        </ul>
+                                        <p>2. Mahasiswa dinyatakan lulus semester dengan masa percobaan setengah
+                                            semester (L**) apabila terpenuhi syarat Lulus Semester pada Status Akademik
+                                            ditambah dengan salah satu atau lebih ketentuan berikut:</p>
+                                        <ul>
+                                            <li>Mendapat surat peringatan III.</li>
+                                            <li>Jumlah nilai D lebih dari 3 mata kuliah.</li>
+                                        </ul>
+
+                                        <p><strong>B. TIDAK LULUS SEMESTER</strong><br>
+                                            1. Mahasiswa dinyatakan tidak lulus di akhir semester apabila memenuhi salah
+                                            satu atau lebih ketentuan berikut:</p>
+                                        <ul>
+                                            <li>IPS kurang dari 2,00.</li>
+                                            <li>Terdapat nilai E.</li>
+                                            <li>Nilai mata kuliah Agama, Pancasila, Kewarganegaraan, Bahasa Indonesia
+                                                kurang dari C.</li>
+                                            <li>Jumlah nilai D lebih dari 1 untuk mata kuliah praktik/praktikum.</li>
+                                            <li>Dua kali berturut-turut lulus semester dengan status lulus percobaan.
+                                            </li>
+                                            <li>Tidak mengajukan cuti akademik.</li>
+                                        </ul>
+                                        <p>2. Mahasiswa dinyatakan tidak lulus pada tengah semester apabila dalam
+                                            evaluasi masa percobaan setengah semester terdapat salah satu atau lebih
+                                            ketentuan berikut:</p>
+                                        <ul>
+                                            <li>IPS kurang dari 2,00.</li>
+                                            <li>Terdapat nilai E.</li>
+                                            <li>Terdapat nilai kurang dari C pada salah satu mata kuliah untuk mata
+                                                kuliah Agama, Pancasila, Kewarganegaraan, dan Bahasa Indonesia.</li>
+                                            <li>Jumlah nilai D lebih dari 1 untuk mata kuliah praktik/praktikum.</li>
+                                            <li>Terdapat nilai D lebih dari 3 mata kuliah.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -299,9 +525,49 @@
                                 <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
                                     data-bs-parent="#accordionAturanAkademik">
                                     <div class="accordion-body">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                        veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                                        <p>Penentuan predikat kelulusan khusus untuk mahasiswa yang pernah cuti akademik
+                                            atau terminal, predikat kelulusan maksimal adalah sangat memuaskan.</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped text-center">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>Predikat Kelulusan</th>
+                                                        <th>IPK Diploma Dua, Diploma Tiga, dan Sarjana Terapan</th>
+                                                        <th>IPK Magister Terapan dan Doktor Terapan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Lulus Dengan Pujian*</td>
+                                                        <td>3,51 - 4,00</td>
+                                                        <td>3,76 - 4,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lulus Sangat Memuaskan</td>
+                                                        <td>3,01 - 3,50</td>
+                                                        <td>3,51 - 3,75</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lulus Memuaskan</td>
+                                                        <td>2,76 - 3,00</td>
+                                                        <td>3,00 - 3,50</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lulus</td>
+                                                        <td>2,00 - 2,75</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p>*) syarat predikat lulus dengan pujian:</p>
+                                        <ul>
+                                            <li>Masa studi Diploma Dua 4 semester, Diploma Tiga 6 semester, Sarjana
+                                                Terapan 8 semester, Magister terapan 4 semester dan Doktor Terapan 6
+                                                semester.</li>
+                                            <li>Tidak ada nilai lebih kecil dari B</li>
+                                            <li>Tidak pernah mendapatkan sanksi pelanggaran dan ketidakhadiran</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
