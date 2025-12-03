@@ -1,5 +1,22 @@
 <?php
 
+function authMiddleware($allowedRoles = []) {
+    if (session_status() == PHP_SESSION_NONE) session_start();
+
+    if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true) {
+        header('Location: /pbl_semester3_lab_dt/login');
+        exit;
+    }
+
+    if (!empty($allowedRoles)) {
+        if (!in_array($_SESSION['user_role'], $allowedRoles)) {
+            http_response_code(403);
+            require_once __DIR__ . '/../views/errors/403.php'; 
+            exit;
+        }
+    }
+}
+
 $router->add('GET', '/', 'PageController@index');
 $router->add('GET', '/sejarah', 'PageController@sejarah');
 $router->add('GET', '/blog', 'PageController@blog');
@@ -16,20 +33,47 @@ $router->add('GET', '/penelitian', 'PageController@penelitian');
 
 $router->add('POST', '/login-process', 'AuthController@loginProcess');
 $router->add('GET', '/logout', 'AuthController@logout');
-$router->add('GET', '/admin', 'AdminController@index');
-$router->add('GET', '/editor', 'EditorController@index');
 
-$router->add('GET', '/admin/editor', 'PageController@editors');
-$router->add('POST', '/admin/editor/store', 'AdminController@storeEditor');
-$router->add('POST', '/admin/editor/update', 'AdminController@updateEditor');
-$router->add('GET', '/admin/editor/delete', 'AdminController@deleteEditor');
 
-$router->add('GET', '/admin/kategori', 'PageController@kategori');
-$router->add('POST', '/admin/kategori/store', 'AdminController@storeKategori');
-$router->add('POST', '/admin/kategori/update', 'AdminController@updateKategori');
-$router->add('GET', '/admin/kategori/delete', 'AdminController@deleteKategori');
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$router->add('GET', '/admin/member', 'PageController@member');
-$router->add('POST', '/admin/member/store', 'AdminController@storeMember');
-$router->add('POST', '/admin/member/update', 'AdminController@updateMember');
-$router->add('GET', '/admin/member/delete', 'AdminController@deleteMember');
+if (strpos($requestUri, '/admin') !== false) {
+    authMiddleware(['admin']);
+    
+    $router->add('GET', '/admin', 'PageController@adminDashboard');
+    $router->add('GET', '/admin/editor', 'PageController@adminEditor');
+    $router->add('GET', '/admin/kategori', 'PageController@adminKategori');
+    $router->add('GET', '/admin/member', 'PageController@adminMember');
+    $router->add('GET', '/admin/publikasi', 'PageController@adminPublikasi');
+
+    $router->add('POST', '/admin/editor/store', 'AdminController@storeEditor');
+    $router->add('POST', '/admin/editor/update', 'AdminController@updateEditor');
+    $router->add('GET', '/admin/editor/delete', 'AdminController@deleteEditor');
+
+    $router->add('POST', '/admin/kategori/store', 'AdminController@storeKategori');
+    $router->add('POST', '/admin/kategori/update', 'AdminController@updateKategori');
+    $router->add('GET', '/admin/kategori/delete', 'AdminController@deleteKategori');
+
+    $router->add('POST', '/admin/member/store', 'AdminController@storeMember');
+    $router->add('POST', '/admin/member/update', 'AdminController@updateMember');
+    $router->add('GET', '/admin/member/delete', 'AdminController@deleteMember');
+
+    $router->add('GET', '/admin/publikasi/approve', 'AdminController@approvePublikasi');
+    $router->add('GET', '/admin/publikasi/delete', 'AdminController@deletePublikasi');
+
+    $router->add('GET', '/admin/publikasi/approve', 'AdminController@approvePublikasi');
+    $router->add('POST', '/admin/publikasi/reject', 'AdminController@rejectPublikasi');
+    $router->add('GET', '/admin/publikasi/delete', 'AdminController@deletePublikasi');
+}
+
+elseif (strpos($requestUri, '/editor') !== false) {
+    authMiddleware(['editor']);
+
+    $router->add('GET', '/editor', 'PageController@editorDashboard');
+
+    $router->add('GET', '/editor/publikasi', 'PageController@editorPublikasi');
+
+    $router->add('POST', '/editor/publikasi/store', 'EditorController@storePublikasi');
+    $router->add('POST', '/editor/publikasi/update', 'EditorController@updatePublikasi');
+    $router->add('GET', '/editor/publikasi/delete', 'EditorController@deletePublikasi');
+}

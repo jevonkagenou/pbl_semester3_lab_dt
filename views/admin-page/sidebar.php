@@ -1,9 +1,9 @@
 <?php
-$uri = $_SERVER['REQUEST_URI'];
-$is_editor = strpos($uri, '/admin/editor') !== false;
-$is_kategori = strpos($uri, '/admin/kategori') !== false;
-$is_member = strpos($uri, '/admin/member') !== false;
-$is_dashboard = (strpos($uri, '/admin') !== false) && !$is_editor && !$is_kategori && !$is_member;
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+function isActive($uri, $path) {
+    return strpos($uri, $path) !== false ? 'active' : '';
+}
+$is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semester3_lab_dt/admin/');
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -32,24 +32,31 @@ $is_dashboard = (strpos($uri, '/admin') !== false) && !$is_editor && !$is_katego
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= $is_editor ? 'active' : '' ?>">
+                <li class="sidebar-item <?= isActive($uri, '/admin/editor') ?>">
                     <a href="<?= BASE_URL ?>/admin/editor" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>Manajemen Editor</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= $is_kategori ? 'active' : '' ?>">
+                <li class="sidebar-item <?= isActive($uri, '/admin/kategori') ?>">
                     <a href="<?= BASE_URL ?>/admin/kategori" class='sidebar-link'>
                         <i class="bi bi-tags-fill"></i>
                         <span>Kategori</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= $is_member ? 'active' : '' ?>">
+                <li class="sidebar-item <?= isActive($uri, '/admin/member') ?>">
                     <a href="<?= BASE_URL ?>/admin/member" class='sidebar-link'>
                         <i class="bi bi-person-lines-fill"></i>
                         <span>Member</span>
+                    </a>
+                </li>
+                
+                <li class="sidebar-item <?= isActive($uri, '/admin/publikasi') ?>">
+                    <a href="<?= BASE_URL ?>/admin/publikasi" class='sidebar-link'>
+                        <i class="bi bi-journal-check"></i>
+                        <span>Approval Publikasi</span>
                     </a>
                 </li>
 
