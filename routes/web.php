@@ -45,6 +45,7 @@ if (strpos($requestUri, '/admin') !== false) {
     $router->add('GET', '/admin/kategori', 'PageController@adminKategori');
     $router->add('GET', '/admin/member', 'PageController@adminMember');
     $router->add('GET', '/admin/publikasi', 'PageController@adminPublikasi');
+    $router->add('GET', '/admin/fasilitas', 'PageController@adminFasilitas');
 
     $router->add('POST', '/admin/editor/store', 'AdminController@storeEditor');
     $router->add('POST', '/admin/editor/update', 'AdminController@updateEditor');
@@ -64,6 +65,10 @@ if (strpos($requestUri, '/admin') !== false) {
     $router->add('GET', '/admin/publikasi/approve', 'AdminController@approvePublikasi');
     $router->add('POST', '/admin/publikasi/reject', 'AdminController@rejectPublikasi');
     $router->add('GET', '/admin/publikasi/delete', 'AdminController@deletePublikasi');
+
+    $router->add('POST', '/admin/fasilitas/store', 'AdminController@storeFasilitas');
+    $router->add('POST', '/admin/fasilitas/update', 'AdminController@updateFasilitas');
+    $router->add('GET', '/admin/fasilitas/delete', 'AdminController@deleteFasilitas');
 }
 
 elseif (strpos($requestUri, '/editor') !== false) {

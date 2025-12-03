@@ -60,6 +60,13 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
                     </a>
                 </li>
 
+                <li class="sidebar-item <?= isActive($uri, '/admin/fasilitas') ?>">
+                    <a href="<?= BASE_URL ?>/admin/fasilitas" class='sidebar-link'>
+                        <i class="bi bi-display-fill"></i>
+                        <span>Fasilitas</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Akun</li>
 
                 <li class="sidebar-item">

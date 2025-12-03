@@ -4,11 +4,13 @@ require_once __DIR__ . '/../Models/User.php';
 require_once __DIR__ . '/../Models/Kategori.php';
 require_once __DIR__ . '/../Models/Member.php';
 require_once __DIR__ . '/../Models/Publikasi.php';
+require_once __DIR__ . '/../Models/Fasilitas.php';
 
 use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Member;
 use App\Models\Publikasi;
+use App\Models\Fasilitas;
 
 class PageController {
 
@@ -97,6 +99,12 @@ class PageController {
         ]);
     }
 
+    public function adminFasilitas() {
+        $fasilitasModel = new Fasilitas();
+        $fasilitas = $fasilitasModel->getAll();
+        $stats = $fasilitasModel->getStats();
+        \View::render('admin-page/fasilitas', ['fasilitas' => $fasilitas, 'stats' => $stats]);
+    }
 
     public function editorDashboard() {
         \View::render('editor-page/dashboard');

@@ -2,10 +2,10 @@
 
 class Database {
     private $host = "localhost";
-    private $port = "5432";
-    private $db_name = "db_lab_dt";
+    private $port = "5433";
+    private $db_name = "db_lab_dt_remake";
     private $username = "postgres";
-    private $password = "12345678";
+    private $password = "PWDpwd";
     public $conn;
 
     public function getConnection() {

@@ -5,17 +5,20 @@ require_once __DIR__ . '/../Models/User.php';
 require_once __DIR__ . '/../Models/Kategori.php';
 require_once __DIR__ . '/../Models/Member.php';
 require_once __DIR__ . '/../Models/Publikasi.php';
+require_once __DIR__ . '/../Models/Fasilitas.php';
 
 use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Member;
 use App\Models\Publikasi;
+use App\Models\Fasilitas;
 
 class AdminController {
     private $userModel;
     private $kategoriModel;
     private $memberModel;
     private $publikasiModel;
+    private $fasilitasModel;
 
     public function __construct() {
         if (session_status() == PHP_SESSION_NONE) session_start();
@@ -28,6 +31,7 @@ class AdminController {
         $this->kategoriModel = new Kategori();
         $this->memberModel = new Member();
         $this->publikasiModel = new Publikasi();
+        $this->fasilitasModel = new Fasilitas();
     }
 
     public function storeEditor() {
@@ -180,5 +184,178 @@ class AdminController {
             $_SESSION['flash_message'] = "Publikasi dihapus!"; $_SESSION['flash_type'] = "success";
         }
         header('Location: /pbl_semester3_lab_dt/admin/publikasi'); exit;
+    }
+
+    public function storeFasilitas() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $namafasilitas = trim($_POST['namafasilitas'] ?? '');
+            $jumlah = trim($_POST['jumlah'] ?? '');
+            $deskripsi = trim($_POST['deskripsi'] ?? '');
+
+            if (empty($namafasilitas) || empty($jumlah) || empty($deskripsi)) {
+                $_SESSION['flash_message'] = "Gagal! Semua kolom wajib diisi.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            if (!is_numeric($jumlah)) {
+                $_SESSION['flash_message'] = "Gagal! Jumlah harus berupa angka.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            if ($this->fasilitasModel->getByName($namafasilitas)) {
+                $_SESSION['flash_message'] = "Gagal! Fasilitas '$namafasilitas' sudah terdaftar.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            $foto = 'default_fasilitas.jpg';
+            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+                $fileTmp = $_FILES['foto']['tmp_name'];
+                $fileType = mime_content_type($fileTmp);
+                $fileSize = $_FILES['foto']['size'];
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+                if (!in_array($fileType, $allowedTypes)) {
+                    $_SESSION['flash_message'] = "Gagal! Format foto harus JPG/PNG.";
+                    $_SESSION['flash_type'] = "error";
+                    header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                    exit;
+                }
+
+                if ($fileSize > 2 * 1024 * 1024) {
+                    $_SESSION['flash_message'] = "Gagal! Ukuran foto maksimal 2MB.";
+                    $_SESSION['flash_type'] = "error";
+                    header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                    exit;
+                }
+
+                $uploadDir = __DIR__ . '/../../public/uploads/fasilitas/';
+                if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+                
+                $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+                $newName = uniqid('fasilitas_') . '.' . $ext;
+                
+                if (move_uploaded_file($fileTmp, $uploadDir . $newName)) {
+                    $foto = $newName;
+                }
+            }
+
+            $data = [
+                'namafasilitas' => $namafasilitas,
+                'jumlah' => $jumlah,
+                'deskripsi' => $deskripsi,
+                'foto' => $foto
+            ];
+            
+            if ($this->fasilitasModel->create($data)) {
+                $_SESSION['flash_message'] = "Fasilitas berhasil ditambahkan!";
+                $_SESSION['flash_type'] = "success";
+            } else {
+                $_SESSION['flash_message'] = "Terjadi kesalahan server.";
+                $_SESSION['flash_type'] = "error";
+            }
+            header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+            exit;
+        }
+    }
+
+    public function updateFasilitas() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'] ?? null;
+            $namafasilitas = trim($_POST['namafasilitas'] ?? '');
+            $jumlah = trim($_POST['jumlah'] ?? '');
+            $deskripsi = trim($_POST['deskripsi'] ?? '');
+
+            if (empty($id) || empty($namafasilitas) || empty($jumlah) || empty($deskripsi)) {
+                $_SESSION['flash_message'] = "Gagal! Data wajib tidak boleh kosong.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            if (!is_numeric($jumlah)) {
+                $_SESSION['flash_message'] = "Gagal! Jumlah harus angka.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            $existing = $this->fasilitasModel->getByName($namafasilitas);
+            if ($existing && $existing['idfasilitas'] != $id) {
+                $_SESSION['flash_message'] = "Gagal! Nama fasilitas sudah digunakan.";
+                $_SESSION['flash_type'] = "error";
+                header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                exit;
+            }
+
+            $foto = $_POST['old_foto'] ?? '';
+            
+            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+                $fileTmp = $_FILES['foto']['tmp_name'];
+                $fileType = mime_content_type($fileTmp);
+                $fileSize = $_FILES['foto']['size'];
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+                if (!in_array($fileType, $allowedTypes)) {
+                    $_SESSION['flash_message'] = "Gagal! Format foto salah.";
+                    $_SESSION['flash_type'] = "error";
+                    header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                    exit;
+                }
+
+                if ($fileSize > 2 * 1024 * 1024) {
+                    $_SESSION['flash_message'] = "Gagal! Foto max 2MB.";
+                    $_SESSION['flash_type'] = "error";
+                    header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+                    exit;
+                }
+
+                $uploadDir = __DIR__ . '/../../public/uploads/fasilitas/';
+                if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+                
+                $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+                $newName = uniqid('fasilitas_') . '.' . $ext;
+                
+                if (move_uploaded_file($fileTmp, $uploadDir . $newName)) {
+                    $foto = $newName;
+                }
+            }
+
+            $data = [
+                'id' => $id,
+                'namafasilitas' => $namafasilitas,
+                'jumlah' => $jumlah,
+                'deskripsi' => $deskripsi,
+                'foto' => $foto
+            ];
+            
+            if ($this->fasilitasModel->update($data)) {
+                $_SESSION['flash_message'] = "Data fasilitas diperbarui!";
+                $_SESSION['flash_type'] = "success";
+            } else {
+                $_SESSION['flash_message'] = "Gagal update data.";
+                $_SESSION['flash_type'] = "error";
+            }
+            header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+            exit;
+        }
+    }
+
+    public function deleteFasilitas() {
+        $id = $_GET['id'] ?? null;
+        if($id && $this->fasilitasModel->delete($id)) {
+            $_SESSION['flash_message'] = "Fasilitas dihapus!";
+            $_SESSION['flash_type'] = "success";
+        } else {
+            $_SESSION['flash_message'] = "Gagal menghapus fasilitas.";
+            $_SESSION['flash_type'] = "error";
+        }
+        header('Location: /pbl_semester3_lab_dt/admin/fasilitas');
+        exit;
     }
 }
