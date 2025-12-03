@@ -6,12 +6,14 @@ require_once __DIR__ . '/../Models/Kategori.php';
 require_once __DIR__ . '/../Models/Member.php';
 require_once __DIR__ . '/../Models/Publikasi.php';
 require_once __DIR__ . '/../Models/Fasilitas.php';
+require_once __DIR__ . '/../Models/Berita.php';
 
 use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Member;
 use App\Models\Publikasi;
 use App\Models\Fasilitas;
+use App\Models\Berita;
 
 class AdminController {
     private $userModel;
@@ -19,6 +21,7 @@ class AdminController {
     private $memberModel;
     private $publikasiModel;
     private $fasilitasModel;
+    private $beritaModel;
 
     public function __construct() {
         if (session_status() == PHP_SESSION_NONE) session_start();
@@ -32,6 +35,7 @@ class AdminController {
         $this->memberModel = new Member();
         $this->publikasiModel = new Publikasi();
         $this->fasilitasModel = new Fasilitas();
+        $this->beritaModel = new Berita();
     }
 
     private function setFlashAndRedirect($message, $type, $location) {
@@ -481,6 +485,53 @@ class AdminController {
             $this->setFlashAndRedirect("Fasilitas dihapus!", "success", "/pbl_semester3_lab_dt/admin/fasilitas");
         } else {
             $this->setFlashAndRedirect("Gagal menghapus fasilitas.", "error", "/pbl_semester3_lab_dt/admin/fasilitas");
+        }
+    }
+
+    public function approveBerita() {
+        $id = $_GET['id'] ?? null;
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        }
+
+        if ($this->beritaModel->changeStatus($id, 'terima', null)) {
+            $this->setFlashAndRedirect("Berita berhasil disetujui!", "success", "/pbl_semester3_lab_dt/admin/berita");
+        } else {
+            $this->setFlashAndRedirect("Gagal menyetujui berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        }
+    }
+
+    public function rejectBerita() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'] ?? null;
+            $alasan = trim($_POST['alasan_penolakan'] ?? '');
+
+            if (empty($id) || !is_numeric($id)) {
+                $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
+
+            if (empty($alasan)) {
+                $this->setFlashAndRedirect("Alasan penolakan wajib diisi!", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
+
+            if ($this->beritaModel->changeStatus($id, 'tolak', $alasan)) {
+                $this->setFlashAndRedirect("Berita ditolak.", "warning", "/pbl_semester3_lab_dt/admin/berita");
+            } else {
+                $this->setFlashAndRedirect("Gagal menolak berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
+        }
+    }
+
+    public function deleteBerita() {
+        $id = $_GET['id'] ?? null;
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        }
+
+        if ($this->beritaModel->delete($id)) {
+            $this->setFlashAndRedirect("Berita dihapus!", "success", "/pbl_semester3_lab_dt/admin/berita");
+        } else {
+            $this->setFlashAndRedirect("Gagal menghapus berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
         }
     }
 }

@@ -5,12 +5,14 @@ require_once __DIR__ . '/../Models/Kategori.php';
 require_once __DIR__ . '/../Models/Member.php';
 require_once __DIR__ . '/../Models/Publikasi.php';
 require_once __DIR__ . '/../Models/Fasilitas.php';
+require_once __DIR__ . '/../Models/Berita.php';
 
 use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Member;
 use App\Models\Publikasi;
 use App\Models\Fasilitas;
+use App\Models\Berita;
 
 class PageController {
 
@@ -106,6 +108,21 @@ class PageController {
         \View::render('admin-page/fasilitas', ['fasilitas' => $fasilitas, 'stats' => $stats]);
     }
 
+    public function adminBerita() {
+        $beritaModel = new Berita();
+        $memberModel = new Member();
+
+        $berita = $beritaModel->getAll();
+        $stats = $beritaModel->getStats();
+        $members = $memberModel->getAll();
+
+        \View::render('admin-page/berita', [
+            'berita' => $berita,
+            'stats' => $stats,
+            'members' => $members
+        ]);
+    }
+
     public function editorDashboard() {
         \View::render('editor-page/dashboard');
     }
@@ -123,6 +140,21 @@ class PageController {
         \View::render('editor-page/publikasi', [
             'publikasi' => $dataPublikasi,
             'kategori' => $kategori,
+            'members' => $members,
+            'stats' => $stats
+        ]);
+    }
+
+    public function editorBerita() {
+        $beritaModel = new Berita();
+        $memberModel = new Member();
+
+        $berita = $beritaModel->getAll();
+        $members = $memberModel->getAll();
+        $stats = $beritaModel->getStats();
+
+        \View::render('editor-page/berita', [
+            'berita' => $berita,
             'members' => $members,
             'stats' => $stats
         ]);

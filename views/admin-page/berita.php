@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Approval Publikasi - Admin</title>
+    <title>Approval Berita - Admin</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/style.css">
-
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
 
     <style>
@@ -33,41 +32,35 @@
         }
 
         .hero-stats-card {
-            background: linear-gradient(120deg, #435ebe, #727cf5);
-            border-radius: 20px; color: white;
-            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.2);
-            position: relative; overflow: hidden;
-        }
-
-        .hero-stats-card {
-            background: linear-gradient(120deg, #435ebe, #727cf5);
+            background: linear-gradient(135deg, #435ebe, #727cf5);
             border-radius: 20px;
             color: white;
-            box-shadow: 0 10px 30px rgba(67, 94, 190, 0.2);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-stats-card::before,
+        .hero-stats-card::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .hero-stats-card::before {
-            content: '';
-            position: absolute;
             top: -50px;
             right: -50px;
             width: 200px;
             height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
         }
 
         .hero-stats-card::after {
-            content: '';
-            position: absolute;
             bottom: -30px;
             left: -30px;
             width: 150px;
             height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
         }
 
         .table-modern {
@@ -190,7 +183,17 @@
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
         }
 
-        .btn-link-modern {
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-view-modern {
             background: #e0f2fe;
             color: #0ea5e9;
             border-radius: 10px;
@@ -198,7 +201,7 @@
             height: 35px;
         }
 
-        .btn-link-modern:hover {
+        .btn-view-modern:hover {
             background: #0ea5e9;
             color: white;
             transform: translateY(-2px);
@@ -213,7 +216,7 @@
 
         .card-header-modern h4 {
             font-weight: 800;
-            color: #1e3a8a;
+            color: #435ebe;
             margin: 0;
             font-size: 1.2rem;
         }
@@ -222,20 +225,6 @@
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-        }
-
-        .icon-wrapper i {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            line-height: 1 !important;
-            font-size: 24px;
-            margin: 0 !important;
-        }
-
-        .icon-wrapper i::before {
-            vertical-align: 0 !important;
-            margin: 0 !important;
         }
 
         .modal-premium .modal-content {
@@ -247,35 +236,34 @@
         }
 
         .modal-header-premium {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #435ebe 0%, #727cf5 100%);
             padding: 30px;
             border: none;
             position: relative;
             overflow: hidden;
         }
 
-        .modal-header-premium::before {
+        .modal-header-premium::before,
+        .modal-header-premium::after {
             content: '';
             position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        .modal-header-premium::before {
             top: -50px;
             right: -50px;
             width: 200px;
             height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            pointer-events: none;
         }
 
         .modal-header-premium::after {
-            content: '';
-            position: absolute;
             bottom: -30px;
             left: -30px;
             width: 150px;
             height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            pointer-events: none;
         }
 
         .modal-title-premium {
@@ -293,20 +281,6 @@
             font-weight: 500;
             position: relative;
             z-index: 1;
-        }
-
-        .btn-close-white-custom {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            padding: 12px;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
-            transition: all 0.2s;
-            opacity: 1;
-        }
-
-        .btn-close-white-custom:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: rotate(90deg);
         }
 
         .modal-body-premium {
@@ -372,7 +346,7 @@
             margin-top: 2px;
         }
 
-        .abstract-box {
+        .content-box {
             background: white;
             border-radius: 16px;
             padding: 25px;
@@ -381,7 +355,7 @@
             margin-top: 24px;
         }
 
-        .abstract-title {
+        .content-title {
             font-size: 0.9rem;
             font-weight: 700;
             color: #334155;
@@ -391,34 +365,21 @@
             gap: 8px;
         }
 
-        .abstract-content {
+        .content-text {
             color: #475569;
             line-height: 1.7;
             font-size: 0.95rem;
             text-align: justify;
+            white-space: pre-wrap;
         }
 
-        .btn-doc-link {
-            background: #3b82f6;
-            color: white;
-            border-radius: 12px;
-            padding: 12px 20px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-            transition: all 0.2s;
+        .image-preview {
             width: 100%;
-            justify-content: center;
-        }
-
-        .btn-doc-link:hover {
-            background: #2563eb;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4);
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 2px dashed #e2e8f0;
         }
 
         .btn-close-custom {
@@ -427,11 +388,9 @@
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.2);
             border: none;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: white;
             transition: all 0.2s ease;
             cursor: pointer;
@@ -447,6 +406,29 @@
             line-height: 1;
             display: block;
         }
+
+        .image-preview-small {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #f1f5f9;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .image-preview-small:hover {
+            transform: scale(1.1);
+        }
+
+        .content-preview {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -458,8 +440,8 @@
             </header>
 
             <div class="page-heading mb-4">
-                <h3 style="font-weight: 800; color: #1e3a8a;">Approval Publikasi</h3>
-                <p class="text-muted">Tinjau dan setujui pengajuan publikasi dari Editor.</p>
+                <h3 style="font-weight: 800; color: #435ebe;">Approval Berita</h3>
+                <p class="text-muted">Tinjau dan setujui pengajuan berita dari Editor.</p>
             </div>
 
             <div class="page-content">
@@ -474,11 +456,12 @@
                                         <?= isset($stats['pending']) ? $stats['pending'] : 0 ?>
                                     </h1>
                                     <p class="mb-0 text-white-50 mt-2 small">
-                                        <i class="bi bi-info-circle me-1"></i> Publikasi menunggu review Anda
+                                        <i class="bi bi-info-circle me-1"></i> Berita menunggu review Anda
                                     </p>
                                 </div>
-                                <div style="font-size: 3.5rem; opacity: 0.8;"><i
-                                        class="bi bi-check2-circle text-white"></i></div>
+                                <div style="font-size: 3.5rem; opacity: 0.8;">
+                                    <i class="bi bi-newspaper text-white"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -494,73 +477,81 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul & Tahun</th>
-                                        <th>Penulis & Kategori</th>
-                                        <th>Link</th>
+                                        <th>Judul & Konten</th>
+                                        <th>Jurnalis & Tanggal</th>
+                                        <th>Foto</th>
                                         <th>Status</th>
                                         <th class="text-center">Approval</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if(isset($publikasi) && !empty($publikasi)) : $no = 1; foreach($publikasi as $row) : ?>
+                                    <?php if(isset($berita) && !empty($berita)) : $no = 1; foreach($berita as $row) : ?>
                                     <tr>
                                         <td class="text-muted fw-bold ps-4"><?= $no++ ?></td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="icon-wrapper d-flex align-items-center justify-content-center me-3 flex-shrink-0"
-                                                    style="width: 50px; height: 50px; background-color: #eef4ff; border-radius: 12px;">
-                                                    <i class="bi bi-file-earmark-text-fill text-primary d-flex align-items-center justify-content-center"
+                                                    style="width: 50px; height: 50px; background-color: #f5f3ff; border-radius: 12px;">
+                                                    <i class="bi bi-newspaper text-purple d-flex align-items-center justify-content-center"
                                                         style="font-size: 24px; line-height: 1; width: 100%; height: 100%; margin: 0; padding: 0;"></i>
                                                 </div>
-
                                                 <div class="d-flex flex-column">
                                                     <div class="fw-bold text-dark mb-1"
                                                         style="max-width: 300px; line-height: 1.2; font-size: 1rem;">
-                                                        <?= htmlspecialchars($row['judulpublikasi'] ?? '') ?>
+                                                        <?= htmlspecialchars($row['judulberita'] ?? '') ?>
                                                     </div>
-
-                                                    <div class="d-flex align-items-center gap-2 mt-1">
-                                                        <span class="badge bg-light text-secondary border">
-                                                            Tahun: <?= htmlspecialchars($row['tahunterbit'] ?? '-') ?>
-                                                        </span>
-
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-light-info text-info border-0 py-0 px-2 small btn-detail"
-                                                            style="font-size: 0.75rem; font-weight: 700;"
-                                                            data-judul="<?= htmlspecialchars($row['judulpublikasi'] ?? '') ?>"
-                                                            data-tahun="<?= htmlspecialchars($row['tahunterbit'] ?? '') ?>"
-                                                            data-penulis="<?= htmlspecialchars($row['namamember'] ?? '') ?>"
-                                                            data-kategori="<?= htmlspecialchars($row['namakategori'] ?? '') ?>"
-                                                            data-ringkasan="<?= htmlspecialchars($row['ringkasan'] ?? 'Tidak ada ringkasan.') ?>"
-                                                            data-link="<?= htmlspecialchars($row['linkfile'] ?? '#') ?>">
-                                                            <i class="bi bi-eye-fill me-1"></i> Detail
-                                                        </button>
+                                                    <div class="content-preview">
+                                                        <?= htmlspecialchars(substr($row['isi'] ?? '', 0, 100)) ?>...
                                                     </div>
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-light-info text-info border-0 py-0 px-2 small btn-detail mt-1"
+                                                        style="font-size: 0.75rem; font-weight: 700; align-self: flex-start;"
+                                                        data-judul="<?= htmlspecialchars($row['judulberita'] ?? '') ?>"
+                                                        data-jurnalis="<?= htmlspecialchars($row['jurnalis_nama'] ?? '-') ?>"
+                                                        data-tanggal="<?= date('d M Y H:i', strtotime($row['upload_at'] ?? 'now')) ?>"
+                                                        data-isi="<?= htmlspecialchars($row['isi'] ?? 'Tidak ada konten.') ?>"
+                                                        data-foto="<?= BASE_URL ?>/public/uploads/berita/<?= htmlspecialchars($row['fotodokumentasi'] ?? 'default_news.jpg') ?>">
+                                                        <i class="bi bi-eye-fill me-1"></i> Detail Lengkap
+                                                    </button>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex flex-column gap-1">
+                                            <div class="d-flex flex-column">
                                                 <div class="text-muted small fw-bold">
-                                                    <i class="bi bi-tag-fill me-1 text-primary"></i>
-                                                    <?= htmlspecialchars($row['namakategori'] ?? '-') ?>
+                                                    <i class="bi bi-person-fill me-1"></i>
+                                                    <?= htmlspecialchars($row['jurnalis_nama'] ?? '-') ?>
                                                 </div>
-                                                <div class="text-muted small">
-                                                    <i class="bi bi-person-circle me-1"></i>
-                                                    <?= htmlspecialchars($row['namamember'] ?? '-') ?>
+                                                <div class="text-muted small mt-2">
+                                                    <i class="bi bi-calendar3 me-1"></i>
+                                                    <?= date('d M Y', strtotime($row['upload_at'] ?? 'now')) ?>
+                                                </div>
+                                                <div class="text-muted small mt-1">
+                                                    <i class="bi bi-clock me-1"></i>
+                                                    <?= date('H:i', strtotime($row['upload_at'] ?? 'now')) ?>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="<?= htmlspecialchars($row['linkfile'] ?? '#') ?>" target="_blank"
-                                                class="action-btn btn-link-modern d-flex align-items-center justify-content-center"
-                                                title="Lihat File">
-                                                <i class="bi bi-box-arrow-up-right"></i>
-                                            </a>
+                                            <?php
+                                            $fotoName = $row['fotodokumentasi'] ?? '';
+                                            $uploadDir = __DIR__ . '/../../public/uploads/berita/'; 
+                                            $fotoUrl = BASE_URL . '/public/uploads/berita/' . $fotoName;
+                                            $defaultFoto = BASE_URL . '/public/assets-admin/images/faces/1.jpg';
+                                            
+                                            if (!empty($fotoName) && file_exists($uploadDir . $fotoName)) {
+                                                $finalFoto = $fotoUrl;
+                                            } else {
+                                                $finalFoto = $defaultFoto;
+                                            }
+                                            ?>
+                                            <img src="<?= $finalFoto ?>" 
+                                                alt="Foto Berita" 
+                                                class="image-preview-small">
                                         </td>
                                         <td>
                                             <?php 
-                                                $status = $row['status_publikasi'] ?? 'pending';
+                                                $status = $row['status_berita'] ?? 'pending';
                                                 $badgeClass = 'status-pending';
                                                 if($status == 'terima') $badgeClass = 'status-terima';
                                                 if($status == 'tolak') $badgeClass = 'status-tolak';
@@ -572,14 +563,13 @@
                                             <?php if($status == 'pending'): ?>
                                             <div class="d-flex justify-content-center gap-2">
                                                 <button class="btn-action-simple btn-accept btn-confirm-approve"
-                                                    data-url="<?= BASE_URL ?>/admin/publikasi/approve?id=<?= $row['idpublikasi'] ?>&status=terima"
+                                                    data-url="<?= BASE_URL ?>/admin/berita/approve?id=<?= $row['idberita'] ?>"
                                                     title="Terima">
                                                     <i class="bi bi-check-lg fs-5"></i>
                                                 </button>
-
                                                 <button class="btn-action-simple btn-reject btn-modal-reject"
-                                                    data-id="<?= $row['idpublikasi'] ?>"
-                                                    data-judul="<?= htmlspecialchars($row['judulpublikasi'] ?? '') ?>"
+                                                    data-id="<?= $row['idberita'] ?>"
+                                                    data-judul="<?= htmlspecialchars($row['judulberita'] ?? '') ?>"
                                                     title="Tolak">
                                                     <i class="bi bi-x-lg fs-5"></i>
                                                 </button>
@@ -601,20 +591,16 @@
             <?php include 'footer.php'; ?>
         </div>
 
+        <!-- Modal Detail -->
         <div class="modal fade modal-premium" id="modalDetail" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
-
                     <div class="modal-header-premium">
-                        <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex justify-content-between align-items-start w-100">
                             <div style="width: 90%;">
-                                <div class="badge bg-white text-primary mb-2 px-3 py-1 rounded-pill fw-bold shadow-sm"
-                                    id="detail_kategori_badge" style="font-size: 0.75rem;">
-                                    <i class="bi bi-tag-fill me-1"></i> <span id="detail_kategori">Kategori</span>
-                                </div>
-                                <h4 class="modal-title-premium" id="detail_judul">Judul Publikasi Disini</h4>
+                                <h4 class="modal-title-premium" id="detail_judul">Judul Berita</h4>
                                 <p class="modal-subtitle mb-0 mt-2">
-                                    <i class="bi bi-info-circle me-1"></i> Detail lengkap pengajuan publikasi
+                                    <i class="bi bi-info-circle me-1"></i> Detail lengkap pengajuan berita
                                 </p>
                             </div>
                             <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
@@ -625,77 +611,88 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="modal-body-premium">
-
                         <div class="row g-3">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="info-card">
                                     <div class="info-icon-wrapper bg-soft-primary">
                                         <i class="bi bi-person-fill"></i>
                                     </div>
-                                    <span class="info-label-premium">Penulis Utama</span>
-                                    <div class="info-value-premium text-truncate" id="detail_penulis">-</div>
+                                    <span class="info-label-premium">Jurnalis</span>
+                                    <div class="info-value-premium text-truncate" id="detail_jurnalis">-</div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="info-card">
                                     <div class="info-icon-wrapper bg-soft-purple">
                                         <i class="bi bi-calendar-event-fill"></i>
                                     </div>
-                                    <span class="info-label-premium">Tahun Terbit</span>
-                                    <div class="info-value-premium" id="detail_tahun">-</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="info-card justify-content-center align-items-center p-0"
-                                    style="background: transparent; border: none; box-shadow: none;">
-                                    <a href="#" id="detail_link" target="_blank" class="btn-doc-link">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i> Buka Dokumen
-                                    </a>
+                                    <span class="info-label-premium">Tanggal Upload</span>
+                                    <div class="info-value-premium" id="detail_tanggal">-</div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="abstract-box">
-                            <div class="abstract-title">
+                        <div class="content-box mt-4">
+                            <div class="content-title">
                                 <i class="bi bi-text-left text-primary fs-5"></i>
-                                <span>Ringkasan Eksekutif / Abstrak</span>
+                                <span>Konten Berita</span>
                             </div>
-                            <div class="abstract-content" id="detail_ringkasan">
+                            <div class="content-text" id="detail_isi">
                             </div>
+                        </div>
+                        <div class="content-box mt-4">
+                            <div class="content-title">
+                                <i class="bi bi-image text-primary fs-5"></i>
+                                <span>Foto Dokumentasi</span>
+                            </div>
+                            <img src="" alt="Foto Berita" id="detail_foto" class="image-preview">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Modal Preview Image -->
+        <div class="modal fade" id="modalPreviewImage" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Preview Foto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="" alt="Preview" id="preview_image" class="img-fluid rounded" style="max-height: 500px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Tolak -->
         <div class="modal fade" id="modalTolak" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0" style="border-radius: 20px;">
                     <div class="modal-header border-0 pb-0">
-                        <h5 class="modal-title fw-bold text-danger">Tolak Publikasi</h5>
+                        <h5 class="modal-title fw-bold text-danger">Tolak Berita</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <form action="<?= BASE_URL ?>/admin/publikasi/reject" method="POST">
+                    <form action="<?= BASE_URL ?>/admin/berita/reject" method="POST">
                         <div class="modal-body pt-4">
                             <input type="hidden" name="id" id="reject_id">
-                            <p class="text-muted small mb-3">Anda akan menolak publikasi: <br><strong id="reject_judul"
+                            <p class="text-muted small mb-3">Anda akan menolak berita: <br><strong id="reject_judul"
                                     class="text-dark fs-6"></strong></p>
-
                             <div class="mb-3">
                                 <label class="form-label fw-bold small text-muted text-uppercase">Alasan Penolakan <span
                                         class="text-danger">*</span></label>
                                 <textarea name="alasan_penolakan" class="form-control" style="border-radius: 10px;"
                                     rows="4" required
-                                    placeholder="Contoh: Data tidak lengkap, Link file rusak, atau format salah..."></textarea>
+                                    placeholder="Contoh: Konten tidak sesuai, foto tidak relevan, atau informasi tidak lengkap..."></textarea>
                             </div>
                         </div>
                         <div class="modal-footer border-0 pt-0 pb-4 pe-4">
                             <button type="button" class="btn btn-light fw-bold" style="border-radius: 10px;"
                                 data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-danger fw-bold px-4" style="border-radius: 10px;">Tolak
-                                Publikasi</button>
+                                Berita</button>
                         </div>
                     </form>
                 </div>
@@ -720,13 +717,32 @@
             e.preventDefault();
             let url = $(this).data('url');
             Swal.fire({
-                title: 'Terima Publikasi?',
-                text: "Publikasi akan tampil di sistem.",
+                title: 'Terima Berita?',
+                text: "Berita akan tampil di sistem.",
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#10b981',
                 cancelButtonColor: '#b6becb',
                 confirmButtonText: 'Ya, Terima',
+                cancelButtonText: 'Batal',
+                background: '#fff',
+                borderRadius: '20px'
+            }).then((result) => {
+                if (result.isConfirmed) window.location.href = url;
+            });
+        });
+
+        $(document).on('click', '.btn-confirm-delete', function (e) {
+            e.preventDefault();
+            let url = this.href;
+            Swal.fire({
+                title: 'Hapus Berita?',
+                text: "Data tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#b6becb',
+                confirmButtonText: 'Ya, Hapus',
                 cancelButtonText: 'Batal',
                 background: '#fff',
                 borderRadius: '20px'
@@ -744,30 +760,40 @@
             $('#modalTolak').modal('show');
         });
 
-        <?php if(isset($_SESSION['flash_message'])): ?>
-        Swal.fire({ icon: '<?= $_SESSION['flash_type'] ?>', title: 'Info', text: '<?= $_SESSION['flash_message'] ?>', timer: 3000, toast: true, position: 'top-end', showConfirmButton: false });
-        <?php unset($_SESSION['flash_message']); unset($_SESSION['flash_type']); ?>
-        <?php endif; ?>
-    </script>
-    <script>
         $(document).on('click', '.btn-detail', function () {
             let judul = $(this).data('judul');
-            let tahun = $(this).data('tahun');
-            let penulis = $(this).data('penulis');
-            let kategori = $(this).data('kategori');
-            let ringkasan = $(this).data('ringkasan');
-            let link = $(this).data('link');
+            let jurnalis = $(this).data('jurnalis');
+            let tanggal = $(this).data('tanggal');
+            let isi = $(this).data('isi');
+            let foto = $(this).data('foto');
 
             $('#detail_judul').text(judul);
-            $('#detail_tahun').text(tahun);
-            $('#detail_penulis').text(penulis);
-            $('#detail_kategori').text(kategori);
-            $('#detail_ringkasan').text(ringkasan);
-            $('#detail_link').attr('href', link);
+            $('#detail_jurnalis').text(jurnalis);
+            $('#detail_tanggal').text(tanggal);
+            $('#detail_isi').text(isi);
+            $('#detail_foto').attr('src', foto);
 
             $('#modalDetail').modal('show');
         });
+
+        $(document).on('click', '.btn-preview-image', function () {
+            let foto = $(this).data('foto');
+            $('#preview_image').attr('src', foto);
+            $('#modalPreviewImage').modal('show');
+        });
+
+        <?php if(isset($_SESSION['flash_message'])): ?>
+        Swal.fire({ 
+            icon: '<?= $_SESSION['flash_type'] ?>', 
+            title: 'Info', 
+            text: '<?= $_SESSION['flash_message'] ?>', 
+            timer: 3000, 
+            toast: true, 
+            position: 'top-end', 
+            showConfirmButton: false 
+        });
+        <?php unset($_SESSION['flash_message']); unset($_SESSION['flash_type']); ?>
+        <?php endif; ?>
     </script>
 </body>
-
 </html>

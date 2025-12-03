@@ -40,6 +40,13 @@ $is_publikasi = strpos($uri, '/editor/publikasi') !== false;
                     </a>
                 </li>
 
+                <li class="sidebar-item <?=  $is_berita ? 'active' : '' ?>">
+                    <a href="<?= BASE_URL ?>/editor/berita" class='sidebar-link'>
+                        <i class="bi bi-newspaper"></i>
+                        <span>Kelola Berita</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Akun</li>
 
                 <li class="sidebar-item">

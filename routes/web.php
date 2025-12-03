@@ -34,7 +34,6 @@ $router->add('GET', '/penelitian', 'PageController@penelitian');
 $router->add('POST', '/login-process', 'AuthController@loginProcess');
 $router->add('GET', '/logout', 'AuthController@logout');
 
-
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if (strpos($requestUri, '/admin') !== false) {
@@ -46,6 +45,7 @@ if (strpos($requestUri, '/admin') !== false) {
     $router->add('GET', '/admin/member', 'PageController@adminMember');
     $router->add('GET', '/admin/publikasi', 'PageController@adminPublikasi');
     $router->add('GET', '/admin/fasilitas', 'PageController@adminFasilitas');
+    $router->add('GET', '/admin/berita', 'PageController@adminBerita');
 
     $router->add('POST', '/admin/editor/store', 'AdminController@storeEditor');
     $router->add('POST', '/admin/editor/update', 'AdminController@updateEditor');
@@ -60,25 +60,30 @@ if (strpos($requestUri, '/admin') !== false) {
     $router->add('GET', '/admin/member/delete', 'AdminController@deleteMember');
 
     $router->add('GET', '/admin/publikasi/approve', 'AdminController@approvePublikasi');
-    $router->add('GET', '/admin/publikasi/delete', 'AdminController@deletePublikasi');
-
-    $router->add('GET', '/admin/publikasi/approve', 'AdminController@approvePublikasi');
     $router->add('POST', '/admin/publikasi/reject', 'AdminController@rejectPublikasi');
     $router->add('GET', '/admin/publikasi/delete', 'AdminController@deletePublikasi');
 
     $router->add('POST', '/admin/fasilitas/store', 'AdminController@storeFasilitas');
     $router->add('POST', '/admin/fasilitas/update', 'AdminController@updateFasilitas');
     $router->add('GET', '/admin/fasilitas/delete', 'AdminController@deleteFasilitas');
+
+    $router->add('GET', '/admin/berita/approve', 'AdminController@approveBerita');
+    $router->add('POST', '/admin/berita/reject', 'AdminController@rejectBerita');
+    $router->add('GET', '/admin/berita/delete', 'AdminController@deleteBerita');
 }
 
 elseif (strpos($requestUri, '/editor') !== false) {
     authMiddleware(['editor']);
 
     $router->add('GET', '/editor', 'PageController@editorDashboard');
-
     $router->add('GET', '/editor/publikasi', 'PageController@editorPublikasi');
+    $router->add('GET', '/editor/berita', 'PageController@editorBerita');
 
     $router->add('POST', '/editor/publikasi/store', 'EditorController@storePublikasi');
     $router->add('POST', '/editor/publikasi/update', 'EditorController@updatePublikasi');
     $router->add('GET', '/editor/publikasi/delete', 'EditorController@deletePublikasi');
+
+    $router->add('POST', '/editor/berita/store', 'EditorController@storeBerita');
+    $router->add('POST', '/editor/berita/update', 'EditorController@updateBerita');
+    $router->add('GET', '/editor/berita/delete', 'EditorController@deleteBerita');
 }
