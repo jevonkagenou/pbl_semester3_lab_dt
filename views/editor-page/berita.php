@@ -273,10 +273,12 @@
                 transform: scale(1);
                 opacity: 1;
             }
+
             50% {
                 transform: scale(1.2);
                 opacity: 0.8;
             }
+
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -298,6 +300,62 @@
             text-overflow: ellipsis;
             color: #64748b;
             font-size: 0.9rem;
+        }
+
+        .img-clickable {
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .img-clickable:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            position: relative;
+        }
+
+        .modal-glass .modal-content {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .modal-glass .modal-header {
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+        }
+
+        .modal-glass .modal-title {
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .modal-glass .btn-close {
+            filter: invert(1) opacity(0.8);
+        }
+
+        .modal-glass .modal-body {
+            padding: 0;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .img-preview-clean {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            object-fit: contain;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -400,23 +458,23 @@
                                                 </div>
                                             </div>
                                         </td>
-                                       <td>
+                                        <td>
                                             <?php
-                                            $fotoName = $row['fotodokumentasi'] ?? '';
+                                            $fotoName = $row['fotodokumentasi'];
                                             $uploadDir = __DIR__ . '/../../public/uploads/berita/'; 
                                             $fotoUrl = BASE_URL . '/public/uploads/berita/' . $fotoName;
                                             $defaultFoto = BASE_URL . '/public/assets-admin/images/faces/1.jpg';
-                                            
-                                            // Cek apakah file ada
+
                                             if (!empty($fotoName) && file_exists($uploadDir . $fotoName)) {
                                                 $finalFoto = $fotoUrl;
                                             } else {
                                                 $finalFoto = $defaultFoto;
                                             }
                                             ?>
-                                            <img src="<?= $finalFoto ?>" 
-                                                alt="Foto Berita" 
-                                                class="image-preview-small">
+
+                                            <img src="<?= $finalFoto ?>" alt="Foto Berita"
+                                                class="image-preview-small img-clickable btn-preview-image"
+                                                data-foto="<?= $finalFoto ?>" title="Klik untuk memperbesar">
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column align-items-start gap-2">
@@ -442,11 +500,6 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
-                                                <button class="action-btn btn-view-modern btn-preview-image"
-                                                    data-foto="<?= BASE_URL ?>/public/uploads/berita/<?= htmlspecialchars($row['fotodokumentasi'] ?? 'default_news.jpg') ?>"
-                                                    title="Lihat Foto">
-                                                    <i class="bi bi-image"></i>
-                                                </button>
 
                                                 <button class="action-btn btn-edit-modern btn-edit"
                                                     data-id="<?= $row['idberita'] ?>"
@@ -490,7 +543,8 @@
                         <div class="modal-body pt-4">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Judul Berita</label>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Judul
+                                        Berita</label>
                                     <input type="text" name="judulberita" class="form-control form-control-lg fs-6"
                                         style="border-radius: 10px;" required
                                         placeholder="Contoh: Workshop Teknologi Terbaru 2024">
@@ -501,18 +555,21 @@
                                         style="border-radius: 10px;" required>
                                         <option value="">Pilih Jurnalis</option>
                                         <?php if(isset($members)): foreach($members as $m): ?>
-                                        <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?></option>
+                                        <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?>
+                                        </option>
                                         <?php endforeach; endif; ?>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Foto Dokumentasi</label>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Foto
+                                        Dokumentasi</label>
                                     <input type="file" name="fotodokumentasi" class="form-control form-control-lg fs-6"
                                         style="border-radius: 10px;" accept="image/*">
                                     <small class="text-muted">Format: JPG, PNG, GIF. Maksimal 2MB</small>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Konten Berita</label>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Konten
+                                        Berita</label>
                                     <textarea name="isi" class="form-control form-control-lg fs-6"
                                         style="border-radius: 10px;" rows="6" required
                                         placeholder="Tulis isi berita lengkap di sini..."></textarea>
@@ -543,7 +600,8 @@
                             <input type="hidden" name="id" id="edit_id">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Judul Berita</label>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Judul
+                                        Berita</label>
                                     <input type="text" name="judulberita" id="edit_judul"
                                         class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
                                 </div>
@@ -553,22 +611,24 @@
                                         style="border-radius: 10px;" required>
                                         <option value="">Pilih Jurnalis</option>
                                         <?php if(isset($members)): foreach($members as $m): ?>
-                                        <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?></option>
+                                        <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?>
+                                        </option>
                                         <?php endforeach; endif; ?>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Foto Dokumentasi</label>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Foto
+                                        Dokumentasi</label>
                                     <input type="file" name="fotodokumentasi" class="form-control form-control-lg fs-6"
                                         style="border-radius: 10px;" accept="image/*">
                                     <small class="text-muted">Biarkan kosong jika tidak ingin mengganti foto</small>
                                     <input type="hidden" name="old_foto" id="edit_foto">
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Konten Berita</label>
-                                    <textarea name="isi" id="edit_isi"
-                                        class="form-control form-control-lg fs-6" style="border-radius: 10px;"
-                                        rows="6" required></textarea>
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Konten
+                                        Berita</label>
+                                    <textarea name="isi" id="edit_isi" class="form-control form-control-lg fs-6"
+                                        style="border-radius: 10px;" rows="6" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -583,17 +643,21 @@
             </div>
         </div>
 
-        <!-- MODAL PREVIEW IMAGE -->
-        <div class="modal fade" id="modalPreviewImage" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal fade modal-glass" id="modalPreviewImage" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
+
                     <div class="modal-header">
-                        <h5 class="modal-title">Preview Foto</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title">
+                            <i class="bi bi-image me-2"></i>Preview Foto
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body text-center">
-                        <img src="" alt="Preview" id="preview_image" class="img-fluid rounded" style="max-height: 500px;">
+
+                    <div class="modal-body">
+                        <img id="preview_image_target" src="" alt="Detail Foto" class="img-preview-clean">
                     </div>
+
                 </div>
             </div>
         </div>
@@ -642,9 +706,15 @@
         });
 
         $(document).on('click', '.btn-preview-image', function () {
-            let foto = $(this).data('foto');
-            $('#preview_image').attr('src', foto);
+            let fotoUrl = $(this).data('foto');
+
+            $('#preview_image_target').attr('src', fotoUrl);
+
             $('#modalPreviewImage').modal('show');
+        });
+
+        $('#modalPreviewImage').on('hidden.bs.modal', function () {
+            $('#preview_image_target').attr('src', '');
         });
 
         <?php if(isset($_SESSION['flash_message'])): ?>
@@ -670,4 +740,5 @@
         })
     </script>
 </body>
+
 </html>

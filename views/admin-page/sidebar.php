@@ -23,8 +23,8 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
 
+                <li class="sidebar-title">Utama</li>
                 <li class="sidebar-item <?= $is_dashboard ? 'active' : '' ?>">
                     <a href="<?= BASE_URL ?>/admin" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
@@ -32,56 +32,55 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= isActive($uri, '/admin/editor') ?>">
-                    <a href="<?= BASE_URL ?>/admin/editor" class='sidebar-link'>
-                        <i class="bi bi-people-fill"></i>
-                        <span>Manajemen Editor</span>
-                    </a>
-                </li>
-
                 <li class="sidebar-item <?= isActive($uri, '/admin/kategori') ?>">
                     <a href="<?= BASE_URL ?>/admin/kategori" class='sidebar-link'>
                         <i class="bi bi-tags-fill"></i>
-                        <span>Kategori</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item <?= isActive($uri, '/admin/member') ?>">
-                    <a href="<?= BASE_URL ?>/admin/member" class='sidebar-link'>
-                        <i class="bi bi-person-lines-fill"></i>
-                        <span>Member</span>
-                    </a>
-                </li>
-                
-                <li class="sidebar-item <?= isActive($uri, '/admin/publikasi') ?>">
-                    <a href="<?= BASE_URL ?>/admin/publikasi" class='sidebar-link'>
-                        <i class="bi bi-journal-check"></i>
-                        <span>Approval Publikasi</span>
+                        <span>Data Kategori</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item <?= isActive($uri, '/admin/fasilitas') ?>">
                     <a href="<?= BASE_URL ?>/admin/fasilitas" class='sidebar-link'>
-                        <i class="bi bi-display-fill"></i>
-                        <span>Fasilitas</span>
+                        <i class="bi bi-display-fill"></i> <span>Fasilitas Lab</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item <?= isActive($uri, '/admin/editor') ?>">
+                    <a href="<?= BASE_URL ?>/admin/editor" class='sidebar-link'>
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Akun Editor</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item <?= isActive($uri, '/admin/member') ?>">
+                    <a href="<?= BASE_URL ?>/admin/member" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Akun Member</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item <?= isActive($uri, '/admin/berita') ?>">
                     <a href="<?= BASE_URL ?>/admin/berita" class='sidebar-link'>
                         <i class="bi bi-newspaper"></i>
-                        <span>Approval Berita</span>
+                        <span>Validasi Berita</span>
                     </a>
                 </li>
 
-                <li class="sidebar-title">Akun</li>
+                <li class="sidebar-item <?= isActive($uri, '/admin/publikasi') ?>">
+                    <a href="<?= BASE_URL ?>/admin/publikasi" class='sidebar-link'>
+                        <i class="bi bi-journal-check"></i>
+                        <span>Validasi Publikasi</span>
+                    </a>
+                </li>
 
+                <li class="sidebar-title">Keluar</li>
                 <li class="sidebar-item">
                     <a href="<?= BASE_URL ?>/logout" id="btn-logout" class="sidebar-link">
                         <i class="bi bi-power text-danger"></i>
-                        <span class="text-danger">Logout</span>
+                        <span class="text-danger fw-bold">Logout</span>
                     </a>
                 </li>
+
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

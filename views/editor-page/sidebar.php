@@ -1,9 +1,9 @@
 <?php
-$uri = $_SERVER['REQUEST_URI'];
-
-$is_dashboard = (strpos($uri, '/editor') !== false) && (strpos($uri, '/editor/publikasi') === false);
-
-$is_publikasi = strpos($uri, '/editor/publikasi') !== false;
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+function isActive($uri, $path) {
+    return strpos($uri, $path) !== false ? 'active' : '';
+}
+$is_dashboard = ($uri === '/pbl_semester3_lab_dt/editor' || $uri === '/pbl_semester3_lab_dt/editor/');
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -33,14 +33,14 @@ $is_publikasi = strpos($uri, '/editor/publikasi') !== false;
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= $is_publikasi ? 'active' : '' ?>">
+                <li class="sidebar-item <?= isActive($uri, '/editor/publikasi') ?>">
                     <a href="<?= BASE_URL ?>/editor/publikasi" class='sidebar-link'>
                         <i class="bi bi-journal-text"></i>
                         <span>Kelola Publikasi</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item <?=  $is_berita ? 'active' : '' ?>">
+                <li class="sidebar-item <?= isActive($uri, '/editor/berita') ?>">
                     <a href="<?= BASE_URL ?>/editor/berita" class='sidebar-link'>
                         <i class="bi bi-newspaper"></i>
                         <span>Kelola Berita</span>
