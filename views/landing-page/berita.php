@@ -100,7 +100,7 @@
                     style="background: linear-gradient(to top, rgba(39, 80, 91, 0.95), transparent); z-index: 2;">
                     <div class="col-lg-10">
                       <h2 class="fw-bold mb-3" style="font-size: 2rem; line-height: 1.3;">
-                        <a href="detail-blog.php" style="color: #fff; text-decoration: none;">
+                        <a href="<?= BASE_URL ?>/detail-berita" style="color: #fff; text-decoration: none;">
                           Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival
                           2025
                         </a>
@@ -121,7 +121,7 @@
                     style="background: linear-gradient(to top, rgba(39, 80, 91, 0.95), transparent); z-index: 2;">
                     <div class="col-lg-10">
                       <h2 class="fw-bold mb-3" style="font-size: 2rem; line-height: 1.3;">
-                        <a href="detail-blog.php" style="color: #fff; text-decoration: none;">
+                        <a href="<?= BASE_URL ?>/detail-berita" style="color: #fff; text-decoration: none;">
                           Tim JosJisBolo Polinema menjuarai lomba UI/UX Tingkat Nasional Dalam ajang Tecno Competition
                           Se-Indonesia
                         </a>
@@ -160,7 +160,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
                     Politeknik Negeri Malang.
                   </a>
@@ -181,7 +181,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Jurusan Teknologi Informasi Politeknik Negeri Malang melaksanakan kegiatan dengan tema "AI Ready
                     ASEAN
                     untuk Siswa"
@@ -203,7 +203,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
                     Politeknik Negeri Malang.
                   </a>
@@ -224,7 +224,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Jurusan Teknologi Informasi Politeknik Negeri Malang melaksanakan kegiatan dengan tema "AI Ready
                     ASEAN
                     untuk Siswa"
@@ -246,7 +246,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
                     Politeknik Negeri Malang.
                   </a>
@@ -267,7 +267,7 @@
               </div>
               <div class="card-body p-4 d-flex flex-column">
                 <h5 class="card-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
-                  <a href="detail-blog.php" style="color: #333; text-decoration: none;" class="stretched-link">
+                  <a href="<?= BASE_URL ?>/detail-berita" style="color: #333; text-decoration: none;" class="stretched-link">
                     Prestasi Gemilang! Mahasiswa Prodi D4 Sistem Informasi Bisnis Juara di Entrepreneurs Festival 2025
                     Politeknik Negeri Malang.
                   </a>

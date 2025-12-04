@@ -19,7 +19,8 @@ function authMiddleware($allowedRoles = []) {
 
 $router->add('GET', '/', 'PageController@index');
 $router->add('GET', '/sejarah', 'PageController@sejarah');
-$router->add('GET', '/blog', 'PageController@blog');
+$router->add('GET', '/berita', 'PageController@berita');
+$router->add('GET', '/detail-berita', 'PageController@detailBerita');
 $router->add('GET', '/login', 'PageController@login');
 $router->add('GET', '/tata-tertib', 'PageController@tataTertib');
 $router->add('GET', '/struktur-organisasi', 'PageController@strukturOrganisasi');

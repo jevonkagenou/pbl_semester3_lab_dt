@@ -18,7 +18,8 @@ class PageController {
 
     public function index() { \View::render('landing-page/index'); }
     public function sejarah() { \View::render('landing-page/sejarah'); }
-    public function blog() { \View::render('landing-page/blog'); }
+    public function berita() { \View::render('landing-page/berita'); }
+    public function detailBerita() { \View::render('landing-page/detail-berita'); }
     public function login() { \View::render('landing-page/login'); }
     public function tataTertib() { \View::render('landing-page/tata-tertib'); }
     public function strukturOrganisasi() { \View::render('landing-page/struktur-organisasi'); }
