@@ -34,6 +34,56 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+    <style>
+        /* Base Style untuk Card (Sesuai Gambar Biru) */
+        .member-card {
+            background-color: #ffffffff;
+            /* Warna biru gelap sesuai gambar */
+            border-radius: 10px;
+            /* Sudut membulat */
+            transition: all 0.3s ease-in-out;
+            /* Animasi halus */
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styling Gambar Foto */
+        .member-card img {
+            border-radius: 6px;
+            width: 100%;
+            object-fit: cover;
+            /* Menjaga aspek rasio agar foto terlihat rapi */
+        }
+
+        /* Styling Nama (Putih) */
+        .member-card h5 {
+            color: #2C4964 !important;
+            font-size: 1rem;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Styling Jabatan (Abu-abu terang/Kuning tipis) */
+        .member-card p {
+            color: #fca311 !important;
+            /* Warna aksen oranye/emas untuk jabatan agar kontras */
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* --- EFEK HOVER --- */
+        .member-card:hover {
+            transform: translateY(-10px);
+            /* Kartu naik ke atas 10px */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            /* Bayangan lebih dalam */
+            background-color: #ffffffff;
+            /* Warna biru sedikit lebih terang saat disentuh */
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="service-details-page">
@@ -51,69 +101,69 @@
 
                 <div class="row justify-content-center mb-5">
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
+                        <div class="member-card p-4 text-center h-100">
                             <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Yoppy Yunhasnawa"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Yoppy Yunhasnawa, S.ST., M.Sc.</h5>
-                            <p class="text-muted small mb-0">Kepala Lab</p>
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Yoppy Yunhasnawa, S.ST., M.Sc.</h5>
+                            <p class="mb-0">Kepala Lab</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row gy-4 mb-5">
+                <div class="row gy-4 mb-4">
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="M. Hasyim Ratsanjani"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">M. Hasyim Ratsanjani, S.Kom., M.Kom</h5>
-                            <p class="text-muted small mb-0">Peneliti</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-1.png" alt="M. Hasyim Ratsanjani"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">M. Hasyim Ratsanjani, S.Kom., M.Kom</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Luqman Affandi"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Luqman Affandi, S.Kom., MMSI</h5>
-                            <p class="text-muted small mb-0">Peneliti</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-2.png" alt="Luqman Affandi"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Luqman Affandi, S.Kom., MMSI</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Gunawan Budiprasetyo"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Gunawan Budiprasetyo, ST., MMT., Ph.D.</h5>
-                            <p class="text-muted small mb-0">Peneliti</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-3.png" alt="Gunawan Budiprasetyo"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Gunawan Budiprasetyo, ST., MMT., Ph.D.</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="row gy-4">
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Vit Zuraida"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Vit Zuraida,S.Kom., M.Kom.</h5>
-                            <p class="text-muted small mb-0">Kepala Lab</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-4.png" alt="Vit Zuraida"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Vit Zuraida,S.Kom., M.Kom.</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Habibie Ed Dien"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Habibie Ed Dien, S.Kom., M.T.</h5>
-                            <p class="text-muted small mb-0">Kepala Lab</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/team/peneliti-5.png" alt="Habibie Ed Dien"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Habibie Ed Dien, S.Kom., M.T.</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="member-card bg-white shadow-sm rounded-4 p-4 text-center h-100">
-                            <img src="<?= BASE_URL ?>/public/assets/img/kepala-lab.jpg" alt="Dika Rizky Yunianto"
-                                class="img-fluid rounded-4 mb-4" style="width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1" style="color: #2c4964;">Dika Rizky Yunianto, S.Kom, M.Kom</h5>
-                            <p class="text-muted small mb-0">Kepala Lab</p>
+                        <div class="member-card p-4 text-center h-100">
+                            <img src="<?= BASE_URL ?>/public/assets/img/peneliti-6.png" alt="Dika Rizky Yunianto"
+                                class="img-fluid mb-4">
+                            <h5 class="fw-bold mb-1">Dika Rizky Yunianto, S.Kom, M.Kom</h5>
+                            <p class="mb-0">Peneliti</p>
                         </div>
                     </div>
                 </div>

@@ -34,6 +34,73 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+    <style>
+        /* --- Base Style untuk Card Fasilitas --- */
+        .facility-card {
+            background-color: #ecf0f1;
+            /* Warna dasar abu-abu terang */
+            border-radius: 15px;
+            padding: 20px;
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+            /* Animasi transisi halus */
+            border: 1px solid transparent;
+            overflow: hidden;
+        }
+
+        /* Styling Gambar */
+        .facility-card .post-img {
+            overflow: hidden;
+            /* Penting agar zoom gambar tidak keluar batas */
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .facility-card .post-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            /* Animasi zoom gambar */
+        }
+
+        /* Styling Judul */
+        .facility-card .title a {
+            color: #2c4964;
+            text-decoration: none;
+            font-weight: 700;
+            pointer-events: none;
+            /* Sesuai kode asli Anda */
+            display: block;
+        }
+
+        /* Styling Konten Teks */
+        .facility-card .content p {
+            text-align: justify;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* --- EFEK HOVER --- */
+        .facility-card:hover {
+            background-color: #ffffff;
+            /* Berubah jadi putih bersih saat di-hover */
+            transform: translateY(-10px);
+            /* Kartu naik ke atas */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            /* Bayangan muncul */
+            border-color: #e2e6ea;
+            /* Sedikit border halus */
+        }
+
+        /* Efek Zoom pada Gambar saat Hover */
+        .facility-card:hover .post-img img {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body class="service-details-page">
@@ -69,25 +136,23 @@
                 </div>
             </div>
         </section>
+
         <section id="fasilitas" class="blog section py-5">
             <div class="container">
 
                 <div class="row gy-4 posts-list">
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
                                 <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Komputer Standar"
-                                    class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#"
-                                    style="color: #2c4964; text-decoration: none; pointer-events: none;">Komputer
-                                    Standar</a>
+                                <a href="#">Komputer Standar</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Laboratorium memiliki empat unit komputer standar sebagai perangkat utama untuk
                                     kegiatan praktikum dan riset awal. Perangkat ini tetap mendukung aktivitas
                                     pengolahan data sederhana.
@@ -97,18 +162,16 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
                                 <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Meja Kerja"
-                                    class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#" style="color: #2c4964; text-decoration: none; pointer-events: none;">Meja
-                                    Kerja</a>
+                                <a href="#">Meja Kerja</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Meja kerja disediakan sebagai area penempatan perangkat dan ruang aktivitas
                                     mahasiswa maupun dosen. Fasilitas ini membantu menciptakan lingkungan belajar yang
                                     tertata dan nyaman.
@@ -118,18 +181,16 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
                                 <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Kursi Praktikum"
-                                    class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#" style="color: #2c4964; text-decoration: none; pointer-events: none;">Kursi
-                                    Praktikum</a>
+                                <a href="#">Kursi Praktikum</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Kursi praktikum tersedia untuk mendukung kenyamanan pengguna selama proses
                                     pembelajaran dan penelitian. Penataannya disesuaikan agar kegiatan di laboratorium
                                     berlangsung efektif.
@@ -139,19 +200,16 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png"
-                                    alt="Perlengkapan Dasar" class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Perlengkapan Dasar"
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#"
-                                    style="color: #2c4964; text-decoration: none; pointer-events: none;">Perlengkapan
-                                    Dasar</a>
+                                <a href="#">Perlengkapan Dasar</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Laboratorium dilengkapi perlengkapan dasar setara ruang kelas, seperti kabel, stop
                                     kontak, dan perangkat kecil pendukung. Fasilitas ini membantu kegiatan praktikum
                                     berjalan tanpa hambatan teknis ringan.
@@ -161,18 +219,16 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png"
-                                    alt="Ruang Laboratorium" class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Ruang Laboratorium"
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#" style="color: #2c4964; text-decoration: none; pointer-events: none;">Ruang
-                                    Laboratorium</a>
+                                <a href="#">Ruang Laboratorium</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Sebuah ruangan khusus telah disiapkan untuk Laboratorium Teknologi Data sejak
                                     semester Genap 2024/2025. Ruangan ini menjadi pusat aktivitas riset, diskusi, dan
                                     pengembangan kompetensi bidang data.
@@ -182,18 +238,16 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6">
-                        <article style="background-color: #ecf0f1; border-radius: 15px; padding: 20px; height: 100%;">
+                        <article class="facility-card">
                             <div class="post-img text-center">
                                 <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Server Dasar"
-                                    class="img-fluid rounded-4 mb-3"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                    class="img-fluid">
                             </div>
                             <h2 class="title mb-3">
-                                <a href="#" style="color: #2c4964; text-decoration: none; pointer-events: none;">Server
-                                    Dasar</a>
+                                <a href="#">Server Dasar</a>
                             </h2>
                             <div class="content">
-                                <p style="text-align: justify; font-size: 14px; color: #555;">
+                                <p>
                                     Laboratorium mulai menyediakan server entry-level sebagai tahap awal pemenuhan
                                     kebutuhan komputasi. Infrastruktur ini mendukung eksperimen sederhana terkait big
                                     data dan pembelajaran cloud.
