@@ -38,6 +38,18 @@ class Publikasi {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM publikasi WHERE idpublikasi = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getByJudul($judul) {
+        $stmt = $this->db->prepare("SELECT * FROM publikasi WHERE judulpublikasi = :judul");
+        $stmt->execute([':judul' => $judul]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create($data) {
         $query = "INSERT INTO publikasi (judulpublikasi, tahunterbit, penulis, kategori, ringkasan, linkfile, status_publikasi) 
                   VALUES (:judul, :tahun, :penulis, :kategori, :ringkasan, :link, 'pending')";

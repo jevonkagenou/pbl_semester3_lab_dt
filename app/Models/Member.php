@@ -30,6 +30,12 @@ class Member {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByName($namamember) {
+        $stmt = $this->db->prepare("SELECT * FROM member WHERE namamember = :namamember");
+        $stmt->execute([':namamember' => $namamember]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getByNip($nip) {
         $stmt = $this->db->prepare("SELECT * FROM member WHERE nip = :nip");
         $stmt->execute([':nip' => $nip]);

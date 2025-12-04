@@ -61,9 +61,6 @@ if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) 
         <li class="dropdown"><a href="<?= BASE_URL ?>/tata-tertib"><span>Tata Tertib</span></a>
         </li>
 
-        <!-- <li><a href="<?= BASE_URL ?>/penelitian">Penelitian</a></li> -->
-        <li><a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6681213">Sinta</a></li>
-
         <li><a href="<?= BASE_URL ?>/berita">Berita</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -38,6 +38,12 @@ class Berita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByJudul($judul) {
+        $stmt = $this->db->prepare("SELECT * FROM berita WHERE judulberita = :judul");
+        $stmt->execute([':judul' => $judul]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getStats() {
         $query = "SELECT 
                     COUNT(*) as total,

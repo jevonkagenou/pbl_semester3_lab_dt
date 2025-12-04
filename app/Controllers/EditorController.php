@@ -25,6 +25,50 @@ class EditorController {
         $this->beritaModel = new Berita();
     }
 
+    private function setFlashAndRedirect($message, $type, $location) {
+        $_SESSION['flash_message'] = $message;
+        $_SESSION['flash_type'] = $type;
+        header("Location: $location");
+        exit;
+    }
+
+    private function handleFileUpload($fileInputName, $targetDir, $defaultImage = null) {
+        if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] !== UPLOAD_ERR_OK) {
+            return $defaultImage;
+        }
+
+        $file = $_FILES[$fileInputName];
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        $maxSize = 2 * 1024 * 1024;
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $file['tmp_name']);
+        finfo_close($finfo);
+
+        if (!in_array($mime, $allowedTypes)) {
+            return ['error' => 'Format file harus JPG, PNG, atau GIF.'];
+        }
+
+        if (!getimagesize($file['tmp_name'])) {
+             return ['error' => 'File bukan gambar valid.'];
+        }
+
+        if ($file['size'] > $maxSize) {
+            return ['error' => 'Ukuran file maksimal 2MB.'];
+        }
+
+        if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
+        
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $newName = uniqid('img_') . '.' . $ext;
+
+        if (move_uploaded_file($file['tmp_name'], $targetDir . $newName)) {
+            return $newName;
+        }
+
+        return ['error' => 'Gagal mengupload file ke server.'];
+    }
+
     public function index() {
         $this->publikasi();
     }
@@ -43,140 +87,115 @@ class EditorController {
         ]);
     }
 
-    private function validateInput($data) {
-        $errors = [];
-
-        if (empty(trim($data['judulpublikasi']))) {
-            $errors[] = "Judul publikasi tidak boleh kosong.";
-        } elseif (strlen(trim($data['judulpublikasi'])) < 5) {
-            $errors[] = "Judul publikasi terlalu pendek (min. 5 karakter).";
-        }
-
-        $currentYear = date('Y');
-        if (empty($data['tahunterbit'])) {
-            $errors[] = "Tahun terbit wajib diisi.";
-        } elseif (!is_numeric($data['tahunterbit'])) {
-            $errors[] = "Tahun terbit harus berupa angka.";
-        } elseif ($data['tahunterbit'] < 1900 || $data['tahunterbit'] > ($currentYear + 1)) {
-            $errors[] = "Tahun terbit tidak valid (harus antara 1900 - " . ($currentYear + 1) . ").";
-        }
-
-        if (empty($data['penulis']) || !is_numeric($data['penulis'])) {
-            $errors[] = "Penulis tidak valid atau belum dipilih.";
-        }
-
-        if (empty($data['kategori']) || !is_numeric($data['kategori'])) {
-            $errors[] = "Kategori tidak valid atau belum dipilih.";
-        }
-
-        if (empty(trim($data['ringkasan']))) {
-            $errors[] = "Ringkasan wajib diisi.";
-        }
-
-        if (empty(trim($data['linkfile']))) {
-            $errors[] = "Link file eksternal wajib diisi.";
-        } elseif (!filter_var($data['linkfile'], FILTER_VALIDATE_URL)) {
-            $errors[] = "Format Link tidak valid (harus diawali http:// atau https://).";
-        }
-
-        return $errors;
-    }
-
     public function storePublikasi() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            $rawData = [
-                'judulpublikasi' => trim($_POST['judulpublikasi'] ?? ''),
-                'tahunterbit'    => trim($_POST['tahunterbit'] ?? ''),
-                'penulis'        => $_POST['penulis'] ?? '',
-                'kategori'       => $_POST['kategori'] ?? '',
-                'ringkasan'      => trim($_POST['ringkasan'] ?? ''),
-                'linkfile'       => trim($_POST['linkfile'] ?? '')
+            $judul = trim(htmlspecialchars($_POST['judulpublikasi'] ?? ''));
+            $tahun = trim($_POST['tahunterbit'] ?? '');
+            $penulis = $_POST['penulis'] ?? '';
+            $kategori = $_POST['kategori'] ?? '';
+            $ringkasan = trim(htmlspecialchars($_POST['ringkasan'] ?? ''));
+            $linkfile = trim($_POST['linkfile'] ?? '');
+
+            if (empty($judul) || empty($tahun) || empty($penulis) || empty($kategori) || empty($ringkasan) || empty($linkfile)) {
+                $this->setFlashAndRedirect("Semua field wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if (strlen($judul) < 5 || strlen($judul) > 200) {
+                $this->setFlashAndRedirect("Judul minimal 5 dan maksimal 200 karakter.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            $currentYear = date('Y');
+            if (!ctype_digit($tahun) || $tahun < 1900 || $tahun > ($currentYear + 1)) {
+                $this->setFlashAndRedirect("Tahun terbit tidak valid (1900 - " . ($currentYear + 1) . ").", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if (!filter_var($linkfile, FILTER_VALIDATE_URL)) {
+                $this->setFlashAndRedirect("Link file harus berupa URL valid (http/https).", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if ($this->publikasiModel->getByJudul($judul)) {
+                $this->setFlashAndRedirect("Judul publikasi '$judul' sudah ada.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            $data = [
+                'judulpublikasi' => $judul,
+                'tahunterbit'    => $tahun,
+                'penulis'        => $penulis,
+                'kategori'       => $kategori,
+                'ringkasan'      => $ringkasan,
+                'linkfile'       => $linkfile
             ];
 
-            $errors = $this->validateInput($rawData);
-
-            if (!empty($errors)) {
-                $_SESSION['flash_message'] = implode('<br>', $errors);
-                $_SESSION['flash_type'] = "error";
-                header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-                exit;
-            }
-
-            if ($this->publikasiModel->create($rawData)) {
-                $_SESSION['flash_message'] = "Publikasi berhasil diajukan!";
-                $_SESSION['flash_type'] = "success";
+            if ($this->publikasiModel->create($data)) {
+                $this->setFlashAndRedirect("Publikasi berhasil diajukan!", "success", "/pbl_semester3_lab_dt/editor/publikasi");
             } else {
-                $_SESSION['flash_message'] = "Terjadi kesalahan sistem saat menyimpan data.";
-                $_SESSION['flash_type'] = "error";
+                $this->setFlashAndRedirect("Gagal menyimpan publikasi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
             }
-            
-            header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-            exit;
         }
     }
 
     public function updatePublikasi() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            $rawData = [
-                'id'             => $_POST['id'] ?? null,
-                'judulpublikasi' => trim($_POST['judulpublikasi'] ?? ''),
-                'tahunterbit'    => trim($_POST['tahunterbit'] ?? ''),
-                'penulis'        => $_POST['penulis'] ?? '',
-                'kategori'       => $_POST['kategori'] ?? '',
-                'ringkasan'      => trim($_POST['ringkasan'] ?? ''),
-                'linkfile'       => trim($_POST['linkfile'] ?? '')
+            $id = $_POST['id'] ?? null;
+            $judul = trim(htmlspecialchars($_POST['judulpublikasi'] ?? ''));
+            $tahun = trim($_POST['tahunterbit'] ?? '');
+            $penulis = $_POST['penulis'] ?? '';
+            $kategori = $_POST['kategori'] ?? '';
+            $ringkasan = trim(htmlspecialchars($_POST['ringkasan'] ?? ''));
+            $linkfile = trim($_POST['linkfile'] ?? '');
+
+            if (empty($id) || !is_numeric($id)) {
+                $this->setFlashAndRedirect("ID Publikasi tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if (empty($judul) || empty($tahun) || empty($penulis) || empty($kategori) || empty($ringkasan) || empty($linkfile)) {
+                $this->setFlashAndRedirect("Semua field wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            $currentYear = date('Y');
+            if (!ctype_digit($tahun) || $tahun < 1900 || $tahun > ($currentYear + 1)) {
+                $this->setFlashAndRedirect("Tahun terbit tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if (!filter_var($linkfile, FILTER_VALIDATE_URL)) {
+                $this->setFlashAndRedirect("Format Link tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            $existing = $this->publikasiModel->getByJudul($judul);
+            if ($existing && reset($existing) != $id) {
+                $this->setFlashAndRedirect("Judul publikasi '$judul' sudah digunakan data lain.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            $data = [
+                'id'             => $id,
+                'judulpublikasi' => $judul,
+                'tahunterbit'    => $tahun,
+                'penulis'        => $penulis,
+                'kategori'       => $kategori,
+                'ringkasan'      => $ringkasan,
+                'linkfile'       => $linkfile
             ];
 
-            if (empty($rawData['id']) || !is_numeric($rawData['id'])) {
-                $_SESSION['flash_message'] = "ID Publikasi tidak ditemukan.";
-                $_SESSION['flash_type'] = "error";
-                header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-                exit;
-            }
-
-            $errors = $this->validateInput($rawData);
-
-            if (!empty($errors)) {
-                $_SESSION['flash_message'] = implode('<br>', $errors);
-                $_SESSION['flash_type'] = "error";
-                header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-                exit;
-            }
-
-            if ($this->publikasiModel->update($rawData)) {
-                $_SESSION['flash_message'] = "Publikasi berhasil diperbarui!";
-                $_SESSION['flash_type'] = "success";
+            if ($this->publikasiModel->update($data)) {
+                $this->setFlashAndRedirect("Publikasi diperbarui!", "success", "/pbl_semester3_lab_dt/editor/publikasi");
             } else {
-                $_SESSION['flash_message'] = "Gagal memperbarui data. Silakan coba lagi.";
-                $_SESSION['flash_type'] = "error";
+                $this->setFlashAndRedirect("Gagal update publikasi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
             }
-
-            header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-            exit;
         }
     }
 
     public function deletePublikasi() {
         $id = $_GET['id'] ?? null;
         
-        // Validasi ID sebelum hapus
-        if (!$id || !is_numeric($id)) {
-            $_SESSION['flash_message'] = "Publikasi tidak ditemukan.";
-            $_SESSION['flash_type'] = "error";
-        } else {
-            if($this->publikasiModel->delete($id)) {
-                $_SESSION['flash_message'] = "Publikasi berhasil dihapus!";
-                $_SESSION['flash_type'] = "success";
-            } else {
-                $_SESSION['flash_message'] = "Gagal menghapus publikasi.";
-                $_SESSION['flash_type'] = "error";
-            }
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
         }
-        
-        header('Location: /pbl_semester3_lab_dt/editor/publikasi');
-        exit;
+
+        if ($this->publikasiModel->delete($id)) {
+            $this->setFlashAndRedirect("Publikasi dihapus!", "success", "/pbl_semester3_lab_dt/editor/publikasi");
+        } else {
+            $this->setFlashAndRedirect("Gagal menghapus publikasi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+        }
     }
 
     public function berita() {
@@ -191,163 +210,113 @@ class EditorController {
         ]);
     }
 
-    private function validateBeritaInput($data) {
-        $errors = [];
-
-        if (empty(trim($data['judulberita']))) {
-            $errors[] = "Judul berita tidak boleh kosong.";
-        } elseif (strlen(trim($data['judulberita'])) < 5) {
-            $errors[] = "Judul berita terlalu pendek (min. 5 karakter).";
-        }
-
-        if (empty(trim($data['isi']))) {
-            $errors[] = "Isi berita wajib diisi.";
-        } elseif (strlen(trim($data['isi'])) < 20) {
-            $errors[] = "Isi berita terlalu pendek (min. 20 karakter).";
-        }
-
-        // Ganti 'penulis' menjadi 'jurnalis'
-        if (empty($data['jurnalis']) || !is_numeric($data['jurnalis'])) {
-            $errors[] = "Jurnalis tidak valid atau belum dipilih.";
-        }
-
-        return $errors;
-    }
-
-    private function uploadFotoBerita($file) {
-        if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
-            return 'default_news.jpg';
-        }
-
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
-        $fileType = mime_content_type($file['tmp_name']);
-        
-        if (!in_array($fileType, $allowedTypes)) {
-            throw new Exception("Format foto harus JPG, PNG, atau GIF.");
-        }
-
-        if ($file['size'] > 2 * 1024 * 1024) {
-            throw new Exception("Ukuran foto maksimal 2MB.");
-        }
-
-        $uploadDir = __DIR__ . '/../../public/uploads/berita/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $newName = uniqid('berita_') . '.' . $ext;
-        $targetPath = $uploadDir . $newName;
-
-        if (move_uploaded_file($file['tmp_name'], $targetPath)) {
-            return $newName;
-        }
-
-        throw new Exception("Gagal mengupload foto.");
-    }
-
     public function storeBerita() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            try {
-                $rawData = [
-                    'judulberita' => trim($_POST['judulberita'] ?? ''),
-                    'isi' => trim($_POST['isi'] ?? ''),
-                    'jurnalis' => $_POST['jurnalis'] ?? '' // Ganti 'penulis' menjadi 'jurnalis'
-                ];
+            $judul = trim(htmlspecialchars($_POST['judulberita'] ?? ''));
+            $isi = trim(htmlspecialchars($_POST['isi'] ?? ''));
+            $jurnalis = $_POST['jurnalis'] ?? '';
 
-                $errors = $this->validateBeritaInput($rawData);
-                
-                if (!empty($errors)) {
-                    throw new Exception(implode('<br>', $errors));
-                }
-
-                $fotoName = 'default_news.jpg';
-                if (isset($_FILES['fotodokumentasi']) && $_FILES['fotodokumentasi']['error'] === UPLOAD_ERR_OK) {
-                    $fotoName = $this->uploadFotoBerita($_FILES['fotodokumentasi']);
-                }
-
-                $rawData['fotodokumentasi'] = $fotoName;
-
-                if ($this->beritaModel->create($rawData)) {
-                    $_SESSION['flash_message'] = "Berita berhasil diajukan! Menunggu persetujuan admin.";
-                    $_SESSION['flash_type'] = "success";
-                } else {
-                    throw new Exception("Terjadi kesalahan sistem saat menyimpan data.");
-                }
-                
-            } catch (Exception $e) {
-                $_SESSION['flash_message'] = $e->getMessage();
-                $_SESSION['flash_type'] = "error";
+            if (empty($judul) || empty($isi) || empty($jurnalis)) {
+                $this->setFlashAndRedirect("Judul, Isi, dan Jurnalis wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
-            
-            header('Location: /pbl_semester3_lab_dt/editor/berita');
-            exit;
+
+            if (strlen($judul) < 5 || strlen($judul) > 200) {
+                $this->setFlashAndRedirect("Judul minimal 5 karakter.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            if (strlen($isi) < 20) {
+                $this->setFlashAndRedirect("Isi berita terlalu pendek.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            if ($this->beritaModel->getByJudul($judul)) {
+                $this->setFlashAndRedirect("Judul berita '$judul' sudah ada.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            $uploadDir = __DIR__ . '/../../public/uploads/berita/';
+            $foto = $this->handleFileUpload('fotodokumentasi', $uploadDir, 'default_news.jpg');
+
+            if (is_array($foto) && isset($foto['error'])) {
+                $this->setFlashAndRedirect($foto['error'], "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            $data = [
+                'judulberita' => $judul,
+                'isi' => $isi,
+                'jurnalis' => $jurnalis,
+                'fotodokumentasi' => $foto
+            ];
+
+            if ($this->beritaModel->create($data)) {
+                $this->setFlashAndRedirect("Berita berhasil diajukan!", "success", "/pbl_semester3_lab_dt/editor/berita");
+            } else {
+                if ($foto != 'default_news.jpg') unlink($uploadDir . $foto);
+                $this->setFlashAndRedirect("Gagal menyimpan berita.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
         }
     }
 
     public function updateBerita() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            try {
-                $rawData = [
-                    'id' => $_POST['id'] ?? null,
-                    'judulberita' => trim($_POST['judulberita'] ?? ''),
-                    'isi' => trim($_POST['isi'] ?? ''),
-                    'jurnalis' => $_POST['jurnalis'] ?? '' // Ganti 'penulis' menjadi 'jurnalis'
-                ];
+            $id = $_POST['id'] ?? null;
+            $judul = trim(htmlspecialchars($_POST['judulberita'] ?? ''));
+            $isi = trim(htmlspecialchars($_POST['isi'] ?? ''));
+            $jurnalis = $_POST['jurnalis'] ?? '';
 
-                if (empty($rawData['id']) || !is_numeric($rawData['id'])) {
-                    throw new Exception("ID Berita tidak ditemukan.");
-                }
-
-                $errors = $this->validateBeritaInput($rawData);
-                
-                if (!empty($errors)) {
-                    throw new Exception(implode('<br>', $errors));
-                }
-
-                $existingBerita = $this->beritaModel->getById($rawData['id']);
-                $fotoName = $existingBerita['fotodokumentasi'] ?? 'default_news.jpg';
-                
-                if (isset($_FILES['fotodokumentasi']) && $_FILES['fotodokumentasi']['error'] === UPLOAD_ERR_OK) {
-                    $fotoName = $this->uploadFotoBerita($_FILES['fotodokumentasi']);
-                }
-
-                $rawData['fotodokumentasi'] = $fotoName;
-
-                if ($this->beritaModel->update($rawData)) {
-                    $_SESSION['flash_message'] = "Berita berhasil diperbarui! Status kembali pending.";
-                    $_SESSION['flash_type'] = "success";
-                } else {
-                    throw new Exception("Gagal memperbarui data. Silakan coba lagi.");
-                }
-                
-            } catch (Exception $e) {
-                $_SESSION['flash_message'] = $e->getMessage();
-                $_SESSION['flash_type'] = "error";
+            if (empty($id) || !is_numeric($id)) {
+                $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
-            header('Location: /pbl_semester3_lab_dt/editor/berita');
-            exit;
+            if (empty($judul) || empty($isi) || empty($jurnalis)) {
+                $this->setFlashAndRedirect("Data wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            $existing = $this->beritaModel->getByJudul($judul);
+            if ($existing && reset($existing) != $id) {
+                $this->setFlashAndRedirect("Judul berita '$judul' sudah digunakan.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            $uploadDir = __DIR__ . '/../../public/uploads/berita/';
+            
+            $oldData = $this->beritaModel->getById($id);
+            $oldFoto = $oldData['fotodokumentasi'] ?? 'default_news.jpg';
+
+            $foto = $this->handleFileUpload('fotodokumentasi', $uploadDir, $oldFoto);
+
+            if (is_array($foto) && isset($foto['error'])) {
+                $this->setFlashAndRedirect($foto['error'], "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            if ($foto !== $oldFoto && $oldFoto !== 'default_news.jpg') {
+                if (file_exists($uploadDir . $oldFoto)) unlink($uploadDir . $oldFoto);
+            }
+
+            $data = [
+                'id' => $id,
+                'judulberita' => $judul,
+                'isi' => $isi,
+                'jurnalis' => $jurnalis,
+                'fotodokumentasi' => $foto
+            ];
+
+            if ($this->beritaModel->update($data)) {
+                $this->setFlashAndRedirect("Berita diperbarui! Status pending.", "success", "/pbl_semester3_lab_dt/editor/berita");
+            } else {
+                $this->setFlashAndRedirect("Gagal update berita.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
         }
     }
 
     public function deleteBerita() {
         $id = $_GET['id'] ?? null;
         
-        if (!$id || !is_numeric($id)) {
-            $_SESSION['flash_message'] = "Berita tidak ditemukan.";
-            $_SESSION['flash_type'] = "error";
-        } else {
-            if($this->beritaModel->delete($id)) {
-                $_SESSION['flash_message'] = "Berita berhasil dihapus!";
-                $_SESSION['flash_type'] = "success";
-            } else {
-                $_SESSION['flash_message'] = "Gagal menghapus berita.";
-                $_SESSION['flash_type'] = "error";
-            }
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID tidak valid.", "error", "/pbl_semester3_lab_dt/editor/berita");
         }
-        
-        header('Location: /pbl_semester3_lab_dt/editor/berita');
-        exit;
+
+        if ($this->beritaModel->delete($id)) {
+            $this->setFlashAndRedirect("Berita dihapus!", "success", "/pbl_semester3_lab_dt/editor/berita");
+        } else {
+            $this->setFlashAndRedirect("Gagal menghapus berita.", "error", "/pbl_semester3_lab_dt/editor/berita");
+        }
     }
 }
