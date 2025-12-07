@@ -14,12 +14,12 @@ class Publikasi {
 
     public function getAll() {
         $query = "SELECT p.*, 
-                         m.namamember, 
-                         k.namakategori 
-                  FROM publikasi p
-                  LEFT JOIN member m ON p.penulis = m.idmember
-                  LEFT JOIN kategori k ON p.kategori = k.idkategori
-                  ORDER BY p.idpublikasi DESC";
+                        m.namamember, 
+                        k.namakategori 
+                FROM publikasi p
+                LEFT JOIN member m ON p.penulis = m.idmember
+                LEFT JOIN kategori_publikasi k ON p.kategori = k.idkategori
+                ORDER BY p.idpublikasi DESC";
         
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -74,7 +74,7 @@ class Publikasi {
                     linkfile = :link,
                     status_publikasi = 'pending',
                     pesan_admin = NULL 
-                  WHERE idpublikasi = :id";
+                WHERE idpublikasi = :id";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             ':judul' => $data['judulpublikasi'],

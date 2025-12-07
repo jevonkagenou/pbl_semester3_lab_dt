@@ -693,10 +693,18 @@
 
         <?php if(isset($_SESSION['flash_message'])): ?>
         Swal.fire({
-            icon: '<?= $_SESSION['flash_type'] ?>', title: 'Info', text: '<?= $_SESSION['flash_message'] ?>',
-            timer: 3000, showConfirmButton: false, toast: true, position: 'top-end'
+            icon: <?= json_encode($_SESSION['flash_type']) ?>, 
+            title: 'Info',
+            text: <?= json_encode($_SESSION['flash_message']) ?>, 
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
         });
-        <?php unset($_SESSION['flash_message']); unset($_SESSION['flash_type']); ?>
+        <?php 
+            unset($_SESSION['flash_message']); 
+            unset($_SESSION['flash_type']); 
+        ?>
         <?php endif; ?>
     </script>
     <script>

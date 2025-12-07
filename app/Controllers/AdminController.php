@@ -163,18 +163,20 @@ class AdminController {
     public function storeKategori() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nama = trim(htmlspecialchars($_POST['namakategori'] ?? ''));
+            $type = $_POST['type'] ?? 'berita'; 
+
+            if (!in_array($type, ['berita', 'publikasi'])) {
+                $this->setFlashAndRedirect("Tipe kategori tidak valid.", "error", "/pbl_semester3_lab_dt/admin/kategori");
+            }
 
             if (empty($nama)) $this->setFlashAndRedirect("Nama kategori wajib diisi.", "error", "/pbl_semester3_lab_dt/admin/kategori");
-            if (strlen($nama) < 3 || strlen($nama) > 50) {
-                $this->setFlashAndRedirect("Nama kategori harus 3-50 karakter.", "error", "/pbl_semester3_lab_dt/admin/kategori");
+            
+            if ($this->kategoriModel->getByName($type, $nama)) {
+                $this->setFlashAndRedirect("Kategori " . $nama . " sudah ada di " . ucfirst($type), "error", "/pbl_semester3_lab_dt/admin/kategori");
             }
 
-            if ($this->kategoriModel->getByName($nama)) {
-                $this->setFlashAndRedirect("Kategori " . $nama . " sudah ada.", "error", "/pbl_semester3_lab_dt/admin/kategori");
-            }
-
-            if ($this->kategoriModel->create(['namakategori' => $nama])) {
-                $this->setFlashAndRedirect("Kategori berhasil ditambahkan!", "success", "/pbl_semester3_lab_dt/admin/kategori");
+            if ($this->kategoriModel->create($type, ['namakategori' => $nama])) {
+                $this->setFlashAndRedirect("Kategori $type berhasil ditambahkan!", "success", "/pbl_semester3_lab_dt/admin/kategori");
             } else {
                 $this->setFlashAndRedirect("Gagal tambah kategori.", "error", "/pbl_semester3_lab_dt/admin/kategori");
             }
@@ -185,17 +187,16 @@ class AdminController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'] ?? '';
             $nama = trim(htmlspecialchars($_POST['namakategori'] ?? ''));
+            $type = $_POST['type'] ?? 'berita';
 
             if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/kategori");
             
-            if (empty($nama) || strlen($nama) > 50) $this->setFlashAndRedirect("Nama kategori tidak valid.", "error", "/pbl_semester3_lab_dt/admin/kategori");
-
-            $existing = $this->kategoriModel->getByName($nama);
-            if ($existing && reset($existing) != $id) {
+            $existing = $this->kategoriModel->getByName($type, $nama);
+            if ($existing && $existing['idkategori'] != $id) {
                 $this->setFlashAndRedirect("Kategori " . $nama . " sudah ada.", "error", "/pbl_semester3_lab_dt/admin/kategori");
             }
 
-            if ($this->kategoriModel->update(['id' => $id, 'namakategori' => $nama])) {
+            if ($this->kategoriModel->update($type, ['id' => $id, 'namakategori' => $nama])) {
                 $this->setFlashAndRedirect("Kategori diperbarui!", "success", "/pbl_semester3_lab_dt/admin/kategori");
             } else {
                 $this->setFlashAndRedirect("Gagal update kategori.", "error", "/pbl_semester3_lab_dt/admin/kategori");
@@ -205,9 +206,11 @@ class AdminController {
 
     public function deleteKategori() {
         $id = $_GET['id'] ?? null;
+        $type = $_GET['type'] ?? 'berita';
+
         if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/kategori");
 
-        if ($this->kategoriModel->delete($id)) {
+        if ($this->kategoriModel->delete($type, $id)) {
             $this->setFlashAndRedirect("Kategori dihapus!", "success", "/pbl_semester3_lab_dt/admin/kategori");
         } else {
             $this->setFlashAndRedirect("Gagal menghapus.", "error", "/pbl_semester3_lab_dt/admin/kategori");
@@ -221,6 +224,8 @@ class AdminController {
             $gelar = trim(htmlspecialchars($_POST['gelar'] ?? ''));
             $email = trim(htmlspecialchars($_POST['email'] ?? ''));
             $bidang = trim(htmlspecialchars($_POST['bidangriset'] ?? ''));
+            $jabatan = trim(htmlspecialchars($_POST['jabatan'] ?? ''));
+            $link_sinta = trim(htmlspecialchars($_POST['link_sinta'] ?? ''));
 
             if (empty($nip) || empty($nama) || empty($email)) {
                 $this->setFlashAndRedirect("NIP, Nama, dan Email wajib diisi.", "error", "/pbl_semester3_lab_dt/admin/member");
@@ -244,7 +249,8 @@ class AdminController {
             if (strlen($nama) > 100) $this->setFlashAndRedirect("Nama terlalu panjang (Max 100).", "error", "/pbl_semester3_lab_dt/admin/member");
             if (strlen($gelar) > 50) $this->setFlashAndRedirect("Gelar terlalu panjang (Max 50).", "error", "/pbl_semester3_lab_dt/admin/member");
             if (strlen($bidang) > 255) $this->setFlashAndRedirect("Bidang Riset terlalu panjang.", "error", "/pbl_semester3_lab_dt/admin/member");
-            
+            if (strlen($jabatan) > 100) $this->setFlashAndRedirect("Jabatan terlalu panjang.", "error", "/pbl_semester3_lab_dt/admin/member");
+
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->setFlashAndRedirect("Format email tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
@@ -257,9 +263,15 @@ class AdminController {
             }
 
             $data = [
-                'nip' => $nip, 'namamember' => $nama, 'gelar' => $gelar,
-                'email' => $email, 'bidangriset' => $bidang,
-                'fotoprofil' => $fotoprofil, 'statusmember' => 'active'
+                'nip' => $nip, 
+                'namamember' => $nama, 
+                'gelar' => $gelar,
+                'email' => $email, 
+                'bidangriset' => $bidang,
+                'jabatan' => $jabatan,
+                'link_sinta' => $link_sinta,
+                'fotoprofil' => $fotoprofil, 
+                'statusmember' => 'active'
             ];
 
             if ($this->memberModel->create($data)) {
@@ -280,6 +292,8 @@ class AdminController {
             $email = trim(htmlspecialchars($_POST['email'] ?? ''));
             $bidang = trim(htmlspecialchars($_POST['bidangriset'] ?? ''));
             $status = $_POST['statusmember'] ?? '';
+            $jabatan = trim(htmlspecialchars($_POST['jabatan'] ?? ''));
+            $link_sinta = trim(htmlspecialchars($_POST['link_sinta'] ?? ''));
 
             if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/member");
             
@@ -288,17 +302,17 @@ class AdminController {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $this->setFlashAndRedirect("Email tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
 
             $existingName = $this->memberModel->getByName($nama);
-            if ($existingName && reset($existingName) != $id) {
+            if ($existingName && reset($existingName)['idmember'] != $id) {
                 $this->setFlashAndRedirect("Member " . $nama . " sudah ada.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
 
             $existingNip = $this->memberModel->getByNip($nip);
-            if ($existingNip && reset($existingNip) != $id) {
+            if ($existingNip && reset($existingNip)['idmember'] != $id) {
                 $this->setFlashAndRedirect("NIP " . $nip . " sudah digunakan member lain.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
 
             $existingEmail = $this->memberModel->getByEmail($email);
-            if ($existingEmail && reset($existingEmail) != $id) {
+            if ($existingEmail && reset($existingEmail)['idmember'] != $id) {
                 $this->setFlashAndRedirect("Email " . $email . " sudah digunakan member lain.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
 
@@ -315,9 +329,16 @@ class AdminController {
             }
 
             $data = [
-                'id' => $id, 'nip' => $nip, 'namamember' => $nama,
-                'gelar' => $gelar, 'email' => $email, 'bidangriset' => $bidang,
-                'fotoprofil' => $fotoprofil, 'statusmember' => $status
+                'id' => $id, 
+                'nip' => $nip, 
+                'namamember' => $nama,
+                'gelar' => $gelar, 
+                'email' => $email, 
+                'bidangriset' => $bidang,
+                'jabatan' => $jabatan,
+                'link_sinta' => $link_sinta,
+                'fotoprofil' => $fotoprofil, 
+                'statusmember' => $status
             ];
 
             if ($this->memberModel->update($data)) {

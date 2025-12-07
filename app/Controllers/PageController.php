@@ -16,6 +16,14 @@ use App\Models\Berita;
 
 class PageController {
 
+    // --- TAMBAHKAN CONSTRUCTOR INI ---
+    public function __construct() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+    // ---------------------------------
+
     public function index() { \View::render('landing-page/index'); }
     public function sejarah() { \View::render('landing-page/sejarah'); }
     public function berita() { \View::render('landing-page/berita'); }
@@ -73,8 +81,14 @@ class PageController {
 
     public function adminKategori() {
         $kategoriModel = new Kategori();
-        $kategori = $kategoriModel->getAll();
-        \View::render('admin-page/kategori', ['kategori' => $kategori]);
+        
+        $kategoriBerita = $kategoriModel->getAll('berita');
+        $kategoriPublikasi = $kategoriModel->getAll('publikasi');
+        
+        \View::render('admin-page/kategori', [
+            'kategoriBerita' => $kategoriBerita,
+            'kategoriPublikasi' => $kategoriPublikasi
+        ]);
     }
 
     public function adminMember() {
@@ -92,7 +106,8 @@ class PageController {
         $publikasi = $publikasiModel->getAll();
         $stats = $publikasiModel->getStats();
         $members = $memberModel->getAll();
-        $kategori = $kategoriModel->getAll();
+        
+        $kategori = $kategoriModel->getAll('publikasi'); 
 
         \View::render('admin-page/publikasi', [
             'publikasi' => $publikasi,
@@ -112,15 +127,19 @@ class PageController {
     public function adminBerita() {
         $beritaModel = new Berita();
         $memberModel = new Member();
+        $kategoriModel = new Kategori(); 
 
         $berita = $beritaModel->getAll();
         $stats = $beritaModel->getStats();
         $members = $memberModel->getAll();
+        
+        $kategori = $kategoriModel->getAll('berita');
 
         \View::render('admin-page/berita', [
             'berita' => $berita,
             'stats' => $stats,
-            'members' => $members
+            'members' => $members,
+            'kategori' => $kategori 
         ]);
     }
 
@@ -134,7 +153,8 @@ class PageController {
         $kategoriModel = new Kategori();
 
         $dataPublikasi = $publikasiModel->getAll();
-        $kategori = $kategoriModel->getAll();
+        $kategori = $kategoriModel->getAll('publikasi');
+        
         $members = $memberModel->getAll();
         $stats = $publikasiModel->getStats();
 
@@ -149,15 +169,19 @@ class PageController {
     public function editorBerita() {
         $beritaModel = new Berita();
         $memberModel = new Member();
+        $kategoriModel = new Kategori();
 
         $berita = $beritaModel->getAll();
         $members = $memberModel->getAll();
         $stats = $beritaModel->getStats();
+        
+        $kategori = $kategoriModel->getAll('berita');
 
         \View::render('editor-page/berita', [
             'berita' => $berita,
             'members' => $members,
-            'stats' => $stats
+            'stats' => $stats,
+            'kategori' => $kategori
         ]);
     }
 }

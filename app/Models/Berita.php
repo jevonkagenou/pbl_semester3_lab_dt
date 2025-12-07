@@ -15,9 +15,11 @@ class Berita {
     public function getAll() {
         $query = "SELECT b.*, 
                          m.namamember as jurnalis_nama,
-                         m.fotoprofil as jurnalis_foto
+                         m.fotoprofil as jurnalis_foto,
+                         k.namakategori
                   FROM berita b
                   LEFT JOIN member m ON b.jurnalis = m.idmember
+                  LEFT JOIN kategori_berita k ON b.kategori = k.idkategori
                   ORDER BY b.created_at DESC";
         
         $stmt = $this->db->prepare($query);
@@ -70,14 +72,15 @@ class Berita {
     }
 
     public function create($data) {
-        $query = "INSERT INTO berita (judulberita, isi, jurnalis, fotodokumentasi, status_berita, upload_at) 
-                  VALUES (:judul, :isi, :jurnalis, :foto, 'pending', NOW())";
+        $query = "INSERT INTO berita (judulberita, isi, jurnalis, kategori, fotodokumentasi, status_berita, upload_at) 
+                  VALUES (:judul, :isi, :jurnalis, :kategori, :foto, 'pending', NOW())";
         
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             ':judul' => $data['judulberita'],
             ':isi' => $data['isi'],
             ':jurnalis' => $data['jurnalis'],
+            ':kategori' => $data['kategori'], // Data baru
             ':foto' => $data['fotodokumentasi']
         ]);
     }
@@ -87,6 +90,7 @@ class Berita {
                     judulberita = :judul,
                     isi = :isi,
                     jurnalis = :jurnalis,
+                    kategori = :kategori,
                     fotodokumentasi = :foto,
                     status_berita = 'pending',
                     pesan_admin = NULL,
@@ -98,6 +102,7 @@ class Berita {
             ':judul' => $data['judulberita'],
             ':isi' => $data['isi'],
             ':jurnalis' => $data['jurnalis'],
+            ':kategori' => $data['kategori'], // Data baru
             ':foto' => $data['fotodokumentasi'],
             ':id' => $data['id']
         ]);

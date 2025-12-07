@@ -13,7 +13,7 @@ class Member {
     }
 
     public function getAll() {
-        $stmt = $this->db->prepare("SELECT * FROM member ORDER BY idmember DESC");
+        $stmt = $this->db->prepare("SELECT * FROM member ORDER BY created_at DESC");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -23,65 +23,73 @@ class Member {
                     COUNT(*) as total,
                     SUM(CASE WHEN statusmember = 'active' THEN 1 ELSE 0 END) as active,
                     SUM(CASE WHEN statusmember = 'inactive' THEN 1 ELSE 0 END) as inactive
-                FROM member";
-        
+                  FROM member";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getByName($namamember) {
-        $stmt = $this->db->prepare("SELECT * FROM member WHERE namamember = :namamember");
-        $stmt->execute([':namamember' => $namamember]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function getByName($nama) {
+        $stmt = $this->db->prepare("SELECT * FROM member WHERE namamember = :nama");
+        $stmt->execute([':nama' => $nama]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getByNip($nip) {
         $stmt = $this->db->prepare("SELECT * FROM member WHERE nip = :nip");
         $stmt->execute([':nip' => $nip]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getByEmail($email) {
         $stmt = $this->db->prepare("SELECT * FROM member WHERE email = :email");
         $stmt->execute([':email' => $email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function create($data) {
-        $query = "INSERT INTO member (nip, namamember, gelar, email, bidangriset, fotoprofil, statusmember) 
-                VALUES (:nip, :namamember, :gelar, :email, :bidangriset, :fotoprofil, :statusmember)";
+        $query = "INSERT INTO member (nip, namamember, gelar, email, bidangriset, jabatan, link_sinta, fotoprofil, statusmember, created_at) 
+                  VALUES (:nip, :nama, :gelar, :email, :bidang, :jabatan, :sinta, :foto, :status, NOW())";
+        
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             ':nip' => $data['nip'],
-            ':namamember' => $data['namamember'],
+            ':nama' => $data['namamember'],
             ':gelar' => $data['gelar'],
             ':email' => $data['email'],
-            ':bidangriset' => $data['bidangriset'],
-            ':fotoprofil' => $data['fotoprofil'],
-            ':statusmember' => $data['statusmember']
+            ':bidang' => $data['bidangriset'],
+            ':jabatan' => $data['jabatan'],     
+            ':sinta' => $data['link_sinta'],    
+            ':foto' => $data['fotoprofil'],
+            ':status' => $data['statusmember']
         ]);
     }
 
     public function update($data) {
         $query = "UPDATE member SET 
-                    nip = :nip, 
-                    namamember = :namamember, 
-                    gelar = :gelar, 
-                    email = :email, 
-                    bidangriset = :bidangriset, 
-                    fotoprofil = :fotoprofil, 
-                    statusmember = :statusmember 
-                WHERE idmember = :id";
+                    nip = :nip,
+                    namamember = :nama,
+                    gelar = :gelar,
+                    email = :email,
+                    bidangriset = :bidang,
+                    jabatan = :jabatan,          
+                    link_sinta = :sinta,       
+                    fotoprofil = :foto,
+                    statusmember = :status,
+                    updated_at = NOW()
+                  WHERE idmember = :id";
+        
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             ':nip' => $data['nip'],
-            ':namamember' => $data['namamember'],
+            ':nama' => $data['namamember'],
             ':gelar' => $data['gelar'],
             ':email' => $data['email'],
-            ':bidangriset' => $data['bidangriset'],
-            ':fotoprofil' => $data['fotoprofil'],
-            ':statusmember' => $data['statusmember'],
+            ':bidang' => $data['bidangriset'],
+            ':jabatan' => $data['jabatan'],    
+            ':sinta' => $data['link_sinta'],     
+            ':foto' => $data['fotoprofil'],
+            ':status' => $data['statusmember'],
             ':id' => $data['id']
         ]);
     }

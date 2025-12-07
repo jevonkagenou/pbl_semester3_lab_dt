@@ -102,6 +102,26 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .btn-link-modern {
+            background: #e0f2fe;
+            color: #0ea5e9;
+            border-radius: 10px;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-link-modern:hover {
+            background: #0ea5e9;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
     </style>
 </head>
 
@@ -155,9 +175,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Foto & NIP</th>
-                                        <th>Nama & Gelar</th>
-                                        <th>Kontak & Riset</th>
-                                        <th>Status</th>
+                                        <th style="min-width: 200px;">Nama, Gelar & Jabatan</th> <th>Kontak & Riset</th>
+                                        <th class="text-center">Link</th> <th>Status</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -180,6 +199,7 @@
                                     ?>
                                     <tr>
                                         <td class="text-muted fw-bold ps-4"><?= $no++ ?></td>
+                                        
                                         <td>
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="avatar-wrapper">
@@ -188,12 +208,27 @@
                                                 <span class="fw-bold text-dark font-monospace"><?= htmlspecialchars($row['nip']) ?></span>
                                             </div>
                                         </td>
+
                                         <td>
-                                            <div>
-                                                <div class="fw-bold text-primary" style="font-size: 1.05rem;"><?= htmlspecialchars($row['namamember']) ?></div>
-                                                <span class="badge bg-light-secondary text-secondary mt-1"><?= htmlspecialchars($row['gelar']) ?></span>
+                                            <div class="d-flex flex-column gap-1">
+                                                <div class="fw-bold text-primary" style="font-size: 1.05rem;">
+                                                    <?= htmlspecialchars($row['namamember']) ?>
+                                                </div>
+                                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                                    <span class="badge bg-light-secondary text-secondary">
+                                                        <?= htmlspecialchars($row['gelar']) ?>
+                                                    </span>
+                                                    
+                                                    <?php if(!empty($row['jabatan'])): ?>
+                                                        <span class="text-muted small fw-bold d-flex align-items-center">
+                                                            <i class="bi bi-briefcase-fill me-1 text-muted"></i> 
+                                                            <?= htmlspecialchars($row['jabatan']) ?>
+                                                        </span>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class="d-flex flex-column justify-content-center h-100 gap-2">
                                                 <div class="d-flex align-items-center text-muted small">
@@ -206,6 +241,19 @@
                                                 </div>
                                             </div>
                                         </td>
+
+                                        <td class="text-center">
+                                            <?php if(!empty($row['link_sinta'])): ?>
+                                                <a href="<?= htmlspecialchars($row['link_sinta']) ?>" target="_blank"
+                                                class="btn-link-modern"
+                                                title="Buka Link Sinta">
+                                                    <i class="bi bi-box-arrow-up-right"></i>
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="text-muted small">-</span>
+                                            <?php endif; ?>
+                                        </td>
+
                                         <td>
                                             <?php if($row['statusmember'] == 'active'): ?>
                                                 <span class="status-badge status-active">Aktif</span>
@@ -213,6 +261,7 @@
                                                 <span class="status-badge status-inactive">Non-Aktif</span>
                                             <?php endif; ?>
                                         </td>
+
                                         <td class="text-center">
                                             <button class="action-btn btn-edit-modern btn-edit" 
                                                 data-id="<?= $row['idmember'] ?>"
@@ -221,6 +270,8 @@
                                                 data-gelar="<?= $row['gelar'] ?>"
                                                 data-email="<?= $row['email'] ?>"
                                                 data-bidang="<?= $row['bidangriset'] ?>"
+                                                data-jabatan="<?= htmlspecialchars($row['jabatan'] ?? '') ?>"
+                                                data-sinta="<?= htmlspecialchars($row['link_sinta'] ?? '') ?>"
                                                 data-foto="<?= $row['fotoprofil'] ?>"
                                                 data-status="<?= $row['statusmember'] ?>"
                                                 data-bs-toggle="modal" data-bs-target="#modalEdit">
@@ -276,6 +327,15 @@
                                     <label class="form-label fw-bold small text-uppercase text-muted">Foto Profil</label>
                                     <input type="file" name="fotoprofil" class="form-control form-control-lg fs-6" accept="image/*">
                                     <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB. Jika kosong akan menggunakan foto default.</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase text-muted">Jabatan</label>
+                                    <input type="text" name="jabatan" class="form-control form-control-lg fs-6" placeholder="Contoh: Lektor Kepala">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase text-muted">Link Sinta</label>
+                                    <input type="text" name="link_sinta" class="form-control form-control-lg fs-6" placeholder="https://sinta.kemdikbud.go.id/...">
                                 </div>
                             </div>
                         </div>
@@ -333,6 +393,14 @@
                                         <option value="inactive">Inactive</option>
                                     </select>
                                 </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase text-muted">Jabatan</label>
+                                    <input type="text" name="jabatan" id="edit_jabatan" class="form-control form-control-lg fs-6">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase text-muted">Link Sinta</label>
+                                    <input type="text" name="link_sinta" id="edit_sinta" class="form-control form-control-lg fs-6">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer border-0 pt-0 pb-4 pe-4">
@@ -361,6 +429,8 @@
             $('#edit_gelar').val($(this).data('gelar'));
             $('#edit_email').val($(this).data('email'));
             $('#edit_bidang').val($(this).data('bidang'));
+            $('#edit_jabatan').val($(this).data('jabatan'));
+            $('#edit_sinta').val($(this).data('sinta'));            
             $('#edit_old_foto').val($(this).data('foto'));
             $('#edit_status').val($(this).data('status'));
         });

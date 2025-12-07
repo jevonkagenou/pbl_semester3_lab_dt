@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/iconly/bold.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/style.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
@@ -478,6 +479,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul & Konten</th>
+                                        <th>Kategori</th>
                                         <th>Jurnalis & Tanggal</th>
                                         <th>Foto</th>
                                         <th>Status</th>
@@ -508,6 +510,7 @@
                                                         style="font-size: 0.75rem; font-weight: 700; align-self: flex-start;"
                                                         data-judul="<?= htmlspecialchars($row['judulberita'] ?? '') ?>"
                                                         data-jurnalis="<?= htmlspecialchars($row['jurnalis_nama'] ?? '-') ?>"
+                                                        data-kategori="<?= htmlspecialchars($row['namakategori'] ?? '-') ?>"
                                                         data-tanggal="<?= date('d M Y H:i', strtotime($row['upload_at'] ?? 'now')) ?>"
                                                         data-isi="<?= htmlspecialchars($row['isi'] ?? 'Tidak ada konten.') ?>"
                                                         data-foto="<?= BASE_URL ?>/public/uploads/berita/<?= htmlspecialchars($row['fotodokumentasi'] ?? 'default_news.jpg') ?>">
@@ -516,6 +519,13 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        
+                                        <td>
+                                            <span class="badge bg-light-primary text-primary" style="font-weight: 700;">
+                                                <?= htmlspecialchars($row['namakategori'] ?? 'Umum') ?>
+                                            </span>
+                                        </td>
+
                                         <td>
                                             <div class="d-flex flex-column">
                                                 <div class="text-muted small fw-bold">
@@ -547,7 +557,8 @@
                                             ?>
                                             <img src="<?= $finalFoto ?>" 
                                                 alt="Foto Berita" 
-                                                class="image-preview-small">
+                                                class="image-preview-small btn-preview-image"
+                                                data-foto="<?= $finalFoto ?>">
                                         </td>
                                         <td>
                                             <?php 
@@ -591,13 +602,16 @@
             <?php include 'footer.php'; ?>
         </div>
 
-        <!-- Modal Detail -->
         <div class="modal fade modal-premium" id="modalDetail" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header-premium">
                         <div class="d-flex justify-content-between align-items-start w-100">
                             <div style="width: 90%;">
+                                <span class="badge bg-white text-primary mb-2 px-3 py-1 rounded-pill fw-bold shadow-sm"
+                                    id="detail_kategori_badge" style="font-size: 0.75rem;">
+                                    <i class="bi bi-tag-fill me-1"></i> <span id="detail_kategori">Kategori</span>
+                                </span>
                                 <h4 class="modal-title-premium" id="detail_judul">Judul Berita</h4>
                                 <p class="modal-subtitle mb-0 mt-2">
                                     <i class="bi bi-info-circle me-1"></i> Detail lengkap pengajuan berita
@@ -652,7 +666,6 @@
             </div>
         </div>
 
-        <!-- Modal Preview Image -->
         <div class="modal fade" id="modalPreviewImage" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
@@ -667,7 +680,6 @@
             </div>
         </div>
 
-        <!-- Modal Tolak -->
         <div class="modal fade" id="modalTolak" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0" style="border-radius: 20px;">
@@ -685,7 +697,7 @@
                                         class="text-danger">*</span></label>
                                 <textarea name="alasan_penolakan" class="form-control" style="border-radius: 10px;"
                                     rows="4" required
-                                    placeholder="Contoh: Konten tidak sesuai, foto tidak relevan, atau informasi tidak lengkap..."></textarea>
+                                    placeholder="Contoh: Konten tidak sesuai..."></textarea>
                             </div>
                         </div>
                         <div class="modal-footer border-0 pt-0 pb-4 pe-4">
@@ -732,25 +744,6 @@
             });
         });
 
-        $(document).on('click', '.btn-confirm-delete', function (e) {
-            e.preventDefault();
-            let url = this.href;
-            Swal.fire({
-                title: 'Hapus Berita?',
-                text: "Data tidak bisa dikembalikan!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#ef4444',
-                cancelButtonColor: '#b6becb',
-                confirmButtonText: 'Ya, Hapus',
-                cancelButtonText: 'Batal',
-                background: '#fff',
-                borderRadius: '20px'
-            }).then((result) => {
-                if (result.isConfirmed) window.location.href = url;
-            });
-        });
-
         $(document).on('click', '.btn-modal-reject', function (e) {
             e.preventDefault();
             let id = $(this).data('id');
@@ -763,12 +756,14 @@
         $(document).on('click', '.btn-detail', function () {
             let judul = $(this).data('judul');
             let jurnalis = $(this).data('jurnalis');
+            let kategori = $(this).data('kategori');
             let tanggal = $(this).data('tanggal');
             let isi = $(this).data('isi');
             let foto = $(this).data('foto');
 
             $('#detail_judul').text(judul);
             $('#detail_jurnalis').text(jurnalis);
+            $('#detail_kategori').text(kategori);
             $('#detail_tanggal').text(tanggal);
             $('#detail_isi').text(isi);
             $('#detail_foto').attr('src', foto);
@@ -784,9 +779,9 @@
 
         <?php if(isset($_SESSION['flash_message'])): ?>
         Swal.fire({ 
-            icon: '<?= $_SESSION['flash_type'] ?>', 
+            icon: <?= json_encode($_SESSION['flash_type']) ?>, 
             title: 'Info', 
-            text: '<?= $_SESSION['flash_message'] ?>', 
+            text: <?= json_encode($_SESSION['flash_message']) ?>, 
             timer: 3000, 
             toast: true, 
             position: 'top-end', 
