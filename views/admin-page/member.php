@@ -228,7 +228,6 @@
                                                 </div>
                                             </div>
                                         </td>
-
                                         <td>
                                             <div class="d-flex flex-column justify-content-center h-100 gap-2">
                                                 <div class="d-flex align-items-center text-muted small">

@@ -524,12 +524,15 @@ class AdminController {
 
     public function approveBerita() {
         $id = $_GET['id'] ?? null;
-        if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        }
 
         if ($this->beritaModel->changeStatus($id, 'terima', null)) {
-            $this->setFlashAndRedirect("Berita disetujui!", "success", "/pbl_semester3_lab_dt/admin/berita");
+            $this->setFlashAndRedirect("Berita berhasil disetujui!", "success", "/pbl_semester3_lab_dt/admin/berita");
         } else {
-            $this->setFlashAndRedirect("Gagal approve berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
+            $this->setFlashAndRedirect("Gagal menyetujui berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
         }
     }
 
@@ -538,11 +541,20 @@ class AdminController {
             $id = $_POST['id'] ?? null;
             $alasan = trim(htmlspecialchars($_POST['alasan_penolakan'] ?? ''));
 
-            if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/berita");
-            if (empty($alasan)) $this->setFlashAndRedirect("Alasan wajib diisi!", "error", "/pbl_semester3_lab_dt/admin/berita");
+            if (empty($id) || !is_numeric($id)) {
+                $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
+            
+            if (empty($alasan)) {
+                $this->setFlashAndRedirect("Alasan penolakan wajib diisi!", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
+
+            if (strlen($alasan) > 255) {
+                $this->setFlashAndRedirect("Alasan terlalu panjang (max 255 karakter).", "error", "/pbl_semester3_lab_dt/admin/berita");
+            }
 
             if ($this->beritaModel->changeStatus($id, 'tolak', $alasan)) {
-                $this->setFlashAndRedirect("Berita ditolak.", "warning", "/pbl_semester3_lab_dt/admin/berita");
+                $this->setFlashAndRedirect("Berita telah ditolak.", "warning", "/pbl_semester3_lab_dt/admin/berita");
             } else {
                 $this->setFlashAndRedirect("Gagal menolak berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
             }
@@ -551,10 +563,13 @@ class AdminController {
 
     public function deleteBerita() {
         $id = $_GET['id'] ?? null;
-        if (empty($id) || !is_numeric($id)) $this->setFlashAndRedirect("ID Invalid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        
+        if (empty($id) || !is_numeric($id)) {
+            $this->setFlashAndRedirect("ID tidak valid.", "error", "/pbl_semester3_lab_dt/admin/berita");
+        }
 
         if ($this->beritaModel->delete($id)) {
-            $this->setFlashAndRedirect("Berita dihapus!", "success", "/pbl_semester3_lab_dt/admin/berita");
+            $this->setFlashAndRedirect("Berita dihapus dari sistem.", "success", "/pbl_semester3_lab_dt/admin/berita");
         } else {
             $this->setFlashAndRedirect("Gagal menghapus berita.", "error", "/pbl_semester3_lab_dt/admin/berita");
         }

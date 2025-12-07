@@ -69,10 +69,6 @@ class EditorController {
         return ['error' => 'Gagal mengupload file ke server.'];
     }
 
-    public function index() {
-        $this->publikasi();
-    }
-
     public function publikasi() {
         $dataPublikasi = $this->publikasiModel->getAll();
         $kategori = $this->kategoriModel->getAll('publikasi'); 
@@ -92,12 +88,17 @@ class EditorController {
             $judul = trim(htmlspecialchars($_POST['judulpublikasi'] ?? ''));
             $tahun = trim($_POST['tahunterbit'] ?? '');
             $penulis = $_POST['penulis'] ?? '';
-            $kategori = $_POST['kategori'] ?? '';
             $ringkasan = trim(htmlspecialchars($_POST['ringkasan'] ?? ''));
             $linkfile = trim($_POST['linkfile'] ?? '');
+            
+            $kategori = $_POST['kategori'] ?? []; 
 
             if (empty($judul) || empty($tahun) || empty($penulis) || empty($kategori) || empty($ringkasan) || empty($linkfile)) {
-                $this->setFlashAndRedirect("Semua field wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+                $this->setFlashAndRedirect("Semua field wajib diisi, termasuk kategori.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
+            }
+
+            if (!is_array($kategori)) {
+                $this->setFlashAndRedirect("Format kategori tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
             }
 
             if (strlen($judul) < 5 || strlen($judul) > 200) {
@@ -121,7 +122,7 @@ class EditorController {
                 'judulpublikasi' => $judul,
                 'tahunterbit'    => $tahun,
                 'penulis'        => $penulis,
-                'kategori'       => $kategori,
+                'kategori'       => $kategori, 
                 'ringkasan'      => $ringkasan,
                 'linkfile'       => $linkfile
             ];
@@ -140,9 +141,10 @@ class EditorController {
             $judul = trim(htmlspecialchars($_POST['judulpublikasi'] ?? ''));
             $tahun = trim($_POST['tahunterbit'] ?? '');
             $penulis = $_POST['penulis'] ?? '';
-            $kategori = $_POST['kategori'] ?? '';
             $ringkasan = trim(htmlspecialchars($_POST['ringkasan'] ?? ''));
             $linkfile = trim($_POST['linkfile'] ?? '');
+            
+            $kategori = $_POST['kategori'] ?? [];
 
             if (empty($id) || !is_numeric($id)) {
                 $this->setFlashAndRedirect("ID Publikasi tidak valid.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
@@ -162,7 +164,7 @@ class EditorController {
             }
 
             $existing = $this->publikasiModel->getByJudul($judul);
-            if ($existing && reset($existing) != $id) {
+            if ($existing && $existing['idpublikasi'] != $id) {
                 $this->setFlashAndRedirect("Judul publikasi '$judul' sudah digunakan data lain.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
             }
 
@@ -202,23 +204,29 @@ class EditorController {
         $berita = $this->beritaModel->getAll();
         $members = $this->memberModel->getAll();
         $stats = $this->beritaModel->getStats();
+        $kategori = $this->kategoriModel->getAll('berita');
 
         \View::render('editor-page/berita', [
             'berita' => $berita,
             'members' => $members,
-            'stats' => $stats
+            'stats' => $stats,
+            'kategori' => $kategori
         ]);
     }
 
-    public function storeBerita() {
+   public function storeBerita() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $judul = trim(htmlspecialchars($_POST['judulberita'] ?? ''));
             $isi = trim(htmlspecialchars($_POST['isi'] ?? ''));
             $jurnalis = $_POST['jurnalis'] ?? '';
-            $kategori = $_POST['kategori'] ?? '';
+            $kategori = $_POST['kategori'] ?? []; 
 
             if (empty($judul) || empty($isi) || empty($jurnalis) || empty($kategori)) {
                 $this->setFlashAndRedirect("Judul, Isi, Kategori, dan Jurnalis wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            if (!is_array($kategori)) {
+                 $this->setFlashAndRedirect("Format kategori tidak valid.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
             if (strlen($judul) < 5 || strlen($judul) > 200) {
@@ -244,7 +252,7 @@ class EditorController {
                 'judulberita' => $judul,
                 'isi' => $isi,
                 'jurnalis' => $jurnalis,
-                'kategori' => $kategori, 
+                'kategori' => $kategori,
                 'fotodokumentasi' => $foto
             ];
 
@@ -263,25 +271,28 @@ class EditorController {
             $judul = trim(htmlspecialchars($_POST['judulberita'] ?? ''));
             $isi = trim(htmlspecialchars($_POST['isi'] ?? ''));
             $jurnalis = $_POST['jurnalis'] ?? '';
-            $kategori = $_POST['kategori'] ?? '';
+            
+            $kategori = $_POST['kategori'] ?? [];
 
             if (empty($id) || !is_numeric($id)) {
                 $this->setFlashAndRedirect("ID Berita tidak valid.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
             if (empty($judul) || empty($isi) || empty($jurnalis) || empty($kategori)) {
-                $this->setFlashAndRedirect("Data wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/berita");
+                $this->setFlashAndRedirect("Data wajib diisi (termasuk Kategori).", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
             $existing = $this->beritaModel->getByJudul($judul);
-            if ($existing && reset($existing) != $id) {
+            if ($existing && $existing['idberita'] != $id) {
                 $this->setFlashAndRedirect("Judul berita '$judul' sudah digunakan.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
             $uploadDir = __DIR__ . '/../../public/uploads/berita/';
+            
             $oldData = $this->beritaModel->getById($id);
-            $oldFoto = $oldData['fotodokumentasi'] ?? 'default_news.jpg';
-            $foto = $this->handleFileUpload('fotodokumentasi', $uploadDir, $oldFoto);
+            $oldFotoDb = $oldData['fotodokumentasi'] ?? 'default_news.jpg';
+            
+            $foto = $this->handleFileUpload('fotodokumentasi', $uploadDir, $oldFotoDb);
 
             if (is_array($foto) && isset($foto['error'])) {
                 $this->setFlashAndRedirect($foto['error'], "error", "/pbl_semester3_lab_dt/editor/berita");

@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
 
     <style>
@@ -480,14 +481,13 @@
                                                         data-judul="<?= htmlspecialchars($row['judulpublikasi'] ?? '') ?>"
                                                         data-tahun="<?= htmlspecialchars($row['tahunterbit'] ?? '') ?>"
                                                         data-penulis="<?= $row['penulis'] ?? '' ?>"
-                                                        data-kategori="<?= $row['kategori'] ?? '' ?>"
+                                                        data-kategori-ids="<?= $row['kategori_ids'] ?? '' ?>"
                                                         data-ringkasan="<?= htmlspecialchars($row['ringkasan'] ?? '') ?>"
                                                         data-link="<?= htmlspecialchars($row['linkfile'] ?? '') ?>"
                                                         data-bs-toggle="modal" data-bs-target="#modalEdit" title="Edit">
                                                         <i class="bi bi-pencil-fill"></i>
                                                     </button>
 
-                                                    <!-- Tombol Hapus -->
                                                     <a href="#" class="action-btn btn-delete-modern btn-delete"
                                                         data-url="<?= BASE_URL ?>/editor/publikasi/delete?id=<?= $row['idpublikasi'] ?>"
                                                         title="Hapus">
@@ -549,14 +549,15 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Kategori</label>
-                                    <select name="kategori" class="form-select form-select-lg fs-6"
-                                        style="border-radius: 10px;">
-                                        <?php if(isset($kategori)): foreach($kategori as $k): ?>
-                                        <option value="<?= $k['idkategori'] ?>">
-                                            <?= htmlspecialchars($k['namakategori']) ?></option>
-                                        <?php endforeach; endif; ?>
+                                    <div class="mb-3">
+                                    <label class="form-label fw-bold">Kategori</label>
+                                    <select name="kategori[]" id="kategoriSelect" class="form-select" multiple="multiple" required>
+                                        <?php foreach($kategori as $k): ?>
+                                            <option value="<?= $k['idkategori'] ?>"><?= $k['namakategori'] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
+                                    <small class="text-muted">Ketik untuk mencari kategori.</small>
+                                </div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Ringkasan</label>
@@ -619,13 +620,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Kategori</label>
-                                    <select name="kategori" id="edit_kategori" class="form-select form-select-lg fs-6"
-                                        style="border-radius: 10px;">
-                                        <?php if(isset($kategori)): foreach($kategori as $k): ?>
-                                        <option value="<?= $k['idkategori'] ?>">
-                                            <?= htmlspecialchars($k['namakategori']) ?></option>
-                                        <?php endforeach; endif; ?>
-                                    </select>
+                                        <select name="kategori[]" id="kategoriSelectEdit" class="form-select" multiple="multiple" required>
+                                            <?php foreach($kategori as $k): ?>
+                                                <option value="<?= $k['idkategori'] ?>"><?= $k['namakategori'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Ringkasan</label>
@@ -648,6 +647,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?= BASE_URL ?>/public/assets-admin/js/bootstrap.bundle.min.js"></script>
@@ -715,6 +715,37 @@
                 customClass: 'popover-glass-danger'
             })
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#kategoriSelect').select2({
+                theme: "bootstrap-5",
+                width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                placeholder: $( this ).data( 'placeholder' ),
+                closeOnSelect: false,
+                dropdownParent: $('#modalTambah') 
+            });
+        });
+    </script>
+    <script>
+        $(document).on('click', '.btn-edit', function () {
+        let id = $(this).data('id');
+        let kategoriIds = $(this).data('kategori-ids');
+        
+        let selectEdit = $('#kategoriSelectEdit');
+        
+        selectEdit.select2({
+            theme: "bootstrap-5",
+            dropdownParent: $('#modalEdit') 
+        });
+
+        if(kategoriIds) {
+            let arrayKategori = String(kategoriIds).split(','); 
+            selectEdit.val(arrayKategori).trigger('change');
+        } else {
+            selectEdit.val(null).trigger('change');
+        }
+    });
     </script>
 </body>
 

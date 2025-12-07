@@ -14,17 +14,19 @@ class Berita {
 
     public function getAll() {
         $query = "SELECT b.*, 
-                         m.namamember as jurnalis_nama,
-                         m.fotoprofil as jurnalis_foto,
-                         k.namakategori
-                  FROM berita b
-                  LEFT JOIN member m ON b.jurnalis = m.idmember
-                  LEFT JOIN kategori_berita k ON b.kategori = k.idkategori
-                  ORDER BY b.created_at DESC";
+                        m.namamember as jurnalis_nama,
+                        STRING_AGG(k.namakategori, ', ') as namakategori,
+                        STRING_AGG(pb.idkategori::text, ',') as kategori_ids 
+                FROM berita b
+                LEFT JOIN member m ON b.jurnalis = m.idmember
+                LEFT JOIN pivot_berita pb ON b.idberita = pb.idberita
+                LEFT JOIN kategori_berita k ON pb.idkategori = k.idkategori
+                GROUP BY b.idberita, m.namamember
+                ORDER BY b.created_at DESC";
         
         $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getById($id) {
@@ -58,73 +60,89 @@ class Berita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getByJurnalis($jurnalisId) {
-        $query = "SELECT b.*, 
-                         m.namamember as jurnalis_nama
-                  FROM berita b
-                  LEFT JOIN member m ON b.jurnalis = m.idmember
-                  WHERE b.jurnalis = :jurnalis
-                  ORDER BY b.created_at DESC";
-        
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([':jurnalis' => $jurnalisId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public function create($data) {
-        $query = "INSERT INTO berita (judulberita, isi, jurnalis, kategori, fotodokumentasi, status_berita, upload_at) 
-                  VALUES (:judul, :isi, :jurnalis, :kategori, :foto, 'pending', NOW())";
-        
-        $stmt = $this->db->prepare($query);
-        return $stmt->execute([
-            ':judul' => $data['judulberita'],
-            ':isi' => $data['isi'],
-            ':jurnalis' => $data['jurnalis'],
-            ':kategori' => $data['kategori'], // Data baru
-            ':foto' => $data['fotodokumentasi']
-        ]);
+        try {
+            $this->db->beginTransaction();
+
+            $query = "INSERT INTO berita (judulberita, isi, jurnalis, fotodokumentasi, status_berita, upload_at) 
+                    VALUES (:judul, :isi, :jurnalis, :foto, 'pending', NOW()) 
+                    RETURNING idberita";
+            
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([
+                ':judul' => $data['judulberita'],
+                ':isi' => $data['isi'],
+                ':jurnalis' => $data['jurnalis'],
+                ':foto' => $data['fotodokumentasi']
+            ]);
+
+            $idBerita = $stmt->fetchColumn(); 
+
+            if (!empty($data['kategori']) && is_array($data['kategori'])) {
+                $queryPivot = "INSERT INTO pivot_berita (idberita, idkategori) VALUES (:idberita, :idkategori)";
+                $stmtPivot = $this->db->prepare($queryPivot);
+
+                foreach ($data['kategori'] as $idKategori) {
+                    $stmtPivot->execute([
+                        ':idberita' => $idBerita,
+                        ':idkategori' => $idKategori
+                    ]);
+                }
+            }
+
+            $this->db->commit(); 
+            return true;
+
+        } catch (\Exception $e) {
+            $this->db->rollBack(); 
+            error_log($e->getMessage()); 
+            return false;
+        }
     }
 
     public function update($data) {
-        $query = "UPDATE berita SET 
-                    judulberita = :judul,
-                    isi = :isi,
-                    jurnalis = :jurnalis,
-                    kategori = :kategori,
-                    fotodokumentasi = :foto,
-                    status_berita = 'pending',
-                    pesan_admin = NULL,
-                    updated_at = NOW()
-                  WHERE idberita = :id";
-        
-        $stmt = $this->db->prepare($query);
-        return $stmt->execute([
-            ':judul' => $data['judulberita'],
-            ':isi' => $data['isi'],
-            ':jurnalis' => $data['jurnalis'],
-            ':kategori' => $data['kategori'], // Data baru
-            ':foto' => $data['fotodokumentasi'],
-            ':id' => $data['id']
-        ]);
+        try {
+            $this->db->beginTransaction();
+
+            $query = "UPDATE berita SET 
+                        judulberita = :judul, isi = :isi, jurnalis = :jurnalis, 
+                        fotodokumentasi = :foto, status_berita = 'pending', updated_at = NOW()
+                    WHERE idberita = :id";
+            
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([
+                ':judul' => $data['judulberita'],
+                ':isi' => $data['isi'],
+                ':jurnalis' => $data['jurnalis'],
+                ':foto' => $data['fotodokumentasi'],
+                ':id' => $data['id']
+            ]);
+
+            $stmtDel = $this->db->prepare("DELETE FROM pivot_berita WHERE idberita = :id");
+            $stmtDel->execute([':id' => $data['id']]);
+
+            if (!empty($data['kategori']) && is_array($data['kategori'])) {
+                $queryPivot = "INSERT INTO pivot_berita (idberita, idkategori) VALUES (:idberita, :idkategori)";
+                $stmtPivot = $this->db->prepare($queryPivot);
+                foreach ($data['kategori'] as $idKategori) {
+                    $stmtPivot->execute([':idberita' => $data['id'], ':idkategori' => $idKategori]);
+                }
+            }
+
+            $this->db->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->db->rollBack();
+            return false;
+        }
     }
 
     public function changeStatus($id, $status, $pesan = null) {
-        if (!in_array($status, ['pending', 'terima', 'tolak'])) {
-            return false;
-        }
+        if (!in_array($status, ['pending', 'terima', 'tolak'])) { return false; }
 
-        $query = "UPDATE berita SET 
-                    status_berita = :status, 
-                    pesan_admin = :pesan,
-                    updated_at = NOW()
-                  WHERE idberita = :id";
-        
+        $query = "UPDATE berita SET status_berita = :status, pesan_admin = :pesan, updated_at = NOW() WHERE idberita = :id";
         $stmt = $this->db->prepare($query);
-        return $stmt->execute([
-            ':status' => $status,
-            ':pesan' => $pesan,
-            ':id' => $id
-        ]);
+        return $stmt->execute([':status' => $status, ':pesan' => $pesan, ':id' => $id]);
     }
 
     public function delete($id) {

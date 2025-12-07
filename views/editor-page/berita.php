@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/style.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <style>
         body { background-color: #f2f7ff; }
@@ -122,7 +125,6 @@
         .modal-glass .modal-body { padding: 0; background: rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: center; min-height: 400px; }
         .img-preview-clean { max-width: 100%; max-height: 70vh; width: auto; object-fit: contain; border-radius: 0 0 20px 20px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
 
-        /* Popover Style */
         .popover-glass-danger {
             background: linear-gradient(145deg, #fff5f5 0%, #ffffff 100%) !important;
             border: 1px solid #fee2e2 !important;
@@ -141,6 +143,27 @@
             color: #7f1d1d !important; font-size: 0.85rem !important; font-weight: 600 !important;
             line-height: 1.5 !important; padding: 10px 16px 16px 16px !important;
         }
+
+        .form-control, .form-select {
+            min-height: 45px;
+            border-radius: 10px;
+            font-size: 1rem; 
+        }
+        
+        .select2-container--bootstrap-5 .select2-selection { 
+            border-radius: 10px; 
+            min-height: 45px; 
+            padding: 5px; 
+            display: flex;
+            align-items: center;
+        }
+        .select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 0;
+            padding-top: 0;
+        }
     </style>
 </head>
 
@@ -158,7 +181,6 @@
             </div>
 
             <div class="page-content">
-
                 <section class="row mb-4">
                     <div class="col-12">
                         <div class="card hero-stats-card p-4">
@@ -277,7 +299,7 @@
                                                     data-judul="<?= htmlspecialchars($row['judulberita'] ?? '') ?>"
                                                     data-isi="<?= htmlspecialchars($row['isi'] ?? '') ?>"
                                                     data-jurnalis="<?= $row['jurnalis'] ?? '' ?>"
-                                                    data-kategori="<?= $row['kategori'] ?? '' ?>"  
+                                                    data-kategori-ids="<?= $row['kategori_ids'] ?? '' ?>" 
                                                     data-foto="<?= htmlspecialchars($row['fotodokumentasi'] ?? '') ?>"
                                                     data-bs-toggle="modal" data-bs-target="#modalEdit" title="Edit">
                                                     <i class="bi bi-pencil-fill"></i>
@@ -314,13 +336,12 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Judul Berita</label>
-                                    <input type="text" name="judulberita" class="form-control form-control-lg fs-6"
-                                        style="border-radius: 10px;" required
-                                        placeholder="Contoh: Workshop Teknologi Terbaru 2024">
+                                    <input type="text" name="judulberita" class="form-control fs-6"
+                                        required placeholder="Contoh: Workshop Teknologi Terbaru 2024">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Jurnalis</label>
-                                    <select name="jurnalis" class="form-select form-select-lg fs-6" style="border-radius: 10px;" required>
+                                    <select name="jurnalis" class="form-select fs-6" required>
                                         <option value="" disabled selected>-- Pilih Jurnalis --</option>
                                         <?php if(isset($members)): foreach($members as $m): ?>
                                         <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?></option>
@@ -329,24 +350,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Kategori Berita</label>
-                                    <select name="kategori" class="form-select form-select-lg fs-6" style="border-radius: 10px;" required>
-                                        <option value="" disabled selected>-- Pilih Kategori --</option>
+                                    <select name="kategori[]" id="kategoriSelect" class="form-select fs-6" multiple="multiple" required>
                                         <?php if(isset($kategori)): foreach($kategori as $k): ?>
                                         <option value="<?= $k['idkategori'] ?>"><?= htmlspecialchars($k['namakategori']) ?></option>
                                         <?php endforeach; endif; ?>
                                     </select>
+                                    <small class="text-muted">Ketik untuk memilih beberapa kategori.</small>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Foto Dokumentasi</label>
-                                    <input type="file" name="fotodokumentasi" class="form-control form-control-lg fs-6"
-                                        style="border-radius: 10px;" accept="image/*">
+                                    <input type="file" name="fotodokumentasi" class="form-control fs-6"
+                                        accept="image/*">
                                     <small class="text-muted">Format: JPG, PNG, GIF. Maksimal 2MB</small>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Konten Berita</label>
-                                    <textarea name="isi" class="form-control form-control-lg fs-6"
-                                        style="border-radius: 10px;" rows="6" required
-                                        placeholder="Tulis isi berita lengkap di sini..."></textarea>
+                                    <textarea name="isi" class="form-control fs-6"
+                                        rows="6" required placeholder="Tulis isi berita lengkap di sini..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -373,20 +393,11 @@
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Judul Berita</label>
                                     <input type="text" name="judulberita" id="edit_judul"
-                                        class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Kategori Berita</label>
-                                    <select name="kategori" id="edit_kategori" class="form-select form-select-lg fs-6" style="border-radius: 10px;" required>
-                                        <option value="" disabled>-- Pilih Kategori --</option>
-                                        <?php if(isset($kategori)): foreach($kategori as $k): ?>
-                                        <option value="<?= $k['idkategori'] ?>"><?= htmlspecialchars($k['namakategori']) ?></option>
-                                        <?php endforeach; endif; ?>
-                                    </select>
+                                        class="form-control fs-6" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Jurnalis</label>
-                                    <select name="jurnalis" id="edit_jurnalis" class="form-select form-select-lg fs-6" style="border-radius: 10px;" required>
+                                    <select name="jurnalis" id="edit_jurnalis" class="form-select fs-6" required>
                                         <option value="" disabled>-- Pilih Jurnalis --</option>
                                         <?php if(isset($members)): foreach($members as $m): ?>
                                         <option value="<?= $m['idmember'] ?>"><?= htmlspecialchars($m['namamember']) ?></option>
@@ -394,16 +405,23 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Kategori Berita</label>
+                                    <select name="kategori[]" id="kategoriSelectEdit" class="form-select fs-6" multiple="multiple" required>
+                                        <?php if(isset($kategori)): foreach($kategori as $k): ?>
+                                        <option value="<?= $k['idkategori'] ?>"><?= htmlspecialchars($k['namakategori']) ?></option>
+                                        <?php endforeach; endif; ?>
+                                    </select>
+                                </div>
+                                <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Foto Dokumentasi</label>
-                                    <input type="file" name="fotodokumentasi" class="form-control form-control-lg fs-6"
-                                        style="border-radius: 10px;" accept="image/*">
+                                    <input type="file" name="fotodokumentasi" class="form-control fs-6"
+                                        accept="image/*">
                                     <small class="text-muted">Biarkan kosong jika tidak ingin mengganti foto</small>
-                                    <input type="hidden" name="old_foto" id="edit_foto">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Konten Berita</label>
-                                    <textarea name="isi" id="edit_isi" class="form-control form-control-lg fs-6"
-                                        style="border-radius: 10px;" rows="6" required></textarea>
+                                    <textarea name="isi" id="edit_isi" class="form-control fs-6"
+                                        rows="6" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -432,6 +450,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="<?= BASE_URL ?>/public/assets-admin/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?= BASE_URL ?>/public/assets-admin/js/bootstrap.bundle.min.js"></script>
@@ -444,13 +463,42 @@
             perPage: 5
         });
 
+        $(document).ready(function() {
+            $('#kategoriSelect').select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: "-- Pilih Kategori --",
+                closeOnSelect: false,
+                dropdownParent: $('#modalTambah') 
+            });
+        });
+
         $(document).on('click', '.btn-edit', function () {
-            $('#edit_id').val($(this).data('id'));
-            $('#edit_judul').val($(this).data('judul'));
-            $('#edit_isi').val($(this).data('isi'));
-            $('#edit_jurnalis').val($(this).data('jurnalis'));
-            $('#edit_kategori').val($(this).data('kategori')); 
-            $('#edit_foto').val($(this).data('foto'));
+            let id = $(this).data('id');
+            let judul = $(this).data('judul');
+            let isi = $(this).data('isi');
+            let jurnalis = $(this).data('jurnalis');
+            let kategoriIds = $(this).data('kategori-ids');
+
+            $('#edit_id').val(id);
+            $('#edit_judul').val(judul);
+            $('#edit_isi').val(isi);
+            $('#edit_jurnalis').val(jurnalis);
+            
+            let selectEdit = $('#kategoriSelectEdit');
+            
+            selectEdit.select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                dropdownParent: $('#modalEdit') 
+            });
+
+            if(kategoriIds) {
+                let arrayKategori = String(kategoriIds).split(','); 
+                selectEdit.val(arrayKategori).trigger('change');
+            } else {
+                selectEdit.val(null).trigger('change');
+            }
         });
 
         $(document).on('click', '.btn-delete', function (e) {
