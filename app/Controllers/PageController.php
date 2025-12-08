@@ -16,29 +16,72 @@ use App\Models\Berita;
 
 class PageController {
 
-    // --- TAMBAHKAN CONSTRUCTOR INI ---
     public function __construct() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }
-    // ---------------------------------
 
-    public function index() { \View::render('landing-page/index'); }
+    public function index() {
+        $memberModel = new \App\Models\Member();
+        $members = $memberModel->getAll();
+        $publikasiModel = new \App\Models\Publikasi();
+        $allPublikasi = $publikasiModel->getAll();
+        $acceptedPublikasi = array_filter($allPublikasi, function($item) {
+            return $item['status_publikasi'] === 'terima';
+        });
+        $recentPublikasi = array_slice($acceptedPublikasi, 0, 3);
+
+        $data = [
+            'members' => $members,
+            'publikasi' => $recentPublikasi
+        ];
+
+        \View::render('landing-page/index', $data);
+    }
     public function sejarah() { \View::render('landing-page/sejarah'); }
     public function berita() { \View::render('landing-page/berita'); }
     public function detailBerita() { \View::render('landing-page/detail-berita'); }
     public function login() { \View::render('landing-page/login'); }
     public function tataTertib() { \View::render('landing-page/tata-tertib'); }
-    public function strukturOrganisasi() { \View::render('landing-page/struktur-organisasi'); }
+    public function strukturOrganisasi() {
+    $memberModel = new \App\Models\Member();
+    $members = $memberModel->getAll();
+    $data = [
+        'members' => $members
+    ];
+    \View::render('landing-page/struktur-organisasi', $data);
+}
     public function VisidanMisi() { \View::render('landing-page/visi-dan-misi'); }
-    public function saranaPrasarana() { \View::render('landing-page/sarana-prasarana'); }
+    public function saranaPrasarana() {
+        $fasilitasModel = new Fasilitas();
+        $dataFasilitas = $fasilitasModel->getAll();
+        $data = [
+            'fasilitas' => $dataFasilitas
+        ];
+        \View::render('landing-page/sarana-prasarana', $data);
+    }
     public function programDiplomaIVTI() { \View::render('landing-page/teknik-informatika'); }
     public function programDiplomaIVSIB() { \View::render('landing-page/sistem-informasi-bisnis'); }
     public function aturanAkademik() { \View::render('landing-page/aturan-akademik'); }
     public function kalender() { \View::render('landing-page/kalender'); }
-    public function penelitian() { \View::render('landing-page/penelitian'); }
-
+    public function penelitian() {
+        $publikasiModel = new Publikasi();
+        $kategoriModel = new Kategori();
+        $allPublikasi = $publikasiModel->getAll();
+        $allKategori = $kategoriModel->getAll('publikasi');
+        $acceptedPublikasi = array_filter($allPublikasi, function($item) {
+            return $item['status_publikasi'] === 'terima';
+        });
+        $years = array_unique(array_column($acceptedPublikasi, 'tahunterbit'));
+        rsort($years);
+        $data = [
+            'publikasi' => array_values($acceptedPublikasi),
+            'kategori' => $allKategori,
+            'years' => $years
+        ];
+        \View::render('landing-page/penelitian', $data);
+    }
 
     public function adminDashboard() {
         $userModel = new User();

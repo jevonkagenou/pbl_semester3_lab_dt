@@ -4,101 +4,119 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Service Details - FlexStart Bootstrap Template</title>
+    <title>Sarana dan Prasarana - Jurusan Teknologi Informasi</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <!-- Favicons -->
     <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
     <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
     <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>/public/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>/public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Main CSS File -->
     <link href="<?= BASE_URL ?>/public/assets/css/main.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
     <style>
-        /* --- Base Style untuk Card Fasilitas --- */
         .facility-card {
-            background-color: #ecf0f1;
-            /* Warna dasar abu-abu terang */
-            border-radius: 15px;
+            background-color: #fff;
+            border-radius: 12px;
             padding: 20px;
             height: 100%;
             transition: all 0.3s ease-in-out;
-            /* Animasi transisi halus */
-            border: 1px solid transparent;
-            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Styling Gambar */
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #27505B;
+        }
+
         .facility-card .post-img {
+            border-radius: 8px;
+            margin-bottom: 15px;
             overflow: hidden;
-            /* Penting agar zoom gambar tidak keluar batas */
-            border-radius: 12px;
-            margin-bottom: 20px;
+            aspect-ratio: 16/9;
         }
 
         .facility-card .post-img img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-            /* Animasi zoom gambar */
         }
 
-        /* Styling Judul */
+        .facility-card:hover .post-img img {
+            transform: scale(1.05);
+        }
+
         .facility-card .title a {
-            color: #2c4964;
+            color: #27505B;
             text-decoration: none;
             font-weight: 700;
-            pointer-events: none;
-            /* Sesuai kode asli Anda */
-            display: block;
+            font-size: 1.2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Styling Konten Teks */
+        .facility-card .content {
+            flex-grow: 1;
+        }
+
         .facility-card .content p {
-            text-align: justify;
             font-size: 14px;
             color: #555;
             line-height: 1.6;
             margin-bottom: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
         }
 
-        /* --- EFEK HOVER --- */
-        .facility-card:hover {
-            background-color: #ffffff;
-            /* Berubah jadi putih bersih saat di-hover */
-            transform: translateY(-10px);
-            /* Kartu naik ke atas */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            /* Bayangan muncul */
-            border-color: #e2e6ea;
-            /* Sedikit border halus */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
         }
 
-        /* Efek Zoom pada Gambar saat Hover */
-        .facility-card:hover .post-img img {
-            transform: scale(1.05);
+        .pagination-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #27505B;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination-btn:hover,
+        .pagination-btn.active {
+            background: #27505B;
+            color: #fff;
+            border-color: #27505B;
+        }
+
+        .pagination-btn:disabled {
+            background: #f5f5f5;
+            color: #ccc;
+            cursor: not-allowed;
+            border-color: #eee;
         }
     </style>
 </head>
@@ -109,27 +127,24 @@
 
     <main class="main">
 
-        <section class="section py-5">
+        <section class="section py-5 bg-light">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
 
                     <div class="col-lg-5 mb-4 mb-lg-0">
-                        <h2 class="fw-bold mb-3" style="color: #2c4964; font-size: 2.5rem;">Sarana dan Prasarana</h2>
+                        <h2 class="fw-bold mb-3 display-6" style="color: #27505B;">Sarana dan Prasarana</h2>
 
                         <p class="text-muted" style="line-height: 1.8; text-align: justify;">
                             Fasilitas di gedung Jurusan Teknologi Informasi mencakup beragam sarana penting yang
                             mendukung aktivitas akademik mahasiswa dan dosen. Tersedia ruang kuliah yang nyaman dengan
-                            perangkat presentasi, laboratorium sesuai bidang keilmuan, serta aula serbaguna untuk
-                            seminar dan pelatihan. Selain itu, terdapat mushola, kantin, dan area parkir yang luas demi
-                            kenyamanan civitas akademika. Seluruh fasilitas ini berada di lantai 5 hingga 8 gedung
-                            perkuliahan dan mendukung proses pembelajaran, praktikum, serta kegiatan jurusan secara
-                            optimal.
+                            perangkat presentasi, laboratorium sesuai bidang keilmuan, serta aula serbaguna. Seluruh
+                            fasilitas ini berada di lantai 5 hingga 8 gedung perkuliahan.
                         </p>
                     </div>
 
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <img src="<?= BASE_URL ?>/public/assets/img/gedung-ti-polinema.png"
-                            alt="Gedung Jurusan Teknologi Informasi" class="img-fluid rounded-4 shadow-sm w-100"
+                            alt="Gedung Jurusan Teknologi Informasi" class="img-fluid rounded-4 shadow w-100"
                             data-aos="fade-left">
                     </div>
 
@@ -140,123 +155,60 @@
         <section id="fasilitas" class="blog section py-5">
             <div class="container">
 
-                <div class="row gy-4 posts-list">
+                <div class="row gy-4 posts-list" id="facility-container">
 
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
+                    <?php if (!empty($fasilitas)) : ?>
+                    <?php foreach ($fasilitas as $row) : ?>
+
+                    <div class="col-xl-4 col-md-6 facility-item">
+                        <article class="facility-card h-100">
                             <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Komputer Standar"
-                                    class="img-fluid">
+                                <?php
+                                            $urlFolder = BASE_URL . '/public/uploads/fasilitas/';
+                                            
+                                            if (!empty($row['foto'])) {
+                                                $finalFoto = $urlFolder . $row['foto'];
+                                            } else {
+                                                $finalFoto = BASE_URL . '/public/assets/img/ruang-lab1.png';
+                                            }
+                                        ?>
+                                <img src="<?= $finalFoto ?>" alt="<?= $row['namafasilitas'] ?>"
+                                    onerror="this.onerror=null;this.src='<?= BASE_URL ?>/public/assets/img/ruang-lab1.png';">
                             </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Komputer Standar</a>
+
+                            <h2 class="title mb-2">
+                                <a href="javascript:void(0)"><?= $row['namafasilitas'] ?></a>
                             </h2>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge bg-success rounded-pill px-3">
+                                    <i class="bi bi-box-seam me-1"></i> <?= $row['jumlah'] ?> Unit
+                                </span>
+                            </div>
+
                             <div class="content">
-                                <p>
-                                    Laboratorium memiliki empat unit komputer standar sebagai perangkat utama untuk
-                                    kegiatan praktikum dan riset awal. Perangkat ini tetap mendukung aktivitas
-                                    pengolahan data sederhana.
+                                <p title="<?= htmlspecialchars($row['deskripsi']) ?>">
+                                    <?= $row['deskripsi'] ?>
                                 </p>
                             </div>
                         </article>
                     </div>
 
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
-                            <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Meja Kerja"
-                                    class="img-fluid">
-                            </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Meja Kerja</a>
-                            </h2>
-                            <div class="content">
-                                <p>
-                                    Meja kerja disediakan sebagai area penempatan perangkat dan ruang aktivitas
-                                    mahasiswa maupun dosen. Fasilitas ini membantu menciptakan lingkungan belajar yang
-                                    tertata dan nyaman.
-                                </p>
-                            </div>
-                        </article>
+                    <?php endforeach; ?>
+                    <?php else : ?>
+
+                    <div class="col-12 text-center py-5">
+                        <div class="alert alert-secondary d-inline-block px-5" role="alert">
+                            <i class="bi bi-info-circle me-2"></i> Belum ada data fasilitas yang tersedia.
+                        </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
-                            <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Kursi Praktikum"
-                                    class="img-fluid">
-                            </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Kursi Praktikum</a>
-                            </h2>
-                            <div class="content">
-                                <p>
-                                    Kursi praktikum tersedia untuk mendukung kenyamanan pengguna selama proses
-                                    pembelajaran dan penelitian. Penataannya disesuaikan agar kegiatan di laboratorium
-                                    berlangsung efektif.
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
-                            <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Perlengkapan Dasar"
-                                    class="img-fluid">
-                            </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Perlengkapan Dasar</a>
-                            </h2>
-                            <div class="content">
-                                <p>
-                                    Laboratorium dilengkapi perlengkapan dasar setara ruang kelas, seperti kabel, stop
-                                    kontak, dan perangkat kecil pendukung. Fasilitas ini membantu kegiatan praktikum
-                                    berjalan tanpa hambatan teknis ringan.
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
-                            <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Ruang Laboratorium"
-                                    class="img-fluid">
-                            </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Ruang Laboratorium</a>
-                            </h2>
-                            <div class="content">
-                                <p>
-                                    Sebuah ruangan khusus telah disiapkan untuk Laboratorium Teknologi Data sejak
-                                    semester Genap 2024/2025. Ruangan ini menjadi pusat aktivitas riset, diskusi, dan
-                                    pengembangan kompetensi bidang data.
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6">
-                        <article class="facility-card">
-                            <div class="post-img text-center">
-                                <img src="<?= BASE_URL ?>/public/assets/img/ruang-lab1.png" alt="Server Dasar"
-                                    class="img-fluid">
-                            </div>
-                            <h2 class="title mb-3">
-                                <a href="#">Server Dasar</a>
-                            </h2>
-                            <div class="content">
-                                <p>
-                                    Laboratorium mulai menyediakan server entry-level sebagai tahap awal pemenuhan
-                                    kebutuhan komputasi. Infrastruktur ini mendukung eksperimen sederhana terkait big
-                                    data dan pembelajaran cloud.
-                                </p>
-                            </div>
-                        </article>
-                    </div>
+                    <?php endif; ?>
 
                 </div>
+
+                <div class="pagination-container" id="pagination-controls"></div>
+
             </div>
         </section>
 
@@ -264,11 +216,9 @@
 
     <?php include 'footer.php'; ?>
 
-    <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
     <script src="<?= BASE_URL ?>/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_URL ?>/public/assets/vendor/php-email-form/validate.js"></script>
     <script src="<?= BASE_URL ?>/public/assets/vendor/aos/aos.js"></script>
@@ -278,8 +228,85 @@
     <script src="<?= BASE_URL ?>/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="<?= BASE_URL ?>/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Main JS File -->
     <script src="<?= BASE_URL ?>/public/assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const itemsPerPage = 6;
+            const items = document.querySelectorAll('.facility-item');
+            const totalItems = items.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const paginationContainer = document.getElementById('pagination-controls');
+            let currentPage = 1;
+
+            if (totalItems <= itemsPerPage) return;
+
+            function showPage(page) {
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+
+                items.forEach((item, index) => {
+                    if (index >= start && index < end) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                updateButtons(page);
+            }
+
+            function updateButtons(page) {
+                paginationContainer.innerHTML = '';
+
+                const prevBtn = document.createElement('button');
+                prevBtn.innerText = 'Prev';
+                prevBtn.classList.add('pagination-btn');
+                prevBtn.disabled = page === 1;
+                prevBtn.onclick = () => {
+                    currentPage--;
+                    showPage(currentPage);
+                    window.scrollTo({
+                        top: document.getElementById('fasilitas').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                };
+                paginationContainer.appendChild(prevBtn);
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.innerText = i;
+                    btn.classList.add('pagination-btn');
+                    if (i === page) btn.classList.add('active');
+                    btn.onclick = () => {
+                        currentPage = i;
+                        showPage(currentPage);
+                        window.scrollTo({
+                            top: document.getElementById('fasilitas').offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    };
+                    paginationContainer.appendChild(btn);
+                }
+
+                const nextBtn = document.createElement('button');
+                nextBtn.innerText = 'Next';
+                nextBtn.classList.add('pagination-btn');
+                nextBtn.disabled = page === totalPages;
+                nextBtn.onclick = () => {
+                    currentPage++;
+                    showPage(currentPage);
+                    window.scrollTo({
+                        top: document.getElementById('fasilitas').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                };
+                paginationContainer.appendChild(nextBtn);
+            }
+
+            showPage(1);
+        });
+    </script>
 
 </body>
 
