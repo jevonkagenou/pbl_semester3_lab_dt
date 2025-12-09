@@ -40,8 +40,52 @@ class PageController {
         \View::render('landing-page/index', $data);
     }
     public function sejarah() { \View::render('landing-page/sejarah'); }
-    public function berita() { \View::render('landing-page/berita'); }
-    public function detailBerita() { \View::render('landing-page/detail-berita'); }
+    public function berita() {
+        $beritaModel = new Berita();
+        $rawData = $beritaModel->getAll();
+        $berita = array_filter($rawData, function($item) {
+            return $item['status_berita'] === 'terima';
+        });
+        usort($berita, function($a, $b) {
+            return strtotime($b['created_at']) - strtotime($a['created_at']);
+        });
+        $carouselData = array_slice($berita, 0, 3);
+        $kategoriList = [];
+        $yearsList = [];
+
+        foreach ($berita as $item) {
+            if (!empty($item['namakategori'])) {
+                $cats = explode(', ', $item['namakategori']);
+                foreach ($cats as $cat) {
+                    $kategoriList[] = trim($cat);
+                }
+            }
+            if (!empty($item['created_at'])) {
+                $yearsList[] = date('Y', strtotime($item['created_at']));
+            }
+        }
+        $data = [
+            'berita' => array_values($berita),
+            'carousel' => $carouselData,
+            'kategori' => array_unique($kategoriList),
+            'years' => array_unique($yearsList)
+        ];
+        \View::render('landing-page/berita', $data);
+    }
+    public function detailBerita() {
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            header('Location: ' . BASE_URL . '/berita');
+            exit;
+        }
+        $beritaModel = new Berita();
+        $berita = $beritaModel->getById($id);
+        if (!$berita || $berita['status_berita'] !== 'terima') {
+            header('Location: ' . BASE_URL . '/berita');
+            exit;
+        }
+        \View::render('landing-page/detail-berita', ['berita' => $berita]);
+    }
     public function login() { \View::render('landing-page/login'); }
     public function tataTertib() { \View::render('landing-page/tata-tertib'); }
     public function strukturOrganisasi() {

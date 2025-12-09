@@ -27,6 +27,8 @@
     <style>
         :root {
             --accent-color: #27505B;
+            --color-primary: #27505B;
+            --color-accent: #4dc4e0;
         }
 
         html {
@@ -238,21 +240,42 @@
         }
 
         .publication-card {
-            background: #fff;
-            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
             padding: 25px;
             height: 100%;
-            border: 1px solid #eee;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .publication-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
         }
 
         .publication-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-color: #27505B;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(39, 80, 91, 0.15);
+            border-color: rgba(77, 196, 224, 0.3);
+        }
+
+        .publication-card:hover::before {
+            transform: scaleX(1);
         }
 
         .pub-badge {
@@ -287,13 +310,27 @@
         .pub-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #012970;
             margin-bottom: 10px;
             line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+
+        .pub-title a {
+            color: var(--color-primary);
+            text-decoration: none;
+            background-image: linear-gradient(to right, var(--color-accent), var(--color-accent));
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            transition: background-size 0.3s ease, color 0.3s ease;
+        }
+
+        .publication-card:hover .pub-title a {
+            color: #000;
+            background-size: 100% 2px;
         }
 
         .pub-desc {
@@ -320,18 +357,27 @@
         }
 
         .read-link {
-            color: #27505B;
+            color: var(--color-primary);
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .read-link:hover {
-            color: #27505B;
+            color: var(--color-accent);
             gap: 8px;
+        }
+
+        .publication-card:hover .read-link {
+            color: var(--color-accent);
+        }
+
+        .publication-card:hover .read-link i {
+            transform: translateX(5px);
+            transition: transform 0.3s ease;
         }
 
         .pagination-container {
@@ -493,7 +539,9 @@
                                 </div>
 
                                 <h2 class="pub-title">
-                                    <?= $row['judulpublikasi'] ?>
+                                    <a href="<?= $row['linkfile'] ?>" target="_blank">
+                                        <?= $row['judulpublikasi'] ?>
+                                    </a>
                                 </h2>
                                 <p class="pub-desc">
                                     <?= !empty($row['ringkasan']) ? $row['ringkasan'] : 'Tidak ada ringkasan tersedia.' ?>
@@ -502,7 +550,7 @@
 
                             <div class="pub-meta">
                                 <div class="d-flex align-items-center">
-                                    <i class="bi bi-person-circle me-2"></i>
+                                    <i class="bi bi-person-circle me-2 text-primary"></i>
                                     <small class="text-truncate" style="max-width: 120px;">
                                         <?= $row['namamember'] ?>
                                     </small>
