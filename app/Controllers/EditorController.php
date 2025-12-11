@@ -50,7 +50,7 @@ class EditorController {
         }
 
         if (!getimagesize($file['tmp_name'])) {
-             return ['error' => 'File bukan gambar valid.'];
+            return ['error' => 'File bukan gambar valid.'];
         }
 
         if ($file['size'] > $maxSize) {
@@ -67,6 +67,46 @@ class EditorController {
         }
 
         return ['error' => 'Gagal mengupload file ke server.'];
+    }
+
+    private function handleImageSecurity($fileInputName, $targetDir, $defaultImage = null) {
+        if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] === UPLOAD_ERR_NO_FILE) {
+            return $defaultImage; 
+        }
+
+        $file = $_FILES[$fileInputName];
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            return ['error' => 'Terjadi kesalahan saat upload file.'];
+        }
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $file['tmp_name']);
+        finfo_close($finfo);
+
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        if (!in_array($mime, $allowedMimes)) {
+            return ['error' => 'Security Warning: File yang diupload BUKAN gambar valid (MIME Mismatch).'];
+        }
+
+        $checkImage = getimagesize($file['tmp_name']);
+        if ($checkImage === false) {
+            return ['error' => 'Security Warning: File corrupt atau bukan image asli.'];
+        }
+
+        if ($file['size'] > 2 * 1024 * 1024) {
+            return ['error' => 'Ukuran file terlalu besar (Max 2MB).'];
+        }
+
+        if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $newName = uniqid('news_') . '.' . $ext;
+
+        if (move_uploaded_file($file['tmp_name'], $targetDir . $newName)) {
+            return $newName;
+        }
+
+        return ['error' => 'Gagal memindahkan file ke server.'];
     }
 
     public function publikasi() {
@@ -90,8 +130,12 @@ class EditorController {
             $penulis = $_POST['penulis'] ?? '';
             $ringkasan = trim(htmlspecialchars($_POST['ringkasan'] ?? ''));
             $linkfile = trim($_POST['linkfile'] ?? '');
-            
             $kategori = $_POST['kategori'] ?? []; 
+            $userId = $_SESSION['user_id'] ?? null; 
+
+            if(!$userId) {
+                $this->setFlashAndRedirect("Sesi habis, silakan login ulang.", "error", "/pbl_semester3_lab_dt/login");
+            }
 
             if (empty($judul) || empty($tahun) || empty($penulis) || empty($kategori) || empty($ringkasan) || empty($linkfile)) {
                 $this->setFlashAndRedirect("Semua field wajib diisi, termasuk kategori.", "error", "/pbl_semester3_lab_dt/editor/publikasi");
@@ -124,7 +168,8 @@ class EditorController {
                 'penulis'        => $penulis,
                 'kategori'       => $kategori, 
                 'ringkasan'      => $ringkasan,
-                'linkfile'       => $linkfile
+                'linkfile'       => $linkfile,
+                'created_by'     => $userId 
             ];
 
             if ($this->publikasiModel->create($data)) {
@@ -214,35 +259,29 @@ class EditorController {
         ]);
     }
 
-   public function storeBerita() {
+    public function storeBerita() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $judul = trim(htmlspecialchars($_POST['judulberita'] ?? ''));
             $isi = trim(htmlspecialchars($_POST['isi'] ?? ''));
             $jurnalis = $_POST['jurnalis'] ?? '';
             $kategori = $_POST['kategori'] ?? []; 
+            
+            $userId = $_SESSION['user_id'] ?? null;
+            if(!$userId) {
+                $this->setFlashAndRedirect("Sesi habis, silakan login ulang.", "error", "/pbl_semester3_lab_dt/login");
+            }
 
             if (empty($judul) || empty($isi) || empty($jurnalis) || empty($kategori)) {
                 $this->setFlashAndRedirect("Judul, Isi, Kategori, dan Jurnalis wajib diisi.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
 
-            if (!is_array($kategori)) {
-                 $this->setFlashAndRedirect("Format kategori tidak valid.", "error", "/pbl_semester3_lab_dt/editor/berita");
-            }
-
-            if (strlen($judul) < 5 || strlen($judul) > 200) {
-                $this->setFlashAndRedirect("Judul minimal 5 karakter.", "error", "/pbl_semester3_lab_dt/editor/berita");
-            }
-
-            if (strlen($isi) < 20) {
-                $this->setFlashAndRedirect("Isi berita terlalu pendek.", "error", "/pbl_semester3_lab_dt/editor/berita");
-            }
-
-            if ($this->beritaModel->getByJudul($judul)) {
-                $this->setFlashAndRedirect("Judul berita '$judul' sudah ada.", "error", "/pbl_semester3_lab_dt/editor/berita");
-            }
-
             $uploadDir = __DIR__ . '/../../public/uploads/berita/';
-            $foto = $this->handleFileUpload('fotodokumentasi', $uploadDir, 'default_news.jpg');
+            
+            if(empty($_FILES['fotodokumentasi']['name'])) {
+                $this->setFlashAndRedirect("Foto dokumentasi wajib diupload.", "error", "/pbl_semester3_lab_dt/editor/berita");
+            }
+
+            $foto = $this->handleImageSecurity('fotodokumentasi', $uploadDir, null);
 
             if (is_array($foto) && isset($foto['error'])) {
                 $this->setFlashAndRedirect($foto['error'], "error", "/pbl_semester3_lab_dt/editor/berita");
@@ -252,14 +291,15 @@ class EditorController {
                 'judulberita' => $judul,
                 'isi' => $isi,
                 'jurnalis' => $jurnalis,
-                'kategori' => $kategori,
-                'fotodokumentasi' => $foto
+                'kategori' => $kategori, 
+                'fotodokumentasi' => $foto,
+                'created_by' => $userId 
             ];
 
             if ($this->beritaModel->create($data)) {
                 $this->setFlashAndRedirect("Berita berhasil diajukan!", "success", "/pbl_semester3_lab_dt/editor/berita");
             } else {
-                if ($foto != 'default_news.jpg') unlink($uploadDir . $foto);
+                if ($foto && file_exists($uploadDir . $foto)) unlink($uploadDir . $foto);
                 $this->setFlashAndRedirect("Gagal menyimpan berita.", "error", "/pbl_semester3_lab_dt/editor/berita");
             }
         }

@@ -214,20 +214,22 @@
                                                 <div class="fw-bold text-primary" style="font-size: 1.05rem;">
                                                     <?= htmlspecialchars($row['namamember']) ?>
                                                 </div>
-                                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                                
+                                                <div>
                                                     <span class="badge bg-light-secondary text-secondary">
                                                         <?= htmlspecialchars($row['gelar']) ?>
                                                     </span>
-                                                    
-                                                    <?php if(!empty($row['jabatan'])): ?>
-                                                        <span class="text-muted small fw-bold d-flex align-items-center">
-                                                            <i class="bi bi-briefcase-fill me-1 text-muted"></i> 
-                                                            <?= htmlspecialchars($row['jabatan']) ?>
-                                                        </span>
-                                                    <?php endif; ?>
                                                 </div>
+                                                
+                                                <?php if(!empty($row['jabatan'])): ?>
+                                                    <div class="text-muted small fw-bold d-flex align-items-center">
+                                                        <i class="bi bi-briefcase-fill me-2 text-muted"></i> 
+                                                        <?= htmlspecialchars($row['jabatan']) ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </td>
+                                        
                                         <td>
                                             <div class="d-flex flex-column justify-content-center h-100 gap-2">
                                                 <div class="d-flex align-items-center text-muted small">
@@ -327,9 +329,14 @@
                                     <input type="file" name="fotoprofil" class="form-control form-control-lg fs-6" accept="image/*">
                                     <small class="text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB. Jika kosong akan menggunakan foto default.</small>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small text-uppercase text-muted">Jabatan</label>
-                                    <input type="text" name="jabatan" class="form-control form-control-lg fs-6" placeholder="Contoh: Lektor Kepala">
+                                    <select name="jabatan" class="form-select form-select-lg fs-6" required>
+                                        <option value="" disabled selected>Pilih Jabatan</option>
+                                        <option value="Kepala Lab">Kepala Lab</option>
+                                        <option value="Anggota Lab">Anggota Lab</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6">
@@ -392,10 +399,15 @@
                                         <option value="inactive">Inactive</option>
                                     </select>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small text-uppercase text-muted">Jabatan</label>
-                                    <input type="text" name="jabatan" id="edit_jabatan" class="form-control form-control-lg fs-6">
+                                    <select name="jabatan" id="edit_jabatan" class="form-select form-select-lg fs-6" required>
+                                        <option value="Kepala Lab">Kepala Lab</option>
+                                        <option value="Anggota Lab">Anggota Lab</option>
+                                    </select>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small text-uppercase text-muted">Link Sinta</label>
                                     <input type="text" name="link_sinta" id="edit_sinta" class="form-control form-control-lg fs-6">

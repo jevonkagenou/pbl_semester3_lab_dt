@@ -147,7 +147,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul & Konten</th>
-                                        <th>Kategori & Jurnalis</th> 
+                                        <th>Kategori & Jurnalis</th>
+                                        <th>Dibuat Oleh</th> 
                                         <th>Foto</th>
                                         <th>Status</th>
                                         <th class="text-center">Aksi</th>
@@ -171,6 +172,7 @@
                                                     data-judul="<?= htmlspecialchars($row['judulberita'] ?? '') ?>"
                                                     data-jurnalis="<?= htmlspecialchars($row['jurnalis_nama'] ?? '-') ?>"
                                                     data-kategori="<?= htmlspecialchars($row['namakategori'] ?? '-') ?>"
+                                                    data-creator="<?= htmlspecialchars($row['creator_name'] ?? 'System') ?>"
                                                     data-tanggal="<?= date('d M Y H:i', strtotime($row['upload_at'] ?? 'now')) ?>"
                                                     data-isi="<?= htmlspecialchars($row['isi'] ?? 'Tidak ada konten.') ?>"
                                                     data-foto="<?= BASE_URL ?>/public/uploads/berita/<?= htmlspecialchars($row['fotodokumentasi'] ?? 'default_news.jpg') ?>">
@@ -192,6 +194,14 @@
                                                     <i class="bi bi-calendar3 me-1"></i>
                                                     <?= date('d M Y', strtotime($row['upload_at'] ?? 'now')) ?>
                                                 </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="avatar avatar-sm bg-info text-white d-flex justify-content-center align-items-center rounded-circle" style="width:30px; height:30px;">
+                                                    <?= strtoupper(substr($row['creator_name'] ?? '?', 0, 1)) ?>
+                                                </div>
+                                                <span class="text-muted small fw-bold"><?= htmlspecialchars($row['creator_name'] ?? 'System') ?></span>
                                             </div>
                                         </td>
                                         <td>
@@ -251,6 +261,9 @@
                                     <i class="bi bi-tag-fill me-1"></i> <span id="detail_kategori">Kategori</span>
                                 </span>
                                 <h4 class="modal-title-premium" id="detail_judul">Judul Berita</h4>
+                                <div class="text-white-50 mt-1 small">
+                                    <i class="bi bi-pencil-square me-1"></i> Diajukan oleh: <span id="detail_creator" class="text-white fw-bold"></span>
+                                </div>
                             </div>
                             <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
                                 <i class="bi bi-x-lg"></i>
@@ -366,6 +379,7 @@
             let tanggal = $(this).data('tanggal');
             let isi = $(this).data('isi');
             let foto = $(this).data('foto');
+            let creator = $(this).data('creator');
 
             $('#detail_judul').text(judul);
             $('#detail_jurnalis').text(jurnalis);
@@ -373,6 +387,7 @@
             $('#detail_tanggal').text(tanggal);
             $('#detail_isi').text(isi);
             $('#detail_foto').attr('src', foto);
+            $('#detail_creator').text(creator);
 
             $('#modalDetail').modal('show');
         });

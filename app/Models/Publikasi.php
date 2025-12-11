@@ -2,7 +2,7 @@
 namespace App\Models;
 
 use PDO;
-use Exception;
+use PDOException;
 
 class Publikasi {
     private $db;
@@ -15,16 +15,18 @@ class Publikasi {
 
     public function getAll() {
         $query = "SELECT p.*, 
-                        m.namamember, 
-                        STRING_AGG(k.namakategori, ', ') as namakategori,
-                        STRING_AGG(pp.idkategori::text, ',') as kategori_ids 
-                FROM publikasi p
-                LEFT JOIN member m ON p.penulis = m.idmember
-                LEFT JOIN pivot_publikasi pp ON p.idpublikasi = pp.idpublikasi
-                LEFT JOIN kategori_publikasi k ON pp.idkategori = k.idkategori
-                GROUP BY p.idpublikasi, m.namamember
-                ORDER BY p.idpublikasi DESC";
-        
+                         m.namamember, 
+                         u.username as creator_name,
+                         STRING_AGG(kp.namakategori, ', ') as namakategori,
+                         STRING_AGG(kp.idkategori::text, ',') as kategori_ids
+                  FROM publikasi p
+                  LEFT JOIN member m ON p.penulis = m.idmember
+                  LEFT JOIN users u ON p.created_by = u.id
+                  LEFT JOIN pivot_publikasi pp ON p.idpublikasi = pp.idpublikasi
+                  LEFT JOIN kategori_publikasi kp ON pp.idkategori = kp.idkategori
+                  GROUP BY p.idpublikasi, m.namamember, u.username
+                  ORDER BY p.created_at DESC";
+
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,19 +44,6 @@ class Publikasi {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getById($id) {
-        $query = "SELECT p.*, 
-                         STRING_AGG(pp.idkategori::text, ',') as kategori_ids
-                  FROM publikasi p
-                  LEFT JOIN pivot_publikasi pp ON p.idpublikasi = pp.idpublikasi
-                  WHERE p.idpublikasi = :id
-                  GROUP BY p.idpublikasi";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
     public function getByJudul($judul) {
         $stmt = $this->db->prepare("SELECT * FROM publikasi WHERE judulpublikasi = :judul");
         $stmt->execute([':judul' => $judul]);
@@ -65,29 +54,31 @@ class Publikasi {
         try {
             $this->db->beginTransaction();
 
-            $query = "INSERT INTO publikasi (judulpublikasi, tahunterbit, penulis, ringkasan, linkfile, status_publikasi, created_at) 
-                      VALUES (:judul, :tahun, :penulis, :ringkasan, :link, 'pending', NOW())
-                      RETURNING idpublikasi";
-            
+            $query = "INSERT INTO publikasi (judulpublikasi, tahunterbit, penulis, ringkasan, linkfile, status_publikasi, created_by, created_at) 
+                      VALUES (:judul, :tahun, :penulis, :ringkasan, :link, 'pending', :created_by, NOW())
+                      RETURNING idpublikasi"; 
+
             $stmt = $this->db->prepare($query);
             $stmt->execute([
                 ':judul' => $data['judulpublikasi'],
                 ':tahun' => $data['tahunterbit'],
                 ':penulis' => $data['penulis'],
                 ':ringkasan' => $data['ringkasan'],
-                ':link' => $data['linkfile']
+                ':link' => $data['linkfile'],
+                ':created_by' => $data['created_by'] 
             ]);
-
-            $idPublikasi = $stmt->fetchColumn(); 
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $newId = $result['idpublikasi'];
 
             if (!empty($data['kategori']) && is_array($data['kategori'])) {
-                $queryPivot = "INSERT INTO pivot_publikasi (idpublikasi, idkategori) VALUES (:idpublikasi, :idkategori)";
-                $stmtPivot = $this->db->prepare($queryPivot);
-
-                foreach ($data['kategori'] as $idKategori) {
-                    $stmtPivot->execute([
-                        ':idpublikasi' => $idPublikasi,
-                        ':idkategori' => $idKategori
+                $pivotQuery = "INSERT INTO pivot_publikasi (idpublikasi, idkategori) VALUES (:pid, :kid)";
+                $pivotStmt = $this->db->prepare($pivotQuery);
+                
+                foreach ($data['kategori'] as $kategoriId) {
+                    $pivotStmt->execute([
+                        ':pid' => $newId,
+                        ':kid' => $kategoriId
                     ]);
                 }
             }
@@ -95,9 +86,8 @@ class Publikasi {
             $this->db->commit();
             return true;
 
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             $this->db->rollBack();
-            error_log($e->getMessage());
             return false;
         }
     }
@@ -106,16 +96,14 @@ class Publikasi {
         try {
             $this->db->beginTransaction();
 
-            $query = "UPDATE publikasi SET 
-                        judulpublikasi = :judul, 
-                        tahunterbit = :tahun, 
-                        penulis = :penulis, 
-                        ringkasan = :ringkasan, 
-                        linkfile = :link,
-                        status_publikasi = 'pending',
-                        pesan_admin = NULL,
-                        updated_at = NOW()
-                    WHERE idpublikasi = :id";
+            $query = "UPDATE publikasi 
+                      SET judulpublikasi = :judul, 
+                          tahunterbit = :tahun, 
+                          penulis = :penulis, 
+                          ringkasan = :ringkasan, 
+                          linkfile = :link,
+                          updated_at = NOW()
+                      WHERE idpublikasi = :id";
             
             $stmt = $this->db->prepare($query);
             $stmt->execute([
@@ -127,17 +115,17 @@ class Publikasi {
                 ':id' => $data['id']
             ]);
 
-            $stmtDel = $this->db->prepare("DELETE FROM pivot_publikasi WHERE idpublikasi = :id");
-            $stmtDel->execute([':id' => $data['id']]);
+            $deletePivot = $this->db->prepare("DELETE FROM pivot_publikasi WHERE idpublikasi = :id");
+            $deletePivot->execute([':id' => $data['id']]);
 
             if (!empty($data['kategori']) && is_array($data['kategori'])) {
-                $queryPivot = "INSERT INTO pivot_publikasi (idpublikasi, idkategori) VALUES (:idpublikasi, :idkategori)";
-                $stmtPivot = $this->db->prepare($queryPivot);
-
-                foreach ($data['kategori'] as $idKategori) {
-                    $stmtPivot->execute([
-                        ':idpublikasi' => $data['id'],
-                        ':idkategori' => $idKategori
+                $pivotQuery = "INSERT INTO pivot_publikasi (idpublikasi, idkategori) VALUES (:pid, :kid)";
+                $pivotStmt = $this->db->prepare($pivotQuery);
+                
+                foreach ($data['kategori'] as $kategoriId) {
+                    $pivotStmt->execute([
+                        ':pid' => $data['id'],
+                        ':kid' => $kategoriId
                     ]);
                 }
             }
@@ -145,28 +133,36 @@ class Publikasi {
             $this->db->commit();
             return true;
 
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             $this->db->rollBack();
             return false;
         }
     }
 
     public function changeStatus($id, $status, $pesan = null) {
-        if (!in_array($status, ['pending', 'terima', 'tolak'])) {
-            return false;
-        }
-
-        $query = "UPDATE publikasi SET status_publikasi = :status, pesan_admin = :pesan, updated_at = NOW() WHERE idpublikasi = :id";
+        $query = "UPDATE publikasi SET status_publikasi = :status, pesan_admin = :pesan WHERE idpublikasi = :id";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
-            ':status' => $status, 
-            ':pesan' => $pesan, 
+            ':status' => $status,
+            ':pesan' => $pesan,
             ':id' => $id
         ]);
     }
 
     public function delete($id) {
-        $stmt = $this->db->prepare("DELETE FROM publikasi WHERE idpublikasi = :id");
-        return $stmt->execute([':id' => $id]);
+        try {
+            $this->db->beginTransaction();
+            $stmt1 = $this->db->prepare("DELETE FROM pivot_publikasi WHERE idpublikasi = :id");
+            $stmt1->execute([':id' => $id]);
+
+            $stmt2 = $this->db->prepare("DELETE FROM publikasi WHERE idpublikasi = :id");
+            $stmt2->execute([':id' => $id]);
+
+            $this->db->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+            return false;
+        }
     }
 }

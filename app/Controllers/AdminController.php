@@ -227,8 +227,8 @@ class AdminController {
             $jabatan = trim(htmlspecialchars($_POST['jabatan'] ?? ''));
             $link_sinta = trim(htmlspecialchars($_POST['link_sinta'] ?? ''));
 
-            if (empty($nip) || empty($nama) || empty($email)) {
-                $this->setFlashAndRedirect("NIP, Nama, dan Email wajib diisi.", "error", "/pbl_semester3_lab_dt/admin/member");
+            if (empty($nip) || empty($nama) || empty($email) || empty($jabatan)) {
+                $this->setFlashAndRedirect("NIP, Nama, Email, dan Jabatan wajib diisi.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
             if (!is_numeric($nip) || strlen($nip) > 20) {
                 $this->setFlashAndRedirect("NIP harus angka & max 20 digit.", "error", "/pbl_semester3_lab_dt/admin/member");
@@ -249,7 +249,11 @@ class AdminController {
             if (strlen($nama) > 100) $this->setFlashAndRedirect("Nama terlalu panjang (Max 100).", "error", "/pbl_semester3_lab_dt/admin/member");
             if (strlen($gelar) > 50) $this->setFlashAndRedirect("Gelar terlalu panjang (Max 50).", "error", "/pbl_semester3_lab_dt/admin/member");
             if (strlen($bidang) > 255) $this->setFlashAndRedirect("Bidang Riset terlalu panjang.", "error", "/pbl_semester3_lab_dt/admin/member");
-            if (strlen($jabatan) > 100) $this->setFlashAndRedirect("Jabatan terlalu panjang.", "error", "/pbl_semester3_lab_dt/admin/member");
+            
+            $allowedJabatan = ['Kepala Lab', 'Anggota Lab'];
+            if (!in_array($jabatan, $allowedJabatan)) {
+                $this->setFlashAndRedirect("Pilihan Jabatan tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
+            }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->setFlashAndRedirect("Format email tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
@@ -300,6 +304,11 @@ class AdminController {
             if (empty($nip) || empty($nama) || empty($email)) $this->setFlashAndRedirect("Data wajib tidak boleh kosong.", "error", "/pbl_semester3_lab_dt/admin/member");
             if (!is_numeric($nip) || strlen($nip) > 20) $this->setFlashAndRedirect("NIP tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $this->setFlashAndRedirect("Email tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
+
+            $allowedJabatan = ['Kepala Lab', 'Anggota Lab'];
+            if (!empty($jabatan) && !in_array($jabatan, $allowedJabatan)) {
+                $this->setFlashAndRedirect("Pilihan Jabatan tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
+            }
 
             $existingName = $this->memberModel->getByName($nama);
             if ($existingName && reset($existingName)['idmember'] != $id) {
