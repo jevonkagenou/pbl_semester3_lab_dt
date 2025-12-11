@@ -34,7 +34,7 @@
         .table-modern tbody td { border: none; padding: 20px; vertical-align: middle; color: #4a5568; font-weight: 600; border-top: 1px solid #f8f9fa; border-bottom: 1px solid #f8f9fa; }
         .table-modern tbody tr td:first-child { border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-left: 1px solid #f8f9fa; }
         .table-modern tbody tr td:last-child { border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-right: 1px solid #f8f9fa; }
-        .btn-futuristic { background: linear-gradient(135deg, #435ebe 0%, #7c3aed 100%); border: none; border-radius: 12px; padding: 10px 24px; color: white; font-weight: 700; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; }
+        .btn-futuristic { background: linear-gradient(135deg, #435ebe 0%, #25396f 100%); border: none; border-radius: 12px; padding: 10px 24px; color: white; font-weight: 700; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; }
         .btn-futuristic:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4); color: white; }
         .action-btn { width: 38px; height: 38px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s ease; border: none; margin: 0 4px; cursor: pointer; }
         .btn-edit-modern { background-color: #fff8e6; color: #ffb822; }
@@ -46,7 +46,7 @@
         .status-terima { background-color: #f0fdf4; color: #16a34a; border: 1px solid rgba(22, 163, 74, 0.2); }
         .status-tolak { background-color: #fef2f2; color: #dc2626; border: 1px solid rgba(220, 38, 38, 0.2); }
         .card-header-modern { background: #ffffff; padding: 25px 30px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
-        .card-header-modern h4 { font-weight: 800; color: #7c3aed; margin: 0; font-size: 1.2rem; }
+        .card-header-modern h4 { font-weight: 800; color: #25396f; margin: 0; font-size: 1.2rem; }
         .btn-trigger-glass { background: rgba(254, 226, 226, 0.5); border: 1px solid #fecaca; color: #ef4444; padding: 6px 14px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.1); }
         .btn-trigger-glass:hover { background: #ef4444; color: white; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3); border-color: #ef4444; }
         .icon-pulse-small { animation: pulse-red-small 2s infinite; }
@@ -81,7 +81,7 @@
             </header>
 
             <div class="page-heading mb-4">
-                <h3 style="font-weight: 800; color: #7c3aed;">Kelola Berita</h3>
+                <h3 style="font-weight: 800; color: #25396f;">Kelola Berita</h3>
                 <p class="text-subtitle text-muted">Ajukan dan kelola berita untuk publikasi.</p>
             </div>
 

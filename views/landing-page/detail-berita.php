@@ -422,7 +422,88 @@
                                 <?= nl2br($berita['isi']) ?>
                             </article>
 
-                            <div class="share-section">
+                            <hr class="my-5" style="border-top: 1px dashed #cbd5e1;">
+
+                            <div id="comments-area" class="comments-section">
+                                <h3 class="fw-bold mb-4" style="color: var(--color-primary);">
+                                    <?= $jumlahKomentar ?? 0 ?> Komentar
+                                </h3>
+
+                                <?php if (isset($_SESSION['flash_message'])): ?>
+                                    <div class="alert alert-<?= $_SESSION['flash_type'] == 'success' ? 'success' : 'danger' ?> alert-dismissible fade show rounded-4 border-0 shadow-sm mb-4" role="alert">
+                                        <?= $_SESSION['flash_message']; ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <?php 
+                                        unset($_SESSION['flash_message']);
+                                        unset($_SESSION['flash_type']);
+                                    ?>
+                                <?php endif; ?>
+
+                                <?php if (!empty($komentar)): ?>
+                                    <div class="comment-list mb-5">
+                                        <?php foreach($komentar as $k): ?>
+                                        <div class="d-flex gap-3 mb-4 p-4 rounded-4 bg-white shadow-sm border border-light">
+                                            <div class="flex-shrink-0">
+                                                <div class="d-flex align-items-center justify-content-center text-white fw-bold fs-5" 
+                                                    style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-accent));">
+                                                    <?= strtoupper(substr($k['namakomentator'], 0, 1)) ?>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 class="fw-bold mb-0 text-dark"><?= htmlspecialchars($k['namakomentator']) ?></h6>
+                                                    <small class="text-muted" style="font-size: 0.8rem;">
+                                                        <?= date('d M Y, H:i', strtotime($k['created_at'])) ?>
+                                                    </small>
+                                                </div>
+                                                <p class="text-muted mb-0" style="line-height: 1.6;">
+                                                    <?= nl2br(htmlspecialchars($k['komentar'])) ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div id="comment-form" class="p-4 p-md-5 rounded-4" style="background-color: #f8fafc; border: 1px dashed #cbd5e1;">
+                                    <h4 class="fw-bold mb-2">Tinggalkan Balasan</h4>
+                                    <p class="text-muted small mb-4">Alamat email Anda tidak akan dipublikasikan. Ruas yang wajib ditandai *</p>
+
+                                    <form action="<?= BASE_URL ?>/komentar/store" method="POST">
+                                        <input type="hidden" name="idberita" value="<?= $berita['idberita'] ?>">
+                                        
+                                        <div class="mb-4">
+                                            <label for="komentar" class="form-label fw-bold text-muted small">Komentar *</label>
+                                            <textarea class="form-control form-control-lg border-0 shadow-sm" id="komentar" name="komentar" rows="5" placeholder="Tulis pendapat Anda di sini..." style="resize: none;" required></textarea>
+                                        </div>
+
+                                        <div class="row g-4 mb-4">
+                                            <div class="col-md-6">
+                                                <label for="nama" class="form-label fw-bold text-muted small">Nama *</label>
+                                                <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="nama" name="nama" placeholder="Nama Lengkap" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="email" class="form-label fw-bold text-muted small">Email *</label>
+                                                <input type="email" class="form-control form-control-lg border-0 shadow-sm" id="email" name="email" placeholder="alamat@email.com" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 form-check">
+                                            <input type="checkbox" class="form-check-input" id="save-info">
+                                            <label class="form-check-label text-muted" for="save-info" style="font-size: 0.9rem;">
+                                                Simpan nama dan email saya pada peramban ini untuk komentar berikutnya.
+                                            </label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill fw-bold border-0 shadow" 
+                                                style="background-color: var(--color-primary); transition: all 0.3s ease;">
+                                            Kirim Komentar
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="share-section mb-5">
                                 <div class="share-title">Bagikan Berita Ini</div>
                                 <div class="social-buttons">
                                     <a href="https://api.whatsapp.com/send?text=<?= $shareTitle . '%0A' . $shareUrl ?>"
@@ -444,7 +525,7 @@
                                 </div>
                             </div>
 
-                            <div class="navigation-area">
+                            <div class="navigation-area mt-5 pt-3">
                                 <a href="<?= BASE_URL ?>/berita" class="btn-glow">
                                     <i class="bi bi-arrow-left"></i> Kembali ke Berita
                                 </a>

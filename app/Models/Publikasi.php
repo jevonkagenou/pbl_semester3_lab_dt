@@ -227,4 +227,19 @@ class Publikasi {
             return false;
         }
     }
+
+    public function getMonthlyStatsByCreator($userId, $year) {
+        $query = "SELECT 
+                    EXTRACT(MONTH FROM updated_at) as month, 
+                    COUNT(*) as total 
+                FROM publikasi 
+                WHERE status_publikasi = 'terima' 
+                AND created_by = :id
+                AND EXTRACT(YEAR FROM updated_at) = :year
+                GROUP BY month";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $userId, ':year' => $year]);
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    }
 }

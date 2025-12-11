@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Models/Member.php';
 require_once __DIR__ . '/../Models/Publikasi.php';
 require_once __DIR__ . '/../Models/Fasilitas.php';
 require_once __DIR__ . '/../Models/Berita.php';
+require_once __DIR__ . '/../Models/Komentar.php';
 
 use App\Models\User;
 use App\Models\Kategori;
@@ -13,6 +14,7 @@ use App\Models\Member;
 use App\Models\Publikasi;
 use App\Models\Fasilitas;
 use App\Models\Berita;
+use App\Models\Komentar;
 
 class PageController {
 
@@ -81,7 +83,10 @@ class PageController {
             header('Location: ' . BASE_URL . '/berita');
             exit;
         }
+        
         $beritaModel = new Berita();
+        $komentarModel = new Komentar();
+        
         $berita = $beritaModel->getById($id);
         
         if (!$berita || $berita['status_berita'] !== 'terima') {
@@ -94,7 +99,56 @@ class PageController {
             $berita['fotodokumentasi'] = 'default-image.jpg'; 
         }
 
-        \View::render('landing-page/detail-berita', ['berita' => $berita]);
+        $komentar = $komentarModel->getByBeritaId($id);
+        $jumlahKomentar = $komentarModel->countByBeritaId($id);
+
+        \View::render('landing-page/detail-berita', [
+            'berita' => $berita,
+            'komentar' => $komentar,
+            'jumlahKomentar' => $jumlahKomentar
+        ]);
+    }
+
+    public function storeKomentar() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $idBerita = $_POST['idberita'] ?? '';
+            $nama = trim($_POST['nama'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $isi = trim($_POST['komentar'] ?? '');
+
+            if (empty($idBerita) || empty($nama) || empty($email) || empty($isi)) {
+                $_SESSION['flash_message'] = "Semua kolom wajib diisi!";
+                $_SESSION['flash_type'] = "error";
+                header("Location: " . BASE_URL . "/detail-berita?id=" . $idBerita . "#comment-form");
+                exit;
+            }
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $_SESSION['flash_message'] = "Format email tidak valid!";
+                $_SESSION['flash_type'] = "error";
+                header("Location: " . BASE_URL . "/detail-berita?id=" . $idBerita . "#comment-form");
+                exit;
+            }
+
+            $komentarModel = new Komentar();
+            $data = [
+                'idberita' => $idBerita,
+                'nama' => $nama,
+                'email' => $email,
+                'komentar' => $isi
+            ];
+
+            if ($komentarModel->create($data)) {
+                $_SESSION['flash_message'] = "Komentar berhasil dikirim!";
+                $_SESSION['flash_type'] = "success";
+            } else {
+                $_SESSION['flash_message'] = "Gagal mengirim komentar.";
+                $_SESSION['flash_type'] = "error";
+            }
+
+            header("Location: " . BASE_URL . "/detail-berita?id=" . $idBerita . "#comments-area");
+            exit;
+        }
     }
 
     public function login() { \View::render('landing-page/login'); }
@@ -262,7 +316,60 @@ class PageController {
     }
 
     public function editorDashboard() {
-        \View::render('editor-page/dashboard');
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+            header('Location: ' . BASE_URL . '/login');
+            exit;
+        }
+
+        $beritaModel = new Berita();
+        $publikasiModel = new Publikasi();
+
+        $statsBerita = $beritaModel->getStatsByCreator($userId);
+        $statsPublikasi = $publikasiModel->getStatsByCreator($userId);
+
+        $totalBerita = $statsBerita['total']; 
+        $totalPublikasi = $statsPublikasi['total'];
+
+        $totalApproved = $statsBerita['terima'] + $statsPublikasi['terima'];
+        $totalPending = $statsBerita['pending'] + $statsPublikasi['pending'];
+        $totalTolak = $statsBerita['tolak'] + $statsPublikasi['tolak'];
+
+        $currentYear = date('Y');
+        $beritaMonthly = $beritaModel->getMonthlyStatsByCreator($userId, $currentYear);
+        $publikasiMonthly = $publikasiModel->getMonthlyStatsByCreator($userId, $currentYear);
+
+        $dataBeritaChart = array_fill(0, 12, 0);
+        $dataPublikasiChart = array_fill(0, 12, 0);
+
+        foreach ($beritaMonthly as $month => $count) {
+            $index = (int)$month - 1;
+            if ($index >= 0 && $index < 12) $dataBeritaChart[$index] = (int)$count;
+        }
+        foreach ($publikasiMonthly as $month => $count) {
+            $index = (int)$month - 1;
+            if ($index >= 0 && $index < 12) $dataPublikasiChart[$index] = (int)$count;
+        }
+
+        $chartTrend = [
+            'series' => [
+                ['name' => 'Berita Disetujui', 'data' => $dataBeritaChart],
+                ['name' => 'Publikasi Disetujui', 'data' => $dataPublikasiChart]
+            ],
+            'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+        ];
+
+        $chartStatusComposition = [
+            'series' => [$totalApproved, $totalPending, $totalTolak],
+            'labels' => ['Disetujui', 'Menunggu', 'Ditolak']
+        ];
+
+        \View::render('editor-page/dashboard', [
+            'totalBerita' => $totalBerita,         
+            'totalPublikasi' => $totalPublikasi,   
+            'chartTrend' => $chartTrend,
+            'chartStatusComposition' => $chartStatusComposition
+        ]);
     }
 
     public function editorPublikasi() {

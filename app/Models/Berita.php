@@ -55,10 +55,14 @@ class Berita {
     public function getById($id) {
         $query = "SELECT b.*, 
                         m.namamember as jurnalis_nama,
-                        m.fotoprofil as jurnalis_foto
+                        m.fotoprofil as jurnalis_foto,
+                        STRING_AGG(k.namakategori, ', ') as namakategori 
                 FROM berita b
                 LEFT JOIN member m ON b.jurnalis = m.idmember
-                WHERE b.idberita = :id";
+                LEFT JOIN pivot_berita pb ON b.idberita = pb.idberita
+                LEFT JOIN kategori_berita k ON pb.idkategori = k.idkategori
+                WHERE b.idberita = :id
+                GROUP BY b.idberita, m.namamember, m.fotoprofil";
         
         $stmt = $this->db->prepare($query);
         $stmt->execute([':id' => $id]);
@@ -214,5 +218,20 @@ class Berita {
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM berita WHERE idberita = :id");
         return $stmt->execute([':id' => $id]);
+    }
+
+    public function getMonthlyStatsByCreator($userId, $year) {
+        $query = "SELECT 
+                    EXTRACT(MONTH FROM updated_at) as month, 
+                    COUNT(*) as total 
+                FROM berita 
+                WHERE status_berita = 'terima' 
+                AND created_by = :id
+                AND EXTRACT(YEAR FROM updated_at) = :year
+                GROUP BY month";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $userId, ':year' => $year]);
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
     }
 }

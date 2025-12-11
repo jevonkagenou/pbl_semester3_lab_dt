@@ -31,6 +31,7 @@ $router->add('GET', '/program-diploma-iv/sib', 'PageController@programDiplomaIVS
 $router->add('GET', '/aturan-akademik', 'PageController@aturanAkademik');
 $router->add('GET', '/kalender', 'PageController@kalender');
 $router->add('GET', '/penelitian', 'PageController@penelitian');
+$router->add('POST', '/komentar/store', 'PageController@storeKomentar');
 
 $router->add('POST', '/login-process', 'AuthController@loginProcess');
 $router->add('GET', '/logout', 'AuthController@logout');

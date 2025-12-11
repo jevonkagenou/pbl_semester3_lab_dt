@@ -22,7 +22,7 @@
         body { background-color: #f2f7ff; }
         .card-modern { background: #ffffff; border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.3s ease-in-out; overflow: hidden; }
         .card-modern:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); }
-        .hero-stats-card { background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 20px; color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; transition: transform 0.3s ease; }
+        .hero-stats-card { background: linear-gradient(120deg, #435ebe, #727cf5); border-radius: 20px; color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; transition: transform 0.3s ease; }
         .hero-stats-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; }
         .hero-stats-card::after { content: ''; position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; }
         .stats-icon-large { font-size: 3.5rem; opacity: 0.8; }
@@ -33,7 +33,7 @@
         .table-modern tbody td { border: none; padding: 20px; vertical-align: middle; color: #4a5568; font-weight: 600; border-top: 1px solid #f8f9fa; border-bottom: 1px solid #f8f9fa; }
         .table-modern tbody tr td:first-child { border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-left: 1px solid #f8f9fa; }
         .table-modern tbody tr td:last-child { border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-right: 1px solid #f8f9fa; }
-        .btn-futuristic { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); border: none; border-radius: 12px; padding: 10px 24px; color: white; font-weight: 700; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
+        .btn-futuristic { background: linear-gradient(135deg, #435ebe 0%, #25396f 100%); border: none; border-radius: 12px; padding: 10px 24px; color: white; font-weight: 700; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
         .btn-futuristic:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); color: white; }
         .action-btn { width: 38px; height: 38px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s ease; border: none; margin: 0 4px; cursor: pointer; }
         .btn-edit-modern { background-color: #fff8e6; color: #ffb822; }
