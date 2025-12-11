@@ -32,23 +32,24 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
                     </a>
                 </li>
 
+                <li class="sidebar-item <?= isActive($uri, '/admin/editor') ?>">
+                    <a href="<?= BASE_URL ?>/admin/editor" class='sidebar-link'>
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Akun Editor</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item <?= isActive($uri, '/admin/kategori') ?>">
                     <a href="<?= BASE_URL ?>/admin/kategori" class='sidebar-link'>
                         <i class="bi bi-tags-fill"></i>
                         <span>Data Kategori</span>
                     </a>
                 </li>
+                
 
                 <li class="sidebar-item <?= isActive($uri, '/admin/fasilitas') ?>">
                     <a href="<?= BASE_URL ?>/admin/fasilitas" class='sidebar-link'>
                         <i class="bi bi-display-fill"></i> <span>Fasilitas Lab</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item <?= isActive($uri, '/admin/editor') ?>">
-                    <a href="<?= BASE_URL ?>/admin/editor" class='sidebar-link'>
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Akun Editor</span>
                     </a>
                 </li>
 

@@ -21,11 +21,6 @@
   <link href="<?= BASE_URL ?>/public/assets/css/main.css" rel="stylesheet">
 
   <style>
-    :root {
-      --color-primary: #27505B;
-      --color-accent: #4dc4e0;
-    }
-
     .news-card {
       background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.05);
@@ -92,45 +87,6 @@
       left: 0;
       z-index: 1;
       content: "";
-    }
-
-    .custom-badge {
-      font-size: 0.65rem;
-      /* Diperkecil agar lebih compact */
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      /* Padding dikurangi */
-      border-radius: 50px;
-      display: inline-block;
-      white-space: nowrap;
-      /* Mencegah teks turun baris dalam badge */
-      line-height: 1;
-    }
-
-    .badge-inter {
-      background: rgba(25, 135, 84, 0.1);
-      color: #198754;
-      border: 1px solid rgba(25, 135, 84, 0.2);
-    }
-
-    .badge-nas {
-      background: rgba(13, 110, 253, 0.1);
-      color: #0d6efd;
-      border: 1px solid rgba(13, 110, 253, 0.2);
-    }
-
-    .badge-pros {
-      background: rgba(255, 193, 7, 0.1);
-      color: #ffc107;
-      border: 1px solid rgba(255, 193, 7, 0.2);
-    }
-
-    .badge-def {
-      background: rgba(13, 202, 240, 0.1);
-      color: #0dcaf0;
-      border: 1px solid rgba(13, 202, 240, 0.2);
     }
 
     .filter-wrapper {
@@ -296,9 +252,9 @@
 
     .pagination-btn:hover,
     .pagination-btn.active {
-      background: var(--color-primary);
+      background: #27505B;
       color: #fff;
-      border-color: var(--color-primary);
+      border-color: #27505B;
     }
 
     .pagination-btn:disabled {
@@ -306,6 +262,70 @@
       color: #ccc;
       cursor: not-allowed;
       border-color: #eee;
+    }
+
+    :root {
+      --accent-color: #27505B;
+      --color-primary: #27505B;
+      --color-accent: #4dc4e0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .hero {
+      width: 100%;
+      min-height: auto !important;
+      padding-top: 40px !important;
+      padding-bottom: 60px !important;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero .hero-img img {
+      width: 85%;
+      height: auto;
+    }
+
+    @media (max-width: 991px) {
+      .hero {
+        padding-top: 120px !important;
+        text-align: center;
+      }
+
+      .hero .hero-img {
+        margin-top: 40px;
+      }
+
+      .hero .hero-img img {
+        width: 60%;
+      }
+    }
+
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background-color: #E8F1F3;
+      color: var(--color-primary);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .category-pill i {
+      font-size: 1rem;
+    }
+
+    .category-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   </style>
 </head>
@@ -430,25 +450,15 @@
                   class="card-img-top object-fit-cover" alt="<?= $row['judulberita'] ?>">
               </div>
               <div class="card-body p-4 d-flex flex-column">
-                <div class="d-flex flex-wrap gap-1 mb-3">
-                  <?php
-                    $listKategori = explode(',', $row['namakategori'] ?? '');
-                    foreach ($listKategori as $kat) :
-                        $kat = trim($kat);
-                        if (empty($kat)) continue;
-                        $badgeClass = 'badge-def'; 
-                        if (stripos($kat, 'Internasional') !== false) {
-                            $badgeClass = 'badge-inter';
-                        } elseif (stripos($kat, 'Nasional') !== false) {
-                            $badgeClass = 'badge-nas';
-                        } elseif (stripos($kat, 'Prestasi') !== false) {
-                            $badgeClass = 'badge-pros';
-                        }
-                  ?>
-                  <span class="custom-badge <?= $badgeClass ?>">
-                    <?= $kat ?>
+                <div class="category-pill">
+                  <i class="bi bi-tags-fill"></i>
+                  <span class="category-text">
+                    <?php
+                        $listKategori = explode(',', $row['namakategori'] ?? '');
+                        $listKategori = array_map('trim', $listKategori);
+                        echo implode(', ', array_filter($listKategori));
+                    ?>
                   </span>
-                  <?php endforeach; ?>
                 </div>
                 <h5 class="news-title fw-bold mb-3" style="font-size: 1rem; line-height: 1.5;">
                   <a href="<?= BASE_URL ?>/detail-berita?id=<?= $row['idberita'] ?>"

@@ -110,13 +110,27 @@ class EditorController {
     }
 
     public function publikasi() {
-        $dataPublikasi = $this->publikasiModel->getAll();
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+             $this->setFlashAndRedirect("Sesi habis, silakan login ulang.", "error", "/pbl_semester3_lab_dt/login");
+        }
+
+        // Ambil semua data publikasi, lalu filter manual berdasarkan created_by
+        $allPublikasi = $this->publikasiModel->getAll();
+        $userPublikasi = array_filter($allPublikasi, function($item) use ($userId) {
+            return isset($item['created_by']) && $item['created_by'] == $userId;
+        });
+
         $kategori = $this->kategoriModel->getAll('publikasi'); 
         $members = $this->memberModel->getAll();
+        
+        // Stats juga sebaiknya difilter jika method getStats di model mendukung parameter user_id, 
+        // namun jika getStats menghitung global, biarkan apa adanya atau buat method getStatsByUser di model.
+        // Untuk saat ini kita gunakan stats global sesuai kode asli.
         $stats = $this->publikasiModel->getStats();
 
         \View::render('editor-page/publikasi', [
-            'publikasi' => $dataPublikasi,
+            'publikasi' => $userPublikasi,
             'kategori' => $kategori,
             'members' => $members,
             'stats' => $stats
@@ -246,13 +260,24 @@ class EditorController {
     }
 
     public function berita() {
-        $berita = $this->beritaModel->getAll();
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+             $this->setFlashAndRedirect("Sesi habis, silakan login ulang.", "error", "/pbl_semester3_lab_dt/login");
+        }
+
+        // Ambil semua berita, lalu filter manual berdasarkan created_by
+        $allBerita = $this->beritaModel->getAll();
+        $userBerita = array_filter($allBerita, function($item) use ($userId) {
+            return isset($item['created_by']) && $item['created_by'] == $userId;
+        });
+
         $members = $this->memberModel->getAll();
+        // Menggunakan stats global
         $stats = $this->beritaModel->getStats();
         $kategori = $this->kategoriModel->getAll('berita');
 
         \View::render('editor-page/berita', [
-            'berita' => $berita,
+            'berita' => $userBerita,
             'members' => $members,
             'stats' => $stats,
             'kategori' => $kategori

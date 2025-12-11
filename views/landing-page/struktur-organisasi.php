@@ -90,25 +90,22 @@
                 </div>
 
                 <?php
-                $kepalaLab = null;
-                $anggotaLain = [];
+                    $kepalaLab = null;
+                    $anggotaLain = [];
 
-                if (!empty($members)) {
-                    foreach ($members as $row) {
-                        $status = strtolower($row['statusmember'] ?? '');
-                        if ($status == 'non-aktif' || $status == 'inactive') continue;
-
-                        $jabatan = strtolower($row['jabatan'] ?? '');
-                        
-                        if (strpos($jabatan, 'kepala') !== false || strpos($jabatan, 'ketua') !== false) {
-                            $kepalaLab = $row;
-                        } else {
-                            $anggotaLain[] = $row;
+                    if (!empty($members)) {
+                        foreach ($members as $row) {
+                            $status = strtolower(trim($row['statusmember'] ?? ''));
+                            if ($status == 'non-aktif' || $status == 'inactive') continue;
+                            $jabatan = strtolower(trim($row['jabatan'] ?? ''));
+                            if ($jabatan === 'kepala lab' || $jabatan === 'ketua lab' || strpos($jabatan, 'kepala lab') !== false) {
+                                $kepalaLab = $row;
+                            } else {
+                                $anggotaLain[] = $row;
+                            }
                         }
                     }
-                }
                 ?>
-
                 <?php if ($kepalaLab) : ?>
                 <div class="row justify-content-center mb-5">
                     <div class="col-lg-4 col-md-6">

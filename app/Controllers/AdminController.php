@@ -255,6 +255,13 @@ class AdminController {
                 $this->setFlashAndRedirect("Pilihan Jabatan tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
 
+            if ($jabatan === 'Kepala Lab') {
+                $existingKepala = $this->memberModel->getKepalaLab();
+                if ($existingKepala) {
+                    $this->setFlashAndRedirect("Hanya boleh ada 1 Kepala Lab. Hapus atau ubah data Kepala Lab sebelumnya terlebih dahulu.", "error", "/pbl_semester3_lab_dt/admin/member");
+                }
+            }
+
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->setFlashAndRedirect("Format email tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
             }
@@ -308,6 +315,13 @@ class AdminController {
             $allowedJabatan = ['Kepala Lab', 'Anggota Lab'];
             if (!empty($jabatan) && !in_array($jabatan, $allowedJabatan)) {
                 $this->setFlashAndRedirect("Pilihan Jabatan tidak valid.", "error", "/pbl_semester3_lab_dt/admin/member");
+            }
+
+            if ($jabatan === 'Kepala Lab') {
+                $existingKepala = $this->memberModel->getKepalaLab();
+                if ($existingKepala && $existingKepala['idmember'] != $id) {
+                    $this->setFlashAndRedirect("Posisi Kepala Lab sudah terisi oleh member lain.", "error", "/pbl_semester3_lab_dt/admin/member");
+                }
             }
 
             $existingName = $this->memberModel->getByName($nama);

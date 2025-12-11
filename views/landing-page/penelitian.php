@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -278,35 +279,6 @@
             transform: scaleX(1);
         }
 
-        .pub-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-
-        .badge-inter {
-            background: rgba(25, 135, 84, 0.1);
-            color: #198754;
-        }
-
-        .badge-nas {
-            background: rgba(13, 110, 253, 0.1);
-            color: #0d6efd;
-        }
-
-        .badge-pros {
-            background: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
-        }
-
-        .badge-def {
-            background: rgba(13, 202, 240, 0.1);
-            color: #0dcaf0;
-        }
-
         .pub-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -409,6 +381,31 @@
             color: #ccc;
             cursor: not-allowed;
             border-color: #eee;
+        }
+
+        .category-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: #E8F1F3;
+            color: var(--color-primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        .category-pill i {
+            font-size: 1rem;
+        }
+
+        .category-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
 </head>
@@ -519,23 +516,15 @@
 
                         <article class="publication-card">
                             <div>
-                                <div class="mb-3">
-                                    <?php
-                                    $listKategori = explode(',', $row['namakategori'] ?? '');
-                                    
-                                    foreach ($listKategori as $kat) :
-                                        $kat = trim($kat);
-                                        if (empty($kat)) continue;
-
-                                        $badgeClass = 'badge-def';
-                                        if (stripos($kat, 'Internasional') !== false) $badgeClass = 'badge-inter';
-                                        elseif (stripos($kat, 'Nasional') !== false) $badgeClass = 'badge-nas';
-                                        elseif (stripos($kat, 'Prosiding') !== false) $badgeClass = 'badge-pros';
+                                <div class="category-pill">
+                                    <i class="bi bi-tags-fill"></i>
+                                    <span class="category-text">
+                                        <?php
+                                        $listKategori = explode(',', $row['namakategori'] ?? '');
+                                        $listKategori = array_map('trim', $listKategori);
+                                        echo implode(', ', array_filter($listKategori));
                                     ?>
-                                    <span class="pub-badge <?= $badgeClass ?> me-1">
-                                        <?= $kat ?>
                                     </span>
-                                    <?php endforeach; ?>
                                 </div>
 
                                 <h2 class="pub-title">

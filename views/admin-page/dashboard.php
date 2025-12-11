@@ -49,7 +49,6 @@
         .stats-icon.green { background: linear-gradient(135deg, #5ddb98 0%, #2ac974 100%); box-shadow: 0 5px 15px rgba(42, 201, 116, 0.3); }
         .stats-icon.red { background: linear-gradient(135deg, #ff8f96 0%, #ff5b5c 100%); box-shadow: 0 5px 15px rgba(255, 91, 92, 0.3); }
 
-        /* Typography */
         .font-extrabold { font-weight: 800; color: #25396f; }
         .text-muted { color: #8898aa !important; font-weight: 600; font-size: 0.9rem; }
 
@@ -92,7 +91,6 @@
             <div class="page-content">
                 <section class="row">
                     <div class="col-12 col-lg-9">
-                        <!-- STATISTIK KARTU -->
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card card-modern">
@@ -104,8 +102,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Total Views</h6>
-                                                <h6 class="font-extrabold mb-0">112.000</h6>
+                                                <h6 class="text-muted font-semibold">Berita</h6>
+                                                <h6 class="font-extrabold mb-0"><?= isset($totalBerita) ? $totalBerita : 0 ?></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +120,7 @@
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                                 <h6 class="text-muted font-semibold">Member</h6>
-                                                <h6 class="font-extrabold mb-0"><?= isset($chartVisitorsProfile['series'][2]) ? $chartVisitorsProfile['series'][2] : 0 ?></h6>
+                                                <h6 class="font-extrabold mb-0"><?= isset($totalMember) ? $totalMember : 0 ?></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -155,8 +153,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                                <h6 class="font-extrabold mb-0">112</h6>
+                                                <h6 class="text-muted font-semibold">Publikasi</h6>
+                                                <h6 class="font-extrabold mb-0"><?= isset($totalPublikasi) ? $totalPublikasi : 0 ?></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -164,24 +162,21 @@
                             </div>
                         </div>
                         
-                        <!-- CHART PROFILE VISIT -->
                         <div class="row mt-2">
                             <div class="col-12">
                                 <div class="card card-modern">
                                     <div class="card-header-modern">
-                                        <h4>Tren Kunjungan & Member Baru</h4>
+                                        <h4>Tren Berita & Publikasi Disetujui (<?= date('Y') ?>)</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
+                                        <div id="chart-trend"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- SIDEBAR KANAN DASHBOARD -->
                     <div class="col-12 col-lg-3">
-                        <!-- Profil User Login -->
                         <div class="card card-modern user-card">
                             <div class="card-body py-4 px-4">
                                 <div class="d-flex align-items-center">
@@ -220,46 +215,50 @@
     <script src="<?= BASE_URL ?>/public/assets-admin/vendors/apexcharts/apexcharts.js"></script>
     
     <script>
-        var optionsProfileVisit = {
-            annotations: {
-                position: 'back'
+        var optionsTrend = {
+            series: <?php echo json_encode($chartTrend['series'] ?? []); ?>,
+            chart: {
+                type: 'bar',
+                height: 300,
+                toolbar: { show: false }
+            },
+            colors: ['#9694ff', '#ff5b5c'], 
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    borderRadius: 4,
+                },
             },
             dataLabels: {
                 enabled: false
             },
-            chart: {
-                type: 'bar',
-                height: 300,
-                toolbar: { show: false } 
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: <?php echo json_encode($chartTrend['categories'] ?? []); ?>,
+            },
+            yaxis: {
+                title: { text: 'Jumlah Disetujui' }
             },
             fill: {
                 opacity: 1
             },
-            plotOptions: {
-                bar: {
-                    borderRadius: 5,
-                    columnWidth: '50%',
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val + " Data"
+                    }
                 }
-            },
-            series: <?php echo json_encode($chartProfileVisit['series'] ?? []); ?>,
-            colors: '#435ebe',
-            xaxis: {
-                categories: <?php echo json_encode($chartProfileVisit['categories'] ?? []); ?>,
-                axisBorder: { show: false },
-                axisTicks: { show: false }
-            },
-            yaxis: {
-                axisBorder: { show: false },
-                axisTicks: { show: false }
-            },
-            grid: {
-                borderColor: '#f1f1f1',
             }
         };
         
-        if(document.querySelector("#chart-profile-visit")) {
-            var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
-            chartProfileVisit.render();
+        if(document.querySelector("#chart-trend")) {
+            var chartTrend = new ApexCharts(document.querySelector("#chart-trend"), optionsTrend);
+            chartTrend.render();
         }
 
         var optionsVisitorsProfile = {

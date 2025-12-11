@@ -39,7 +39,9 @@ class PageController {
 
         \View::render('landing-page/index', $data);
     }
+
     public function sejarah() { \View::render('landing-page/sejarah'); }
+
     public function berita() {
         $beritaModel = new Berita();
         $rawData = $beritaModel->getAll();
@@ -72,6 +74,7 @@ class PageController {
         ];
         \View::render('landing-page/berita', $data);
     }
+
     public function detailBerita() {
         $id = $_GET['id'] ?? null;
         if (!$id) {
@@ -80,35 +83,44 @@ class PageController {
         }
         $beritaModel = new Berita();
         $berita = $beritaModel->getById($id);
+        
         if (!$berita || $berita['status_berita'] !== 'terima') {
             header('Location: ' . BASE_URL . '/berita');
             exit;
         }
+
+        $fotoPath = __DIR__ . '/../../public/uploads/berita/' . $berita['fotodokumentasi'];
+        if (empty($berita['fotodokumentasi']) || !file_exists($fotoPath)) {
+            $berita['fotodokumentasi'] = 'default-image.jpg'; 
+        }
+
         \View::render('landing-page/detail-berita', ['berita' => $berita]);
     }
+
     public function login() { \View::render('landing-page/login'); }
     public function tataTertib() { \View::render('landing-page/tata-tertib'); }
+    
     public function strukturOrganisasi() {
-    $memberModel = new \App\Models\Member();
-    $members = $memberModel->getAll();
-    $data = [
-        'members' => $members
-    ];
-    \View::render('landing-page/struktur-organisasi', $data);
-}
+        $memberModel = new \App\Models\Member();
+        $members = $memberModel->getAll();
+        $data = ['members' => $members];
+        \View::render('landing-page/struktur-organisasi', $data);
+    }
+
     public function VisidanMisi() { \View::render('landing-page/visi-dan-misi'); }
+    
     public function saranaPrasarana() {
         $fasilitasModel = new Fasilitas();
         $dataFasilitas = $fasilitasModel->getAll();
-        $data = [
-            'fasilitas' => $dataFasilitas
-        ];
+        $data = ['fasilitas' => $dataFasilitas];
         \View::render('landing-page/sarana-prasarana', $data);
     }
+
     public function programDiplomaIVTI() { \View::render('landing-page/teknik-informatika'); }
     public function programDiplomaIVSIB() { \View::render('landing-page/sistem-informasi-bisnis'); }
     public function aturanAkademik() { \View::render('landing-page/aturan-akademik'); }
     public function kalender() { \View::render('landing-page/kalender'); }
+
     public function penelitian() {
         $publikasiModel = new Publikasi();
         $kategoriModel = new Kategori();
@@ -130,21 +142,39 @@ class PageController {
     public function adminDashboard() {
         $userModel = new User();
         $memberModel = new Member();
+        $beritaModel = new Berita();
+        $publikasiModel = new Publikasi();
         
+        $totalMember = $memberModel->countAll();
+        $totalBerita = $beritaModel->getTotalApproved();
+        $totalPublikasi = $publikasiModel->getTotalApproved();
         $editors = $userModel->getEditors();
-        $stats = $userModel->getEditorStats();
-        
-        $chartProfileVisit = [
-            'series' => [
-                ['name' => 'Member Baru', 'data' => [10, 41, 35, 51, 49, 62, 69, 91, 148, 60, 50, 20]],
-                ['name' => 'Pengunjung', 'data' => [20, 50, 40, 60, 59, 70, 75, 100, 160, 70, 60, 30]]
-            ],
-            'categories' => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        ];
-
         $totalEditor = count($editors);
-        $totalMember = count($memberModel->getAll());
-        $totalAdmin = 1;
+        $totalAdmin = 1; 
+
+        $currentYear = date('Y');
+        $beritaMonthly = $beritaModel->getMonthlyStats($currentYear);
+        $publikasiMonthly = $publikasiModel->getMonthlyStats($currentYear);
+
+        $dataBeritaChart = array_fill(0, 12, 0);
+        $dataPublikasiChart = array_fill(0, 12, 0);
+
+        foreach ($beritaMonthly as $month => $count) {
+            $index = (int)$month - 1;
+            if ($index >= 0 && $index < 12) $dataBeritaChart[$index] = (int)$count;
+        }
+        foreach ($publikasiMonthly as $month => $count) {
+            $index = (int)$month - 1;
+            if ($index >= 0 && $index < 12) $dataPublikasiChart[$index] = (int)$count;
+        }
+
+        $chartTrend = [
+            'series' => [
+                ['name' => 'Berita Disetujui', 'data' => $dataBeritaChart],
+                ['name' => 'Publikasi Disetujui', 'data' => $dataPublikasiChart]
+            ],
+            'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+        ];
 
         $chartVisitorsProfile = [
             'series' => [$totalAdmin, $totalEditor, $totalMember],
@@ -152,10 +182,15 @@ class PageController {
         ];
 
         \View::render('admin-page/dashboard', [
-            'editors' => $editors,
-            'stats' => $stats,
-            'chartProfileVisit' => $chartProfileVisit,
-            'chartVisitorsProfile' => $chartVisitorsProfile
+            'totalMember' => $totalMember,
+            'totalEditor' => $totalEditor,
+            'totalBerita' => $totalBerita,
+            'totalPublikasi' => $totalPublikasi,
+            'beritaMonth' => array_sum($dataBeritaChart),
+            'publikasiMonth' => array_sum($dataPublikasiChart),
+            'chartTrend' => $chartTrend,
+            'chartVisitorsProfile' => $chartVisitorsProfile,
+            'editors' => $editors
         ]);
     }
 
@@ -168,10 +203,8 @@ class PageController {
 
     public function adminKategori() {
         $kategoriModel = new Kategori();
-        
         $kategoriBerita = $kategoriModel->getAll('berita');
         $kategoriPublikasi = $kategoriModel->getAll('publikasi');
-        
         \View::render('admin-page/kategori', [
             'kategoriBerita' => $kategoriBerita,
             'kategoriPublikasi' => $kategoriPublikasi
@@ -193,7 +226,6 @@ class PageController {
         $publikasi = $publikasiModel->getAll();
         $stats = $publikasiModel->getStats();
         $members = $memberModel->getAll();
-        
         $kategori = $kategoriModel->getAll('publikasi'); 
 
         \View::render('admin-page/publikasi', [
@@ -219,7 +251,6 @@ class PageController {
         $berita = $beritaModel->getAll();
         $stats = $beritaModel->getStats();
         $members = $memberModel->getAll();
-        
         $kategori = $kategoriModel->getAll('berita');
 
         \View::render('admin-page/berita', [
@@ -239,11 +270,18 @@ class PageController {
         $memberModel = new Member();
         $kategoriModel = new Kategori();
 
-        $dataPublikasi = $publikasiModel->getAll();
-        $kategori = $kategoriModel->getAll('publikasi');
+        $currentUserId = $_SESSION['user_id'] ?? null;
         
+        if ($currentUserId) {
+            $dataPublikasi = $publikasiModel->getByCreator($currentUserId);
+            $stats = $publikasiModel->getStatsByCreator($currentUserId);
+        } else {
+            $dataPublikasi = [];
+            $stats = ['total' => 0, 'terima' => 0, 'tolak' => 0, 'pending' => 0];
+        }
+
+        $kategori = $kategoriModel->getAll('publikasi');
         $members = $memberModel->getAll();
-        $stats = $publikasiModel->getStats();
 
         \View::render('editor-page/publikasi', [
             'publikasi' => $dataPublikasi,
@@ -258,10 +296,17 @@ class PageController {
         $memberModel = new Member();
         $kategoriModel = new Kategori();
 
-        $berita = $beritaModel->getAll();
+        $currentUserId = $_SESSION['user_id'] ?? null;
+
+        if ($currentUserId) {
+            $berita = $beritaModel->getByCreator($currentUserId);
+            $stats = $beritaModel->getStatsByCreator($currentUserId);
+        } else {
+            $berita = [];
+            $stats = ['total' => 0, 'terima' => 0, 'tolak' => 0, 'pending' => 0];
+        }
+
         $members = $memberModel->getAll();
-        $stats = $beritaModel->getStats();
-        
         $kategori = $kategoriModel->getAll('berita');
 
         \View::render('editor-page/berita', [

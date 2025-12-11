@@ -47,6 +47,12 @@ class Member {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getKepalaLab() {
+        $stmt = $this->db->prepare("SELECT * FROM member WHERE jabatan = 'Kepala Lab' LIMIT 1");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create($data) {
         $query = "INSERT INTO member (nip, namamember, gelar, email, bidangriset, jabatan, link_sinta, fotoprofil, statusmember, created_at) 
                   VALUES (:nip, :nama, :gelar, :email, :bidang, :jabatan, :sinta, :foto, :status, NOW())";
@@ -58,7 +64,7 @@ class Member {
             ':gelar' => $data['gelar'],
             ':email' => $data['email'],
             ':bidang' => $data['bidangriset'],
-            ':jabatan' => $data['jabatan'],     
+            ':jabatan' => $data['jabatan'],    
             ':sinta' => $data['link_sinta'],    
             ':foto' => $data['fotoprofil'],
             ':status' => $data['statusmember']
@@ -97,5 +103,11 @@ class Member {
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM member WHERE idmember = :id");
         return $stmt->execute([':id' => $id]);
+    }
+
+    public function countAll() {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM member WHERE statusmember = 'active'");
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
 }

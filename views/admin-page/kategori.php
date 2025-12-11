@@ -15,13 +15,43 @@
 
     <style>
         body { background-color: #f2f7ff; }
-        
+
         .card-modern {
-            background: #ffffff; border: none; border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); overflow: hidden;
-            transition: transform 0.3s ease;
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+        .card-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: #fff;
+            margin-right: 15px;
+        }
+        .stats-icon.purple {
+            background: linear-gradient(135deg, #9694ff 0%, #7572ff 100%);
+            box-shadow: 0 5px 15px rgba(117, 114, 255, 0.3);
+        }
+        .stats-icon.red {
+            background: linear-gradient(135deg, #ff8f96 0%, #ff5b5c 100%);
+            box-shadow: 0 5px 15px rgba(255, 91, 92, 0.3);
+        }
+
+        .font-extrabold { font-weight: 800; color: #25396f; }
+        .text-muted-card { color: #8898aa; font-weight: 600; font-size: 0.9rem; }
+
         .btn-futuristic {
             background: linear-gradient(135deg, #435ebe 0%, #25396f 100%);
             border: none; border-radius: 12px; padding: 10px 20px; color: white;
@@ -29,6 +59,16 @@
         }
         .btn-futuristic:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(67, 94, 190, 0.4); color: white; }
 
+        .action-btn {
+            width: 35px; height: 35px; border-radius: 10px; display: inline-flex;
+            align-items: center; justify-content: center; transition: all 0.3s; border: none; margin-right: 5px;
+        }
+        .btn-edit-modern { background-color: #fff8e6; color: #ffb822; }
+        .btn-edit-modern:hover { background-color: #ffb822; color: white; transform: rotate(15deg); }
+        .btn-delete-modern { background-color: #ffe6e6; color: #ff5b5c; }
+        .btn-delete-modern:hover { background-color: #ff5b5c; color: white; transform: scale(1.1); }
+
+        /* --- TABLE --- */
         .table-modern { width: 100%; border-collapse: separate; border-spacing: 0 10px; padding: 0 20px; }
         .table-modern thead th {
             border: none; color: #a0aec0; font-weight: 700; text-transform: uppercase;
@@ -43,33 +83,7 @@
         .table-modern tbody tr td:first-child { border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-left: 1px solid #f8f9fa; }
         .table-modern tbody tr td:last-child { border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-right: 1px solid #f8f9fa; }
 
-        .action-btn {
-            width: 35px; height: 35px; border-radius: 10px; display: inline-flex;
-            align-items: center; justify-content: center; transition: all 0.3s; border: none; margin-right: 5px;
-        }
-        .btn-edit-modern { background-color: #fff8e6; color: #ffb822; }
-        .btn-edit-modern:hover { background-color: #ffb822; color: white; transform: rotate(15deg); }
-        .btn-delete-modern { background-color: #ffe6e6; color: #ff5b5c; }
-        .btn-delete-modern:hover { background-color: #ff5b5c; color: white; transform: scale(1.1); }
-
-        .hero-stats-card {
-            background: linear-gradient(120deg, #435ebe, #435ebe);
-            border-radius: 20px; 
-            color: white;
-            box-shadow: 0 10px 30px rgba(67, 94, 190, 0.2); 
-            position: relative; 
-            overflow: hidden;
-        }
-        .hero-stats-card::before {
-            content: ''; position: absolute; top: -50px; right: -50px;
-            width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;
-        }
-        .hero-stats-card::after {
-            content: ''; position: absolute; bottom: -30px; left: -30px;
-            width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;
-        }
-        .stats-icon-large { font-size: 3.5rem; opacity: 0.8; }
-
+        /* --- TABS --- */
         .nav-tabs { border-bottom: none; margin-bottom: -1px; z-index: 2; position: relative; padding-left: 10px; }
         .nav-tabs .nav-link { 
             border: none; font-weight: 700; color: #a0aec0; padding: 15px 30px; 
@@ -103,38 +117,38 @@
             <div class="page-content">
                 <section class="row mb-4">
                     <div class="col-12 col-md-6">
-                        <div class="card hero-stats-card p-4">
-                            <div class="d-flex justify-content-between align-items-center position-relative" style="z-index: 2;">
-                                <div>
-                                    <h5 class="text-white-50 mb-1">Kategori Berita</h5>
-                                    <h1 class="font-extrabold mb-0 text-white" style="font-size: 3rem;">
-                                        <?= isset($kategoriBerita) ? count($kategoriBerita) : 0 ?>
-                                    </h1>
-                                    <p class="mb-0 text-white-50 mt-2 small">
-                                        <i class="bi bi-newspaper me-1"></i> Total Terdaftar
-                                    </p>
-                                </div>
-                                <div class="stats-icon-large text-white">
-                                    <i class="bi bi-newspaper"></i>
+                        <div class="card card-modern">
+                            <div class="card-body px-4 py-4">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="stats-icon purple">
+                                            <i class="bi bi-newspaper"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="text-muted-card mb-1">Kategori Berita</h6>
+                                        <h3 class="font-extrabold mb-0"><?= isset($kategoriBerita) ? count($kategoriBerita) : 0 ?></h3>
+                                        <span class="text-muted small">Total Terdaftar</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="card hero-stats-card p-4">
-                            <div class="d-flex justify-content-between align-items-center position-relative" style="z-index: 2;">
-                                <div>
-                                    <h5 class="text-white-50 mb-1">Kategori Publikasi</h5>
-                                    <h1 class="font-extrabold mb-0 text-white" style="font-size: 3rem;">
-                                        <?= isset($kategoriPublikasi) ? count($kategoriPublikasi) : 0 ?>
-                                    </h1>
-                                    <p class="mb-0 text-white-50 mt-2 small">
-                                        <i class="bi bi-journal-bookmark-fill me-1"></i> Total Terdaftar
-                                    </p>
-                                </div>
-                                <div class="stats-icon-large text-white">
-                                    <i class="bi bi-journal-bookmark-fill"></i>
+                        <div class="card card-modern">
+                            <div class="card-body px-4 py-4">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="stats-icon red">
+                                            <i class="bi bi-journal-bookmark-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="text-muted-card mb-1">Kategori Publikasi</h6>
+                                        <h3 class="font-extrabold mb-0"><?= isset($kategoriPublikasi) ? count($kategoriPublikasi) : 0 ?></h3>
+                                        <span class="text-muted small">Total Terdaftar</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +156,6 @@
                 </section>
 
                 <section class="section">
-                    
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="berita-tab" data-bs-toggle="tab" data-bs-target="#berita" type="button" role="tab">

@@ -32,6 +32,26 @@ class Publikasi {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getByCreator($userId) {
+        $query = "SELECT p.*, 
+                         m.namamember, 
+                         u.username as creator_name,
+                         STRING_AGG(kp.namakategori, ', ') as namakategori,
+                         STRING_AGG(kp.idkategori::text, ',') as kategori_ids
+                  FROM publikasi p
+                  LEFT JOIN member m ON p.penulis = m.idmember
+                  LEFT JOIN users u ON p.created_by = u.id
+                  LEFT JOIN pivot_publikasi pp ON p.idpublikasi = pp.idpublikasi
+                  LEFT JOIN kategori_publikasi kp ON pp.idkategori = kp.idkategori
+                  WHERE p.created_by = :id
+                  GROUP BY p.idpublikasi, m.namamember, u.username
+                  ORDER BY p.created_at DESC";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getStats() {
         $query = "SELECT 
                     COUNT(*) as total,
@@ -42,6 +62,28 @@ class Publikasi {
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getStatsByCreator($userId) {
+        $query = "SELECT 
+                    COUNT(*) as total,
+                    SUM(CASE WHEN status_publikasi = 'terima' THEN 1 ELSE 0 END) as terima,
+                    SUM(CASE WHEN status_publikasi = 'tolak' THEN 1 ELSE 0 END) as tolak,
+                    SUM(CASE WHEN status_publikasi = 'pending' THEN 1 ELSE 0 END) as pending
+                  FROM publikasi
+                  WHERE created_by = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $userId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getApprovedThisMonth() {
+        $query = "SELECT COUNT(*) FROM publikasi 
+                  WHERE status_publikasi = 'terima' 
+                  AND TO_CHAR(updated_at, 'YYYY-MM') = TO_CHAR(CURRENT_DATE, 'YYYY-MM')";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
 
     public function getByJudul($judul) {
@@ -140,13 +182,33 @@ class Publikasi {
     }
 
     public function changeStatus($id, $status, $pesan = null) {
-        $query = "UPDATE publikasi SET status_publikasi = :status, pesan_admin = :pesan WHERE idpublikasi = :id";
+        $query = "UPDATE publikasi SET status_publikasi = :status, pesan_admin = :pesan, updated_at = NOW() WHERE idpublikasi = :id";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             ':status' => $status,
             ':pesan' => $pesan,
             ':id' => $id
         ]);
+    }
+
+    public function getTotalApproved() {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM publikasi WHERE status_publikasi = 'terima'");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function getMonthlyStats($year) {
+        $query = "SELECT 
+                    EXTRACT(MONTH FROM updated_at) as month, 
+                    COUNT(*) as total 
+                FROM publikasi 
+                WHERE status_publikasi = 'terima' 
+                AND EXTRACT(YEAR FROM updated_at) = :year
+                GROUP BY month";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':year' => $year]);
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
     }
 
     public function delete($id) {
