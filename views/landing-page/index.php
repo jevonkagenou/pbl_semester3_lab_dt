@@ -595,13 +595,13 @@
                   </small>
                 </div>
                 <h5 class="fw-bold mb-3 lh-base pub-title"
-                  style="height: 3.6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                  style="height: 3.6rem; display: -webkit-box; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                   <a href="<?= $row['linkfile'] ?>" target="_blank" class="stretched-link">
                     <?= $row['judulpublikasi'] ?>
                   </a>
                 </h5>
                 <p class="text-muted mb-4 small"
-                  style="height: 4.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6;">
+                  style="height: 4.5rem; display: -webkit-box; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6;">
                   <?= !empty($row['ringkasan']) ? $row['ringkasan'] : 'Karya tulis ilmiah oleh ' . $row['namamember'] . ' dibidang Teknologi Data.' ?>
                 </p>
                 <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">

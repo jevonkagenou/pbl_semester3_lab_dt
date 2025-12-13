@@ -96,7 +96,7 @@
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
             background: linear-gradient(to right, #ffffff, #e0f7fa);
-            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 

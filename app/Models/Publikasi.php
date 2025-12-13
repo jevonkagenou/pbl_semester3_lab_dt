@@ -144,6 +144,8 @@ class Publikasi {
                           penulis = :penulis, 
                           ringkasan = :ringkasan, 
                           linkfile = :link,
+                          status_publikasi = 'pending',
+                          pesan_admin = NULL,
                           updated_at = NOW()
                       WHERE idpublikasi = :id";
             
