@@ -446,6 +446,65 @@
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
+
+    @media (max-width: 991px) {
+      .section-title h2 {
+        font-size: 32px;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+      
+      .sop-card {
+        text-align: center;
+      }
+      
+      .sop-card .info-box {
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      
+      .sop-card .d-flex.align-items-center {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sop-card .sop-icon-circle {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+      }
+
+      .btn-sop-outline, .btn-sop-solid {
+        width: 100%;
+        margin-bottom: 10px;
+        display: block;
+      }
+      
+      .sop-bg-decoration {
+        font-size: 10rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 60px 0;
+      }
+
+      .about-img {
+        margin-top: 30px;
+      }
+
+      .d-flex.justify-content-between.align-items-end {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+    }
   </style>
 </head>
 

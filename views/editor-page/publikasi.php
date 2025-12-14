@@ -217,14 +217,6 @@
                                     <input type="text" name="judulpublikasi" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required placeholder="Contoh: Analisis Big Data...">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Tahun Terbit</label>
-                                    <input type="number" name="tahunterbit" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required placeholder="2024">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Link Eksternal</label>
-                                    <input type="url" name="linkfile" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required placeholder="https://jurnal...">
-                                </div>
-                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Penulis</label>
                                     <select name="penulis" class="form-select form-select-lg fs-6" style="border-radius: 10px;">
                                         <?php if(isset($members)): foreach($members as $m): ?>
@@ -242,6 +234,14 @@
                                         </select>
                                         <small class="text-muted">Ketik untuk mencari kategori.</small>
                                     </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Tahun Terbit</label>
+                                    <input type="number" name="tahunterbit" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required placeholder="2024">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Link Eksternal</label>
+                                    <input type="url" name="linkfile" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required placeholder="https://jurnal...">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Ringkasan</label>
@@ -274,14 +274,6 @@
                                     <input type="text" name="judulpublikasi" id="edit_judul" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Tahun Terbit</label>
-                                    <input type="number" name="tahunterbit" id="edit_tahun" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-muted small text-uppercase">Link Eksternal</label>
-                                    <input type="url" name="linkfile" id="edit_link" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
-                                </div>
-                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Penulis</label>
                                     <select name="penulis" id="edit_penulis" class="form-select form-select-lg fs-6" style="border-radius: 10px;">
                                         <?php if(isset($members)): foreach($members as $m): ?>
@@ -296,6 +288,14 @@
                                             <option value="<?= $k['idkategori'] ?>"><?= $k['namakategori'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Tahun Terbit</label>
+                                    <input type="number" name="tahunterbit" id="edit_tahun" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted small text-uppercase">Link Eksternal</label>
+                                    <input type="url" name="linkfile" id="edit_link" class="form-control form-control-lg fs-6" style="border-radius: 10px;" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold text-muted small text-uppercase">Ringkasan</label>
