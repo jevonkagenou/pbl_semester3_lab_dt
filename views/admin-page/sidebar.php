@@ -6,14 +6,29 @@ function isActive($uri, $path) {
 $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semester3_lab_dt/admin/');
 ?>
 
+<style>
+    .logo {
+        text-align: center !important;
+        padding: 20px 0 !important;
+    }
+
+    .img-logo {
+        width: 100% !important;
+        max-width: 180px !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="<?= BASE_URL ?>/admin">
-                        <img src="<?= BASE_URL ?>/public/assets-admin/images/logo/logo.png" alt="Logo" srcset="">
+                    <a href="<?= BASE_URL ?>/">
+                        <img src="<?= BASE_URL ?>/public/assets-admin/images/logo/logo.png" alt="Logo" class="img-logo">
                     </a>
                 </div>
                 <div class="toggler">
@@ -45,7 +60,7 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
                         <span>Data Kategori</span>
                     </a>
                 </li>
-                
+
 
                 <li class="sidebar-item <?= isActive($uri, '/admin/fasilitas') ?>">
                     <a href="<?= BASE_URL ?>/admin/fasilitas" class='sidebar-link'>
@@ -74,7 +89,15 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/admin' || $uri === '/pbl_semest
                     </a>
                 </li>
 
-                <li class="sidebar-title">Keluar</li>
+                <li class="sidebar-title">Akun</li>
+
+                <li class="sidebar-item <?= isActive($uri, '/admin/profile') ?>">
+                    <a href="<?= BASE_URL ?>/admin/profile" class='sidebar-link'>
+                        <i class="bi bi-gear-fill"></i>
+                        <span>Pengaturan Akun</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item">
                     <a href="<?= BASE_URL ?>/logout" id="btn-logout" class="sidebar-link">
                         <i class="bi bi-power text-danger"></i>

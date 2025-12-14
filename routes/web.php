@@ -42,6 +42,10 @@ if (strpos($requestUri, '/admin') !== false) {
     authMiddleware(['admin']);
     
     $router->add('GET', '/admin', 'PageController@adminDashboard');
+    
+    $router->add('GET', '/admin/profile', 'ProfileController@indexAdmin');
+    $router->add('POST', '/admin/profile/update', 'ProfileController@update');
+
     $router->add('GET', '/admin/editor', 'PageController@adminEditor');
     $router->add('GET', '/admin/kategori', 'PageController@adminKategori');
     $router->add('GET', '/admin/member', 'PageController@adminMember');
@@ -78,6 +82,10 @@ elseif (strpos($requestUri, '/editor') !== false) {
     authMiddleware(['editor']);
 
     $router->add('GET', '/editor', 'PageController@editorDashboard');
+
+    $router->add('GET', '/editor/profile', 'ProfileController@indexEditor');
+    $router->add('POST', '/editor/profile/update', 'ProfileController@update');
+
     $router->add('GET', '/editor/publikasi', 'PageController@editorPublikasi');
     $router->add('GET', '/editor/berita', 'PageController@editorBerita');
 

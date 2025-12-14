@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/css/app.css">
     <link rel="shortcut icon" href="<?= BASE_URL ?>/public/assets-admin/images/favicon.svg" type="image/x-icon">
-    
+    <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+    <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
 
     <style>

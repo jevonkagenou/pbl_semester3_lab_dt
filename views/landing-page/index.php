@@ -90,107 +90,140 @@
     }
 
     .publication-card {
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      border-radius: 16px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      background: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      border-radius: 16px !important;
+      padding: 25px !important;
+      height: 100% !important;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      z-index: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
     }
 
     .publication-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-      z-index: 2;
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent)) !important;
+      transform: scaleX(0) !important;
+      transform-origin: left !important;
+      transition: transform 0.4s ease !important;
+      z-index: 2 !important;
     }
 
     .publication-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(39, 80, 91, 0.15);
-      border-color: rgba(77, 196, 224, 0.3);
+      transform: translateY(-10px) !important;
+      box-shadow: 0 20px 40px rgba(39, 80, 91, 0.15) !important;
+      border-color: rgba(77, 196, 224, 0.3) !important;
     }
 
     .publication-card:hover::before {
-      transform: scaleX(1);
+      transform: scaleX(1) !important;
     }
 
-    .custom-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 30px;
-    }
-
-    .badge-inter {
-      background: rgba(25, 135, 84, 0.1);
-      color: #198754;
-      border: 1px solid rgba(25, 135, 84, 0.2);
-    }
-
-    .badge-nas {
-      background: rgba(13, 110, 253, 0.1);
-      color: #0d6efd;
-      border: 1px solid rgba(13, 110, 253, 0.2);
-    }
-
-    .badge-pros {
-      background: rgba(255, 193, 7, 0.1);
-      color: #ffc107;
-      border: 1px solid rgba(255, 193, 7, 0.2);
-    }
-
-    .badge-def {
-      background: rgba(13, 202, 240, 0.1);
-      color: #0dcaf0;
-      border: 1px solid rgba(13, 202, 240, 0.2);
+    .pub-title {
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 10px !important;
+      line-height: 1.5 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
     }
 
     .pub-title a {
-      color: var(--color-primary);
-      text-decoration: none;
-      background-image: linear-gradient(to right, var(--color-accent), var(--color-accent));
-      background-size: 0% 2px;
-      background-repeat: no-repeat;
-      background-position: left bottom;
-      transition: background-size 0.3s ease;
+      color: var(--color-primary) !important;
+      text-decoration: none !important;
+      background-image: linear-gradient(to right, var(--color-accent), var(--color-accent)) !important;
+      background-size: 0% 2px !important;
+      background-repeat: no-repeat !important;
+      background-position: left bottom !important;
+      transition: background-size 0.3s ease, color 0.3s ease !important;
     }
 
     .publication-card:hover .pub-title a {
-      color: #000;
-      background-size: 100% 2px;
+      color: #000 !important;
+      background-size: 100% 2px !important;
     }
 
-    .btn-read-more {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--color-primary);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    .pub-desc {
+      font-size: 0.9rem !important;
+      color: #6c757d !important;
+      margin-bottom: 15px !important;
+      line-height: 1.6 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      flex-grow: 1 !important;
     }
 
-    .btn-read-more i {
-      transition: transform 0.3s ease;
+    .pub-meta {
+      font-size: 0.85rem !important;
+      color: #888 !important;
+      border-top: 1px solid #f0f0f0 !important;
+      padding-top: 15px !important;
+      margin-top: auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
     }
 
-    .publication-card:hover .btn-read-more {
-      color: var(--color-accent);
+    .read-link {
+      color: var(--color-primary) !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      transition: all 0.3s ease !important;
     }
 
-    .publication-card:hover .btn-read-more i {
-      transform: translateX(5px);
+    .read-link:hover {
+      color: var(--color-accent) !important;
+      gap: 8px !important;
+    }
+
+    .publication-card:hover .read-link {
+      color: var(--color-accent) !important;
+    }
+
+    .publication-card:hover .read-link i {
+      transform: translateX(5px) !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .category-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 8px 16px !important;
+      background-color: #E8F1F3 !important;
+      color: var(--color-primary) !important;
+      border-radius: 50px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 15px !important;
+      width: fit-content !important;
+      max-width: 100% !important;
+    }
+
+    .category-pill i {
+      font-size: 1rem !important;
+    }
+
+    .category-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .team-section {
@@ -451,7 +484,7 @@
       .section-title h2 {
         font-size: 32px;
       }
-      
+
       .hero h1 {
         font-size: 32px;
       }
@@ -459,16 +492,16 @@
       .hero p {
         font-size: 16px;
       }
-      
+
       .sop-card {
         text-align: center;
       }
-      
+
       .sop-card .info-box {
         justify-content: center;
         margin-bottom: 20px;
       }
-      
+
       .sop-card .d-flex.align-items-center {
         justify-content: center;
         flex-direction: column;
@@ -480,12 +513,13 @@
         margin-bottom: 10px;
       }
 
-      .btn-sop-outline, .btn-sop-solid {
+      .btn-sop-outline,
+      .btn-sop-solid {
         width: 100%;
         margin-bottom: 10px;
         display: block;
       }
-      
+
       .sop-bg-decoration {
         font-size: 10rem;
       }
@@ -630,52 +664,49 @@
         <div class="row gy-4">
           <?php if (!empty($publikasi)) : ?>
           <?php foreach ($publikasi as $row) : ?>
-          <?php
-                        $kategoriRaw = explode(',', $row['namakategori'] ?? '');
-                        $kategoriUtama = trim($kategoriRaw[0]);
-                        $badgeClass = 'badge-def'; 
-                        if (stripos($kategoriUtama, 'Internasional') !== false) {
-                            $badgeClass = 'badge-inter';
-                        } elseif (stripos($kategoriUtama, 'Nasional') !== false) {
-                            $badgeClass = 'badge-nas';
-                        } elseif (stripos($kategoriUtama, 'Prosiding') !== false) {
-                            $badgeClass = 'badge-pros';
-                        }
-                    ?>
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card h-100 publication-card">
-              <div class="card-body p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <span class="custom-badge <?= $badgeClass ?>">
-                    <?= !empty($kategoriUtama) ? $kategoriUtama : 'Jurnal Ilmiah' ?>
+            <article class="publication-card">
+              <div>
+                <div class="category-pill">
+                  <i class="bi bi-tags-fill"></i>
+                  <span class="category-text">
+                    <?php
+                        $listKategori = explode(',', $row['namakategori'] ?? '');
+                        $listKategori = array_map('trim', $listKategori);
+                        echo implode(', ', array_filter($listKategori));
+                    ?>
                   </span>
-                  <small class="text-muted fw-bold" style="font-size: 0.8rem;">
-                    <i class="bi bi-clock me-1"></i> <?= $row['tahunterbit'] ?>
-                  </small>
                 </div>
-                <h5 class="fw-bold mb-3 lh-base pub-title"
-                  style="height: 3.6rem; display: -webkit-box; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                  <a href="<?= $row['linkfile'] ?>" target="_blank" class="stretched-link">
+
+                <h2 class="pub-title">
+                  <a href="<?= $row['linkfile'] ?>" target="_blank">
                     <?= $row['judulpublikasi'] ?>
                   </a>
-                </h5>
-                <p class="text-muted mb-4 small"
-                  style="height: 4.5rem; display: -webkit-box; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6;">
-                  <?= !empty($row['ringkasan']) ? $row['ringkasan'] : 'Karya tulis ilmiah oleh ' . $row['namamember'] . ' dibidang Teknologi Data.' ?>
+                </h2>
+                <p class="pub-desc">
+                  <?= !empty($row['ringkasan']) ? $row['ringkasan'] : 'Tidak ada ringkasan tersedia.' ?>
                 </p>
-                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
-                  <div class="d-flex align-items-center text-muted small">
-                    <i class="bi bi-person-circle me-2 text-primary"></i>
-                    <span class="text-truncate" style="max-width: 150px;">
-                      <?= $row['namamember'] ?>
-                    </span>
-                  </div>
-                  <span class="btn-read-more">
-                    Baca <i class="bi bi-arrow-right"></i>
-                  </span>
+              </div>
+
+              <div class="pub-meta">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person-circle me-2 text-primary"></i>
+                  <small class="text-truncate" style="max-width: 120px;">
+                    <?= $row['namamember'] ?>
+                  </small>
+                </div>
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-calendar3 me-2"></i>
+                  <small><?= $row['tahunterbit'] ?></small>
                 </div>
               </div>
-            </div>
+
+              <div class="mt-3 text-end">
+                <a href="<?= $row['linkfile'] ?>" target="_blank" class="read-link">
+                  Baca Selengkapnya <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
           </div>
           <?php endforeach; ?>
           <?php else : ?>
@@ -689,7 +720,7 @@
         </div>
 
         <div class="text-center mt-4 d-md-none">
-          <a href="<?= BASE_URL ?>/penelitian" class="btn btn-outline-primary rounded-pill px-4">Lihat Semua Publikasi
+          <a href="<?= BASE_URL ?>/penelitian" class="btn btn-outline-secondary rounded-pill px-4">Lihat Semua Publikasi
             <i class="bi bi-arrow-right ms-1"></i></a>
         </div>
       </div>
@@ -726,16 +757,16 @@
               <div class="team-card-futuristic">
                 <div class="team-img-box">
                   <?php
-                                        $fotoName = $row['fotoprofil'];
-                                        $uploadDir = __DIR__ . '/../../public/uploads/members/'; 
-                                        $urlFolder = BASE_URL . '/public/uploads/members/';
-                                        $defaultFoto = BASE_URL . '/public/assets/img/team/kepala-lab.png';
-                                        if (!empty($fotoName) && file_exists($uploadDir . $fotoName)) {
-                                            $finalFoto = $urlFolder . $fotoName;
-                                        } else {
-                                            $finalFoto = $defaultFoto;
-                                        }
-                                    ?>
+                                            $fotoName = $row['fotoprofil'];
+                                            $uploadDir = __DIR__ . '/../../public/uploads/members/'; 
+                                            $urlFolder = BASE_URL . '/public/uploads/members/';
+                                            $defaultFoto = BASE_URL . '/public/assets/img/team/kepala-lab.png';
+                                            if (!empty($fotoName) && file_exists($uploadDir . $fotoName)) {
+                                                $finalFoto = $urlFolder . $fotoName;
+                                            } else {
+                                                $finalFoto = $defaultFoto;
+                                            }
+                                        ?>
                   <img src="<?= $finalFoto ?>" alt="<?= $row['namamember'] ?>"
                     onerror="this.onerror=null;this.src='<?= $defaultFoto ?>';">
                   <div class="team-overlay">

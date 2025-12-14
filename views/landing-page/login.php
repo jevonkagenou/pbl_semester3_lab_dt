@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+    <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <style>
         :root {
             --primary-color: #27505B;
@@ -200,7 +201,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div class="form-check">
+                        <!-- <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="rememberMinimal">
                             <label class="form-check-label" for="rememberMinimal">
                                 Remember Me
@@ -208,7 +209,7 @@
                         </div>
                         <div>
                             <a href="#" class="link-dark-blue">Lupa Password?</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <button type="submit" class="btn btn-minimal-primary w-100">

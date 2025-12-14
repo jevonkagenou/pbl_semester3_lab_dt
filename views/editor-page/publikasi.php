@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets-admin/vendors/toastify/toastify.css">
-
+    <link href="<?= BASE_URL ?>/public/assets/img/favicon.png" rel="icon">
+    <link href="<?= BASE_URL ?>/public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <style>
         body { background-color: #f2f7ff; }
         .card-modern { background: #ffffff; border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); transition: all 0.3s ease-in-out; overflow: hidden; }

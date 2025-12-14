@@ -6,15 +6,29 @@ function isActive($uri, $path) {
 $is_dashboard = ($uri === '/pbl_semester3_lab_dt/editor' || $uri === '/pbl_semester3_lab_dt/editor/');
 ?>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    .logo {
+        text-align: center !important;
+        padding: 20px 0 !important;
+    }
+
+    .img-logo {
+        width: 100% !important;
+        max-width: 180px !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+</style>
+
 
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="<?= BASE_URL ?>/editor">
-                        <img src="<?= BASE_URL ?>/public/assets-admin/images/logo/logo.png" alt="Logo" srcset="">
+                    <a href="<?= BASE_URL ?>/">
+                        <img src="<?= BASE_URL ?>/public/assets-admin/images/logo/logo.png" alt="Logo" class="img-logo">
                     </a>
                 </div>
                 <div class="toggler">
@@ -49,6 +63,13 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/editor' || $uri === '/pbl_semes
 
                 <li class="sidebar-title">Akun</li>
 
+                <li class="sidebar-item <?= isActive($uri, '/editor/profile') ?>">
+                    <a href="<?= BASE_URL ?>/editor/profile" class='sidebar-link'>
+                        <i class="bi bi-person-circle"></i>
+                        <span>Profil Saya</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item">
                     <a href="<?= BASE_URL ?>/logout" id="btn-logout" class="sidebar-link">
                         <i class="bi bi-power text-danger"></i>
@@ -60,6 +81,8 @@ $is_dashboard = ($uri === '/pbl_semester3_lab_dt/editor' || $uri === '/pbl_semes
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     const logoutBtn = document.getElementById('btn-logout');

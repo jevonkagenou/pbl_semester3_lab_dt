@@ -77,4 +77,37 @@ class User {
         $stmt->execute([':username' => $username]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verifyPassword($id, $inputPassword) {
+        $user = $this->getById($id);
+        if ($user && password_verify($inputPassword, $user['password'])) {
+            return true;
+        }
+        return false;
+    }
+
+    public function updateProfile($id, $username, $newPassword = null) {
+        if ($newPassword) {
+            $query = "UPDATE users SET username = :username, password = :password WHERE id = :id";
+            $params = [
+                ':username' => $username,
+                ':password' => password_hash($newPassword, PASSWORD_BCRYPT),
+                ':id' => $id
+            ];
+        } else {
+            $query = "UPDATE users SET username = :username WHERE id = :id";
+            $params = [
+                ':username' => $username,
+                ':id' => $id
+            ];
+        }
+        $stmt = $this->db->prepare($query);
+        return $stmt->execute($params);
+    }
 }
